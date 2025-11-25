@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/bloc/auth/auth_session_bloc.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
-import 'package:flutter_boilerplate/core/components/idle/idle_item.dart';
+import 'package:flutter_boilerplate/core/widgets/idle/idle_item.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 import 'package:flutter_boilerplate/utils/flavor/flavor_utils.dart';
@@ -32,7 +32,6 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-
 
 class SplashBody extends StatefulWidget {
   const SplashBody({super.key});
@@ -69,13 +68,7 @@ class _SplashBodyState extends State<SplashBody> {
                     size: AppSetting.deviceWidth / 2,
                   ),
                   Space.h(20),
-                  Text(
-                    flavor.current.name,
-                    style: MyTheme.style.title.copyWith(
-                      color: MyTheme.color.blackWhite,
-                      fontSize: AppSetting.setFontSize(50),
-                    ),
-                  )
+                  Text(flavor.current.name, style: MyTheme.style.lg.regular)
                 ],
               ),
             ),
@@ -90,13 +83,7 @@ class _SplashBodyState extends State<SplashBody> {
                   children: [
                     const IdleLoading(),
                     Space.h(30),
-                    Text(
-                      "Ver 1.0.0",
-                      style: MyTheme.style.subtitle.copyWith(
-                        color: MyTheme.color.black,
-                        fontSize: AppSetting.setFontSize(40),
-                      ),
-                    ),
+                    Text("Ver 1.0.0", style: MyTheme.style.sm.regular),
                     Space.h(50),
                   ],
                 ),
@@ -107,5 +94,4 @@ class _SplashBodyState extends State<SplashBody> {
       ),
     );
   }
-
 }

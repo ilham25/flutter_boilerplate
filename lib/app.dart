@@ -25,8 +25,12 @@ class _AppState extends State<App> {
       builder: (context, orientation) {
         return ScreenUtilInit(
           designSize: orientation == Orientation.portrait
-              ? const Size(1080, 1920)  /// Portrait design size
-              : const Size(1920, 1080), /// Landscape design size
+              ? const Size(375, 812)
+
+              /// Portrait design size
+              : const Size(1920, 1080),
+
+          /// Landscape design size
           minTextAdapt: true,
           splitScreenMode: true,
           builder: (context, _) {

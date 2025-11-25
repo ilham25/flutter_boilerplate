@@ -1,11 +1,5 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_boilerplate/bloc/theme/theme_bloc.dart';
-import 'package:flutter_boilerplate/bloc/user/user_bloc.dart';
-import 'package:flutter_boilerplate/config/app_config.dart';
-import 'package:flutter_boilerplate/core/components/idle/idle_item.dart';
-import 'package:flutter_boilerplate/core/components/loading/loading_listview.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
 @RoutePage()
@@ -18,19 +12,24 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Home Screen',
-          style: MyTheme.style.title.copyWith(
-            color: MyTheme.color.white,
-            fontSize: AppSetting.setFontSize(45),
-          ),
+          style: MyTheme.style.lg.regular,
         ),
         automaticallyImplyLeading: false,
         backgroundColor: MyTheme.color.primary,
-        actions: [],
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.search,
+              color: MyTheme.color.white,
+            ),
+            onPressed: () {
+              showSearch(context: context, delegate: MySearchDelegate());
+              // context.router.push(const SettingsRoute());
+            },
+          ),
+        ],
       ),
-      body: BlocProvider(
-        create: (context) => UserBloc()..getUsers(params: {'page': 1}),
-        child: const HomeBody(),
-      ),
+      body: const HomeBody(),
     );
   }
 }
@@ -40,23 +39,88 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserBloc, UserState>(
-      builder: (context, state) {
-        return state.when(
-          initial: () => const IdleLoading(),
-          loading: () => const LoadingListView(),
-          error: (message) => IdleNoItemCenter(title: message),
-          loaded: (users, page, hasReachedMax, onLoadMore) {
-            return ListView.builder(
-              itemCount: users.length,
-              itemBuilder: (context, index) {
-                final user = users[index];
-                return ListTile(
-                  title: Text("${user.firstName} ${user.lastName}"),
-                  subtitle: Text(user.email ?? ""),
-                );
-              },
-            );
+    return Container();
+  }
+}
+
+class MySearchDelegate extends SearchDelegate {
+  final List<String> searchList = [
+    "Apple",
+    "Banana",
+    "Cherry",
+    "Date",
+    "Fig",
+    "Grapes",
+    "Kiwi",
+    "Lemon",
+    "Mango",
+    "Orange",
+    "Papaya",
+    "Raspberry",
+    "Strawberry",
+    "Tomato",
+    "Watermelon",
+  ];
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () => close(context, null),
+    );
+  }
+
+  @override
+  TextStyle get searchFieldStyle => MyTheme.style.base.regular;
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = "";
+          showSuggestions(context);
+        },
+      )
+    ];
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final List<String> suggestionList = query.isEmpty
+        ? []
+        : searchList
+            .where((item) => item.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+
+    return ListView.builder(
+      itemCount: suggestionList.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(suggestionList[index]),
+          onTap: () {
+            query = suggestionList[index];
+            // Show the search results based on the selected suggestion.
+          },
+        );
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    final List<String> searchResults = searchList
+        .where((item) => item.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    return ListView.builder(
+      itemCount: searchResults.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(searchResults[index]),
+          onTap: () {
+            // Handle the selected search result.
+            close(context, searchResults[index]);
           },
         );
       },
