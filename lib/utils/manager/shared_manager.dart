@@ -3,16 +3,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Generic class to do shared preferences
 /// management with dynamic data type
 class SharedManager<T> {
-
   /// Instance shared preferences
   /// and make it private
   late SharedPreferences prefs;
+
   /// Get type of this generic class
   // ignore: avoid_shadowing_type_parameters
   Type type<T>() => T;
 
   /// Call the shared preferences
-  /// field using keyname and with 
+  /// field using keyname and with
   /// the generic return type
   Future<T?> read(String key) async {
     prefs = await SharedPreferences.getInstance();
@@ -27,20 +27,20 @@ class SharedManager<T> {
   Future store(String key, dynamic value) async {
     prefs = await SharedPreferences.getInstance();
     var types = type<T>();
-    switch(types) {
-      case String:
+    switch (types) {
+      case const (String):
         prefs.setString(key, value);
         break;
-      case int:
+      case const (int):
         prefs.setInt(key, value);
         break;
-      case bool:
+      case const (bool):
         prefs.setBool(key, value);
         break;
-      case double:
+      case const (double):
         prefs.setDouble(key, value);
         break;
-      case List:
+      case const (List):
         prefs.setStringList(key, value);
         break;
     }

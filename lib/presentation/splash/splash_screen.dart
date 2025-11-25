@@ -16,10 +16,12 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
     return Scaffold(
       body: MultiBlocProvider(
         providers: [
@@ -47,6 +49,8 @@ class _SplashBodyState extends State<SplashBody> {
       listener: (context, state) {
         if (state is AuthSessionsLoadedState) {
           Future.delayed(const Duration(seconds: 2)).then((value) {
+            if (!context.mounted) return;
+
             if (state.sessions) {
               context.router.replaceAll([const HomeRoute()]);
             } else {
@@ -64,11 +68,9 @@ class _SplashBodyState extends State<SplashBody> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FlutterLogo(
-                    size: AppSetting.deviceWidth / 2,
-                  ),
+                  FlutterLogo(size: AppSetting.deviceWidth / 2),
                   Space.h(20),
-                  Text(flavor.current.name, style: MyTheme.style.lg.regular)
+                  Text(flavor.current.name, style: MyTheme.style.lg.regular),
                 ],
               ),
             ),
