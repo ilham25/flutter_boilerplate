@@ -10,8 +10,16 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
     AutoRoute(page: SplashRoute.page, initial: true),
     AutoRoute(page: HomeRoute.page),
+
+    // Common
+    CustomRoute(
+      page: SearchRoute.page,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+      duration: Duration(milliseconds: 250),
+      reverseDuration: Duration(milliseconds: 250),
+      opaque: false,
+    ),
   ];
   @override
   List<AutoRouteGuard> get guards => [];
-
 }

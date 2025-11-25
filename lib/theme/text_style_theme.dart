@@ -14,49 +14,106 @@ class Style {
   // Private constructor
   Style._internal();
 
-  UIKitTextStyle xs = UIKitTextStyle.xs();
-  UIKitTextStyle sm = UIKitTextStyle.sm();
-  UIKitTextStyle lg = UIKitTextStyle.lg();
-  UIKitTextStyle base = UIKitTextStyle.base();
-  UIKitTextStyle xl = UIKitTextStyle.xl();
+  HeadingTextStyle heading = HeadingTextStyle();
+  BodyTextStyle body = BodyTextStyle();
+  ActionTextStyle action = ActionTextStyle();
+  CaptionTextStyle caption = CaptionTextStyle();
 }
 
-class UIKitTextStyle {
-  final double fontSize;
+class HeadingTextStyle {
+  TextStyle get h1 => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(24),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w800,
+  );
 
-  UIKitTextStyle.xs() : fontSize = AppSetting.setFontSize(10);
-  UIKitTextStyle.sm() : fontSize = AppSetting.setFontSize(12);
-  UIKitTextStyle.base() : fontSize = AppSetting.setFontSize(14);
-  UIKitTextStyle.lg() : fontSize = AppSetting.setFontSize(16);
-  UIKitTextStyle.xl() : fontSize = AppSetting.setFontSize(18);
+  TextStyle get h2 => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(18),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w800,
+  );
 
-  TextStyle get light => GoogleFonts.rubik(
-        fontSize: fontSize,
-        color: MyTheme.color.palette.dark.darkest,
-        fontWeight: FontWeight.w300,
-      );
+  TextStyle get h3 => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(16),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w800,
+  );
 
-  TextStyle get regular => GoogleFonts.rubik(
-        fontSize: fontSize,
-        color: MyTheme.color.palette.dark.darkest,
-        fontWeight: FontWeight.w400,
-      );
+  TextStyle get h4 => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(14),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w700,
+  );
 
-  TextStyle get medium => GoogleFonts.rubik(
-        fontSize: fontSize,
-        color: MyTheme.color.palette.dark.darkest,
-        fontWeight: FontWeight.w500,
-      );
+  TextStyle get h5 => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(12),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w700,
+  );
 
-  TextStyle get semibold => GoogleFonts.rubik(
-        fontSize: fontSize,
-        color: MyTheme.color.palette.dark.darkest,
-        fontWeight: FontWeight.w600,
-      );
+  TextStyle get h6 => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(10),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w700,
+  );
+}
 
-  TextStyle get bold => GoogleFonts.rubik(
-        fontSize: fontSize,
-        color: MyTheme.color.palette.dark.darkest,
-        fontWeight: FontWeight.w700,
-      );
+class BodyTextStyle {
+  TextStyle get xl => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(18),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get l => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(16),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get m => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(14),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get s => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(12),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get xs => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(10),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w500,
+  );
+}
+
+class ActionTextStyle {
+  TextStyle get l => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(14),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w600,
+  );
+
+  TextStyle get m => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(12),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w600,
+  );
+
+  TextStyle get s => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(10),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w600,
+  );
+}
+
+class CaptionTextStyle {
+  TextStyle get m => GoogleFonts.inter(
+    fontSize: AppSetting.setFontSize(10),
+    color: MyTheme.color.palette.dark.darkest,
+    fontWeight: FontWeight.w600,
+  );
 }

@@ -1,5 +1,11 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/config/app_config.dart';
+import 'package:flutter_boilerplate/core/widgets/app_bar/app_bar.dart';
+import 'package:flutter_boilerplate/core/widgets/button/button.dart';
+import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
+import 'package:flutter_boilerplate/gen/assets.gen.dart';
+import 'package:flutter_boilerplate/routing/route.gr.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
 @RoutePage()
@@ -9,22 +15,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Home Screen',
-          style: MyTheme.style.lg.regular,
-        ),
-        automaticallyImplyLeading: false,
-        backgroundColor: MyTheme.color.primary,
+      appBar: UIKitAppBar(
+        title: "Projects",
         actions: [
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              color: MyTheme.color.white,
-            ),
-            onPressed: () {
-              showSearch(context: context, delegate: MySearchDelegate());
-              // context.router.push(const SettingsRoute());
+          UIKitIconButton(
+            icon: Assets.icons.search,
+            onTap: () {
+              context.router.push(const SearchRoute());
             },
           ),
         ],
@@ -39,7 +36,41 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView(
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSetting.setWidth(16),
+        vertical: AppSetting.setHeight(16),
+      ),
+      children: [
+        UIKitButton(
+          title: "Primary",
+          leftIcon: Assets.icons.add,
+          rightIcon: Assets.icons.arrowRight,
+          onTap: () {
+            debugPrint("Primary");
+          },
+        ),
+        Space.h(8),
+        UIKitButton.secondary(
+          title: "Secondary",
+          leftIcon: Assets.icons.close,
+          rightIcon: Assets.icons.arrowRight,
+          onTap: () {
+            debugPrint("Secondary");
+          },
+        ),
+        Space.h(8),
+        UIKitButton.tertiary(
+          title: "Tertiary",
+          leftIcon: Assets.icons.close,
+          rightIcon: Assets.icons.categories,
+          onTap: () {
+            debugPrint("Tertiary");
+          },
+        ),
+        Space.h(8),
+      ],
+    );
   }
 }
 
@@ -71,7 +102,7 @@ class MySearchDelegate extends SearchDelegate {
   }
 
   @override
-  TextStyle get searchFieldStyle => MyTheme.style.base.regular;
+  TextStyle get searchFieldStyle => MyTheme.style.body.s;
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -82,7 +113,7 @@ class MySearchDelegate extends SearchDelegate {
           query = "";
           showSuggestions(context);
         },
-      )
+      ),
     ];
   }
 
@@ -91,8 +122,8 @@ class MySearchDelegate extends SearchDelegate {
     final List<String> suggestionList = query.isEmpty
         ? []
         : searchList
-            .where((item) => item.toLowerCase().contains(query.toLowerCase()))
-            .toList();
+              .where((item) => item.toLowerCase().contains(query.toLowerCase()))
+              .toList();
 
     return ListView.builder(
       itemCount: suggestionList.length,

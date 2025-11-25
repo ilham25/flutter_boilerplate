@@ -70,7 +70,7 @@ class _SplashBodyState extends State<SplashBody> {
                 children: [
                   FlutterLogo(size: AppSetting.deviceWidth / 2),
                   Space.h(20),
-                  Text(flavor.current.name, style: MyTheme.style.lg.regular),
+                  Text(flavor.current.name, style: MyTheme.style.heading.h5),
                 ],
               ),
             ),
@@ -85,7 +85,7 @@ class _SplashBodyState extends State<SplashBody> {
                   children: [
                     const IdleLoading(),
                     Space.h(30),
-                    Text("Ver 1.0.0", style: MyTheme.style.sm.regular),
+                    Text("Ver 1.0.0", style: MyTheme.style.body.s),
                     Space.h(50),
                   ],
                 ),
