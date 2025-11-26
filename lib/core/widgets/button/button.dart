@@ -5,7 +5,7 @@ import 'package:flutter_boilerplate/theme/theme.dart';
 
 class UIKitButton extends StatelessWidget {
   final String title;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   final double? width;
 

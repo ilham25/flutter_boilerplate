@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/core/widgets/app_bar/app_bar.dart';
+import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
@@ -37,38 +38,55 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.symmetric(
-        horizontal: AppSetting.setWidth(16),
-        vertical: AppSetting.setHeight(16),
-      ),
       children: [
-        UIKitButton(
-          title: "Primary",
-          leftIcon: Assets.icons.add,
-          rightIcon: Assets.icons.arrowRight,
-          onTap: () {
-            debugPrint("Primary");
-          },
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSetting.setWidth(16),
+            vertical: AppSetting.setHeight(16),
+          ),
+          child: Column(
+            children: [
+              UIKitBanner(
+                title: "Title",
+                description:
+                    "Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do.",
+                image: "https://picsum.photos/200/300",
+                action: "Show More",
+                onAction: () {
+                  //
+                },
+              ),
+              Space.h(8),
+              UIKitButton(
+                title: "Primary",
+                leftIcon: Assets.icons.add,
+                rightIcon: Assets.icons.arrowRight,
+                onTap: () {
+                  debugPrint("Primary");
+                },
+              ),
+              Space.h(8),
+              UIKitButton.secondary(
+                title: "Secondary",
+                leftIcon: Assets.icons.close,
+                rightIcon: Assets.icons.arrowRight,
+                onTap: () {
+                  debugPrint("Secondary");
+                },
+              ),
+              Space.h(8),
+              UIKitButton.tertiary(
+                title: "Tertiary",
+                leftIcon: Assets.icons.close,
+                rightIcon: Assets.icons.categories,
+                onTap: () {
+                  debugPrint("Tertiary");
+                },
+              ),
+              Space.h(8),
+            ],
+          ),
         ),
-        Space.h(8),
-        UIKitButton.secondary(
-          title: "Secondary",
-          leftIcon: Assets.icons.close,
-          rightIcon: Assets.icons.arrowRight,
-          onTap: () {
-            debugPrint("Secondary");
-          },
-        ),
-        Space.h(8),
-        UIKitButton.tertiary(
-          title: "Tertiary",
-          leftIcon: Assets.icons.close,
-          rightIcon: Assets.icons.categories,
-          onTap: () {
-            debugPrint("Tertiary");
-          },
-        ),
-        Space.h(8),
       ],
     );
   }
