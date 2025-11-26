@@ -26,7 +26,6 @@ class _AppState extends State<App> {
         return ScreenUtilInit(
           designSize: orientation == Orientation.portrait
               ? const Size(375, 812)
-
               /// Portrait design size
               : const Size(1920, 1080),
 

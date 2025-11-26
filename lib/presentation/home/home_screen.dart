@@ -5,6 +5,7 @@ import 'package:flutter_boilerplate/core/widgets/app_bar/app_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
+import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
@@ -37,6 +38,8 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UIKitToast.init(context);
+
     return ListView(
       children: [
         Padding(
@@ -53,14 +56,17 @@ class HomeBody extends StatelessWidget {
                 image: "https://picsum.photos/200/300",
                 action: "Show More",
                 onAction: () {
-                  //
+                  UIKitToast.warning(
+                    title: "Title",
+                    description: "Description. Lorem ipsum dolor sit amet.",
+                  );
                 },
               ),
               Space.h(8),
               UIKitButton(
                 title: "Primary",
                 leftIcon: Assets.icons.add,
-                rightIcon: Assets.icons.arrowRight,
+                rightIcon: Assets.icons.success,
                 onTap: () {
                   debugPrint("Primary");
                 },

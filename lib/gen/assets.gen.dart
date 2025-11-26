@@ -54,6 +54,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/create.png
   AssetGenImage get create => const AssetGenImage('assets/icons/create.png');
 
+  /// File path: assets/icons/danger.png
+  AssetGenImage get danger => const AssetGenImage('assets/icons/danger.png');
+
   /// File path: assets/icons/delete.png
   AssetGenImage get delete => const AssetGenImage('assets/icons/delete.png');
 
@@ -174,6 +177,7 @@ class $AssetsIconsGen {
     check,
     close,
     create,
+    danger,
     delete,
     edit,
     energy,
