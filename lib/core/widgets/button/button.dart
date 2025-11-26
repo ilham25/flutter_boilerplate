@@ -43,7 +43,7 @@ class UIKitButton extends StatelessWidget {
     this.padding,
   });
 
-  final variant = ButtonVariant.primary;
+  final ButtonVariant variant = .primary;
 
   factory UIKitButton.secondary({
     required String title,
@@ -54,7 +54,7 @@ class UIKitButton extends StatelessWidget {
     bool isLoading = false,
     String loadingText = "Loading...",
   }) {
-    final variant = ButtonVariant.secondary;
+    final ButtonVariant variant = .secondary;
     return UIKitButton(
       title: title,
       onTap: onTap,
@@ -78,7 +78,7 @@ class UIKitButton extends StatelessWidget {
     bool isLoading = false,
     String loadingText = "Loading...",
   }) {
-    final variant = ButtonVariant.tertiary;
+    final ButtonVariant variant = .tertiary;
     return UIKitButton(
       title: title,
       onTap: onTap,
@@ -206,33 +206,33 @@ class UIKitButton extends StatelessWidget {
 
 Color getGhostBorderColor({required ButtonVariant variant}) {
   switch (variant) {
-    case ButtonVariant.primary:
+    case .primary:
       return MyTheme.color.primary;
-    case ButtonVariant.secondary:
+    case .secondary:
       return MyTheme.color.primary;
-    case ButtonVariant.tertiary:
+    case .tertiary:
       return Colors.transparent;
   }
 }
 
 Color? getGhostBackgroundColor({required ButtonVariant variant}) {
   switch (variant) {
-    case ButtonVariant.primary:
+    case .primary:
       return MyTheme.color.primary;
-    case ButtonVariant.secondary:
+    case .secondary:
       return Colors.transparent;
-    case ButtonVariant.tertiary:
+    case .tertiary:
       return Colors.transparent;
   }
 }
 
 Color getGhostIconColor({required ButtonVariant variant}) {
   switch (variant) {
-    case ButtonVariant.primary:
+    case .primary:
       return MyTheme.color.white;
-    case ButtonVariant.secondary:
+    case .secondary:
       return MyTheme.color.primary;
-    case ButtonVariant.tertiary:
+    case .tertiary:
       return MyTheme.color.primary;
   }
 }
