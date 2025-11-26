@@ -51,6 +51,8 @@ class UIKitButton extends StatelessWidget {
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
     EdgeInsets? padding,
+    bool isLoading = false,
+    String loadingText = "Loading...",
   }) {
     final variant = ButtonVariant.secondary;
     return UIKitButton(
@@ -62,6 +64,8 @@ class UIKitButton extends StatelessWidget {
       leftIcon: leftIcon,
       rightIcon: rightIcon,
       padding: padding,
+      isLoading: isLoading,
+      loadingText: loadingText,
     );
   }
 
@@ -71,6 +75,8 @@ class UIKitButton extends StatelessWidget {
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
     EdgeInsets? padding,
+    bool isLoading = false,
+    String loadingText = "Loading...",
   }) {
     final variant = ButtonVariant.tertiary;
     return UIKitButton(
@@ -82,6 +88,8 @@ class UIKitButton extends StatelessWidget {
       leftIcon: leftIcon,
       rightIcon: rightIcon,
       padding: padding,
+      isLoading: isLoading,
+      loadingText: loadingText,
     );
   }
 

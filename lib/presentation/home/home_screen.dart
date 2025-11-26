@@ -5,6 +5,7 @@ import 'package:flutter_boilerplate/core/widgets/app_bar/app_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
+import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
@@ -68,7 +69,25 @@ class HomeBody extends StatelessWidget {
                 leftIcon: Assets.icons.add,
                 rightIcon: Assets.icons.success,
                 onTap: () {
-                  debugPrint("Primary");
+                  UIKitDialog.show(
+                    title: "Title",
+                    description:
+                        "Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do.",
+                    actions: [
+                      UIKitButton.secondary(
+                        title: "Cancel",
+                        onTap: () {
+                          context.router.maybePop();
+                        },
+                      ),
+                      UIKitButton(
+                        title: "Confirm",
+                        onTap: () {
+                          context.router.maybePop();
+                        },
+                      ),
+                    ],
+                  );
                 },
               ),
               Space.h(8),
@@ -77,7 +96,16 @@ class HomeBody extends StatelessWidget {
                 leftIcon: Assets.icons.close,
                 rightIcon: Assets.icons.arrowRight,
                 onTap: () {
-                  debugPrint("Secondary");
+                  UIKitDialog.show(
+                    title: "Title",
+                    description:
+                        "Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do.",
+                    actions: [
+                      UIKitButton.secondary(title: "Action 1", onTap: () {}),
+                      UIKitButton.secondary(title: "Action 2", onTap: () {}),
+                      UIKitButton(title: "Action 3", onTap: () {}),
+                    ],
+                  );
                 },
               ),
               Space.h(8),
