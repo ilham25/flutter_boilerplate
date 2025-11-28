@@ -92,6 +92,7 @@ class AppTheme {
         primary: MyTheme.color.primary,
         secondary: MyTheme.color.secondary,
         error: MyTheme.color.danger,
+        onSurface: MyTheme.color.palette.dark.darkest,
         // Define other colors from the color scheme here
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -124,6 +125,7 @@ class AppTheme {
         labelMedium: MyTheme.style.body.xs,
         labelSmall: MyTheme.style.caption.m,
       ),
+
       // Define other theme properties like textTheme, buttonTheme, etc.
     );
   }
