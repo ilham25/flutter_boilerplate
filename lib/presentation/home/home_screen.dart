@@ -12,6 +12,7 @@ import 'package:flutter_boilerplate/core/widgets/control/filter.dart';
 import 'package:flutter_boilerplate/core/widgets/control/tab.dart';
 import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
 import 'package:flutter_boilerplate/core/widgets/input/checkbox.dart';
+import 'package:flutter_boilerplate/core/widgets/input/radio_button.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
@@ -237,6 +238,42 @@ class _HomeBodyState extends State<HomeBody> {
                               UIKitCheckbox.large(onTap: () {}, selected: true),
                               Space.w(8),
                               UIKitCheckbox.large(
+                                onTap: () {},
+                                selected: false,
+                              ),
+                            ],
+                          ),
+                          Space.h(8),
+                          Row(
+                            children: [
+                              UIKitRadioButton(onTap: () {}, selected: true),
+                              Space.w(8),
+                              UIKitRadioButton(onTap: () {}, selected: false),
+                            ],
+                          ),
+                          Space.h(8),
+                          Row(
+                            children: [
+                              UIKitRadioButton.medium(
+                                onTap: () {},
+                                selected: true,
+                              ),
+                              Space.w(8),
+                              UIKitRadioButton.medium(
+                                onTap: () {},
+                                selected: false,
+                              ),
+                            ],
+                          ),
+                          Space.h(8),
+                          Row(
+                            children: [
+                              UIKitRadioButton.large(
+                                onTap: () {},
+                                selected: true,
+                              ),
+                              Space.w(8),
+                              UIKitRadioButton.large(
                                 onTap: () {},
                                 selected: false,
                               ),
