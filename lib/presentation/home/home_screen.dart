@@ -13,6 +13,7 @@ import 'package:flutter_boilerplate/core/widgets/control/tab.dart';
 import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
 import 'package:flutter_boilerplate/core/widgets/input/checkbox.dart';
 import 'package:flutter_boilerplate/core/widgets/input/radio_button.dart';
+import 'package:flutter_boilerplate/core/widgets/input/toggle.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
@@ -279,6 +280,9 @@ class _HomeBodyState extends State<HomeBody> {
                               ),
                             ],
                           ),
+                          Space.h(8),
+                          UIKitToggle(value: true, onChanged: (value) {}),
+                          UIKitToggle(value: false, onChanged: (value) {}),
                           Space.h(8),
                         ],
                       ),
