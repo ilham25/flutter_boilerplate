@@ -7,6 +7,7 @@ import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/core/widgets/control/content_switcher.dart';
+import 'package:flutter_boilerplate/core/widgets/control/tab.dart';
 import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
@@ -187,7 +188,27 @@ class _HomeBodyState extends State<HomeBody> {
                     ),
                   ],
                 ),
-                Container(child: Center(child: Text("Section 2"))),
+                Container(
+                  child: DefaultTabController(
+                    length: 3,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: AppSetting.setWidth(16),
+                          ),
+                          child: UIKitTabBar(
+                            tabs: [
+                              UIKitTabItem(title: "Title 1"),
+                              UIKitTabItem(title: "Title 2"),
+                              UIKitTabItem(title: "Title 3"),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Container(child: Center(child: Text("Section 3"))),
               ],
             ),
