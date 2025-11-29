@@ -6,15 +6,16 @@ import 'package:flutter_boilerplate/theme/theme.dart';
 class UIKitBadge extends StatelessWidget {
   final AssetGenImage? icon;
   final int? count;
+  final double? size;
 
-  const UIKitBadge({super.key, this.icon, this.count})
+  const UIKitBadge({super.key, this.icon, this.count, this.size})
     : assert(
         icon == null || count == null,
         "icon and count cannot exist at the same time",
       );
 
-  factory UIKitBadge.count({required int count}) {
-    return UIKitBadge(count: count);
+  factory UIKitBadge.count({required int count, double? size}) {
+    return UIKitBadge(count: count, size: size);
   }
 
   Widget _buildChild() {
@@ -44,11 +45,13 @@ class UIKitBadge extends StatelessWidget {
   }
 
   double get height {
+    if (size != null) return AppSetting.setHeight(size!);
     if (count != null) return AppSetting.setHeight(24);
     return AppSetting.setHeight(16);
   }
 
   double get width {
+    if (size != null) return AppSetting.setHeight(size!);
     if (count != null) return AppSetting.setHeight(24);
     return AppSetting.setHeight(16);
   }

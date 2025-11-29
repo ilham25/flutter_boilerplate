@@ -8,6 +8,7 @@ import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/core/widgets/control/action_sheet.dart';
 import 'package:flutter_boilerplate/core/widgets/control/content_switcher.dart';
+import 'package:flutter_boilerplate/core/widgets/control/filter.dart';
 import 'package:flutter_boilerplate/core/widgets/control/tab.dart';
 import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
@@ -200,7 +201,13 @@ class _HomeBodyState extends State<HomeBody> {
                             ],
                           ),
                           Space.h(8),
-
+                          Row(
+                            children: [
+                              UIKitFilter(),
+                              Space.w(8),
+                              UIKitFilter(count: 2),
+                            ],
+                          ),
                           Space.h(8),
                         ],
                       ),
