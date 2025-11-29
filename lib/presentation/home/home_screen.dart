@@ -11,6 +11,7 @@ import 'package:flutter_boilerplate/core/widgets/control/content_switcher.dart';
 import 'package:flutter_boilerplate/core/widgets/control/filter.dart';
 import 'package:flutter_boilerplate/core/widgets/control/tab.dart';
 import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
+import 'package:flutter_boilerplate/core/widgets/input/checkbox.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
@@ -206,6 +207,39 @@ class _HomeBodyState extends State<HomeBody> {
                               UIKitFilter(),
                               Space.w(8),
                               UIKitFilter(count: 2),
+                            ],
+                          ),
+                          Space.h(8),
+                          Row(
+                            children: [
+                              UIKitCheckbox(onTap: () {}, selected: true),
+                              Space.w(8),
+                              UIKitCheckbox(onTap: () {}, selected: false),
+                            ],
+                          ),
+                          Space.h(8),
+                          Row(
+                            children: [
+                              UIKitCheckbox.medium(
+                                onTap: () {},
+                                selected: true,
+                              ),
+                              Space.w(8),
+                              UIKitCheckbox.medium(
+                                onTap: () {},
+                                selected: false,
+                              ),
+                            ],
+                          ),
+                          Space.h(8),
+                          Row(
+                            children: [
+                              UIKitCheckbox.large(onTap: () {}, selected: true),
+                              Space.w(8),
+                              UIKitCheckbox.large(
+                                onTap: () {},
+                                selected: false,
+                              ),
                             ],
                           ),
                           Space.h(8),
