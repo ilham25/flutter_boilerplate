@@ -125,7 +125,14 @@ class AppTheme {
         labelMedium: MyTheme.style.body.xs,
         labelSmall: MyTheme.style.caption.m,
       ),
-
+      bottomSheetTheme: const BottomSheetThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8),
+            topRight: Radius.circular(8),
+          ),
+        ),
+      ),
       // Define other theme properties like textTheme, buttonTheme, etc.
     );
   }

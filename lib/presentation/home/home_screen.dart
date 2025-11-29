@@ -6,6 +6,7 @@ import 'package:flutter_boilerplate/core/widgets/badge/badge.dart';
 import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
+import 'package:flutter_boilerplate/core/widgets/control/action_sheet.dart';
 import 'package:flutter_boilerplate/core/widgets/control/content_switcher.dart';
 import 'package:flutter_boilerplate/core/widgets/control/tab.dart';
 import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
@@ -167,7 +168,25 @@ class _HomeBodyState extends State<HomeBody> {
                             leftIcon: Assets.icons.close,
                             rightIcon: Assets.icons.categories,
                             onTap: () {
-                              debugPrint("Tertiary");
+                              UIKitActionSheet.show<String>(
+                                items: [
+                                  UIKitItem<String>(
+                                    value: "add_project",
+                                    title: "Add Project",
+                                    icon: Assets.icons.add,
+                                  ),
+                                  UIKitItem<String>(
+                                    value: "edit_project",
+                                    title: "Edit Project",
+                                    icon: Assets.icons.edit,
+                                  ),
+                                  UIKitItem<String>(
+                                    value: "delete_project",
+                                    title: "Delete Project",
+                                    icon: Assets.icons.close,
+                                  ),
+                                ],
+                              );
                             },
                           ),
                           Space.h(8),
