@@ -12,6 +12,7 @@ import 'package:flutter_boilerplate/core/widgets/control/filter.dart';
 import 'package:flutter_boilerplate/core/widgets/control/tab.dart';
 import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
 import 'package:flutter_boilerplate/core/widgets/input/checkbox.dart';
+import 'package:flutter_boilerplate/core/widgets/input/number_input.dart';
 import 'package:flutter_boilerplate/core/widgets/input/radio_button.dart';
 import 'package:flutter_boilerplate/core/widgets/input/slider.dart';
 import 'package:flutter_boilerplate/core/widgets/input/star_rating.dart';
@@ -304,6 +305,40 @@ class _HomeBodyState extends State<HomeBody> {
                             value: 0.5,
                             title: "Title",
                             onChanged: (value) {},
+                          ),
+                          Space.h(8),
+
+                          UIKitNumberInput.counter(
+                            value: 123,
+                            onChanged: (value) {},
+                          ),
+                          Space.h(8),
+                          UIKitNumberInput(
+                            title: "Title",
+                            value: 123,
+                            onChanged: (value) {},
+                          ),
+                          Space.h(8),
+                          UIKitNumberInput(
+                            title: "Title",
+                            value: 123,
+                            min: 123,
+                            onChanged: (value) {},
+                          ),
+                          Space.h(8),
+                          UIKitNumberInput(
+                            title: "Title",
+                            errorText: "This is error",
+                            value: 123,
+                            max: 123,
+                            onChanged: (value) {},
+                          ),
+                          Space.h(8),
+                          UIKitNumberInput(
+                            title: "Title",
+                            value: 0,
+                            onChanged: (value) {},
+                            enabled: false,
                           ),
                           Space.h(8),
                         ],
