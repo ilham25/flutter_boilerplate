@@ -3,12 +3,12 @@ import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
-class StarRating extends StatelessWidget {
+class UIKitStarRating extends StatelessWidget {
   final int value;
   final int max;
   final ValueChanged<int> onChanged;
 
-  const StarRating({
+  const UIKitStarRating({
     super.key,
     required this.value,
     this.max = 5,
