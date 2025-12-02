@@ -55,26 +55,31 @@ class BodyTextStyle {
   TextStyle get xl => GoogleFonts.inter(
     fontSize: AppSetting.setFontSize(18),
     fontWeight: FontWeight.w400,
+    height: AppSetting.setHeight(24) / AppSetting.setFontSize(18),
   );
 
   TextStyle get l => GoogleFonts.inter(
     fontSize: AppSetting.setFontSize(16),
     fontWeight: FontWeight.w400,
+    height: AppSetting.setHeight(22) / AppSetting.setFontSize(16),
   );
 
   TextStyle get m => GoogleFonts.inter(
     fontSize: AppSetting.setFontSize(14),
     fontWeight: FontWeight.w400,
+    height: AppSetting.setHeight(20) / AppSetting.setFontSize(14),
   );
 
   TextStyle get s => GoogleFonts.inter(
     fontSize: AppSetting.setFontSize(12),
     fontWeight: FontWeight.w400,
+    height: AppSetting.setHeight(16) / AppSetting.setFontSize(12),
   );
 
   TextStyle get xs => GoogleFonts.inter(
     fontSize: AppSetting.setFontSize(10),
     fontWeight: FontWeight.w500,
+    height: AppSetting.setHeight(14) / AppSetting.setFontSize(10),
   );
 }
 

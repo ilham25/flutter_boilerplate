@@ -16,10 +16,12 @@ import 'package:flutter_boilerplate/core/widgets/input/number_input.dart';
 import 'package:flutter_boilerplate/core/widgets/input/radio_button.dart';
 import 'package:flutter_boilerplate/core/widgets/input/slider.dart';
 import 'package:flutter_boilerplate/core/widgets/input/star_rating.dart';
+import 'package:flutter_boilerplate/core/widgets/input/text_field.dart';
 import 'package:flutter_boilerplate/core/widgets/input/toggle.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
+import 'package:flutter_boilerplate/theme/theme.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -340,6 +342,55 @@ class _HomeBodyState extends State<HomeBody> {
                             onChanged: (value) {},
                             enabled: false,
                           ),
+                          Space.h(8),
+                          Row(
+                            children: [
+                              Flexible(
+                                flex: 1,
+                                fit: .tight,
+                                child: UIKitTextField(
+                                  placeholder: "Placeholder",
+                                ),
+                              ),
+                              Space.w(8),
+                              Flexible(
+                                flex: 1,
+                                fit: .tight,
+                                child: Container(
+                                  color: MyTheme.color.danger,
+                                  height: AppSetting.setHeight(48),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Space.h(8),
+                          UIKitTextField(
+                            leadingIcon: Assets.icons.camera,
+                            placeholder: "Placeholder",
+                          ),
+                          Space.h(8),
+                          UIKitTextField(
+                            leadingIcon: Assets.icons.camera,
+                            placeholder: "Readonly",
+                            readOnly: true,
+                          ),
+                          Space.h(8),
+                          UIKitTextField(
+                            placeholder: "Ini password",
+                            obscureText: true,
+                          ),
+                          Space.h(8),
+                          UIKitTextField(
+                            errorText: "Ini error",
+                            trailingIcon: Assets.icons.add,
+                          ),
+                          Space.h(8),
+                          UIKitTextField.textArea(
+                            trailingIcon: Assets.icons.edit,
+                          ),
+                          Space.h(8),
+                          UIKitTextField(enabled: false, placeholder: "Text"),
+                          Space.h(8),
                           Space.h(8),
                         ],
                       ),
