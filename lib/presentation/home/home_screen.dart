@@ -8,6 +8,7 @@ import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/core/widgets/control/action_sheet.dart';
 import 'package:flutter_boilerplate/core/widgets/control/content_switcher.dart';
+import 'package:flutter_boilerplate/core/widgets/control/dropdown.dart';
 import 'package:flutter_boilerplate/core/widgets/control/filter.dart';
 import 'package:flutter_boilerplate/core/widgets/control/tab.dart';
 import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
@@ -375,6 +376,16 @@ class _HomeBodyState extends State<HomeBody> {
                             readOnly: true,
                           ),
                           Space.h(8),
+                          UIKitDropdown(
+                            onChanged: (value) {},
+                            itemLabel: (value) => value,
+                            items: ["Option 1", "Option 2", "Option 3"],
+                            hintText: "Placeholder",
+                            value: "Option 1",
+                            leadingIcon: Assets.icons.camera,
+                          ),
+                          Space.h(8),
+
                           UIKitTextField(
                             placeholder: "Ini password",
                             obscureText: true,
@@ -390,7 +401,7 @@ class _HomeBodyState extends State<HomeBody> {
                           ),
                           Space.h(8),
                           UIKitTextField(enabled: false, placeholder: "Text"),
-                          Space.h(8),
+
                           Space.h(8),
                         ],
                       ),

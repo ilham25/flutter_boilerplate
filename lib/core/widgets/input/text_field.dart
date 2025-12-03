@@ -145,14 +145,18 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
               });
             },
       child: SizedBox(
-        width: AppSetting.setWidth(40),
-
+        width: AppSetting.setWidth(36),
         child: Container(
           margin: EdgeInsets.only(right: _padding.right),
-          child: icon.image(
-            height: AppSetting.setHeight(20),
-            width: AppSetting.setWidth(20),
-            color: _trailingIconColor,
+          child: Row(
+            mainAxisAlignment: .end,
+            children: [
+              icon.image(
+                height: AppSetting.setHeight(16),
+                width: AppSetting.setWidth(16),
+                color: _trailingIconColor,
+              ),
+            ],
           ),
         ),
       ),
@@ -214,30 +218,33 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
             prefixIcon: widget.leadingIcon == null
                 ? null
                 : SizedBox(
-                    width: AppSetting.setWidth(40),
+                    width: AppSetting.setWidth(36),
                     child: Container(
                       margin: EdgeInsets.only(left: _padding.left),
-                      child: Center(
-                        child: widget.leadingIcon!.image(
-                          height: AppSetting.setHeight(16),
-                          width: AppSetting.setHeight(16),
-                          color: _leadingIconColor,
-                        ),
+                      child: Row(
+                        mainAxisAlignment: .start,
+                        children: [
+                          widget.leadingIcon!.image(
+                            height: AppSetting.setHeight(16),
+                            width: AppSetting.setHeight(16),
+                            color: _leadingIconColor,
+                          ),
+                        ],
                       ),
                     ),
                   ),
             prefixIconConstraints: BoxConstraints(
               maxHeight: AppSetting.setHeight(16),
-              maxWidth: AppSetting.setWidth(40),
+              maxWidth: AppSetting.setWidth(36),
               minHeight: AppSetting.setHeight(16),
-              minWidth: AppSetting.setWidth(40),
+              minWidth: AppSetting.setWidth(36),
             ),
             suffixIcon: _trailingIcon,
             suffixIconConstraints: BoxConstraints(
               maxHeight: AppSetting.setHeight(16),
-              maxWidth: AppSetting.setWidth(40),
+              maxWidth: AppSetting.setWidth(36),
               minHeight: AppSetting.setHeight(16),
-              minWidth: AppSetting.setWidth(40),
+              minWidth: AppSetting.setWidth(36),
             ),
           ),
           style: _textStyle,

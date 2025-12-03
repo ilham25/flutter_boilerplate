@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
+import 'package:flutter_boilerplate/core/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/injection/injector.dart';
 import 'package:flutter_boilerplate/routing/route.dart';
@@ -54,56 +55,38 @@ class _UIKitActionSheet<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: MediaQuery.of(context).viewInsets,
-      child: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              constraints: BoxConstraints(
-                maxHeight: AppSetting.deviceHeight * 0.5,
-              ),
-              child:
-                  (items.isEmpty
-                      ? Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.list_alt,
-                                size: AppSetting.setWidth(80),
-                                color: MyTheme.color.palette.light.darkest,
-                              ),
-                              Space.h(16),
-                              Text(
-                                emptyText ?? 'No Data',
-                                style: MyTheme.style.heading.h4.copyWith(
-                                  color: MyTheme.color.palette.dark.darkest,
-                                ),
-                              ),
-                              Text(
-                                "No data found.",
-                                style: MyTheme.style.body.s.copyWith(
-                                  color: MyTheme.color.palette.light.darkest,
-                                ),
-                                textAlign: .center,
-                              ),
-                              Space.h(32),
-                            ],
-                          ),
-                        )
-                      : null) ??
-                  ListView(
-                    padding: .symmetric(vertical: AppSetting.setHeight(12)),
-                    shrinkWrap: true,
-                    children: _buildList(context),
+    return UIKitBottomSheet(
+      child: items.isEmpty
+          ? Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.list_alt,
+                  size: AppSetting.setWidth(80),
+                  color: MyTheme.color.palette.light.darkest,
+                ),
+                Space.h(16),
+                Text(
+                  emptyText ?? 'No Data',
+                  style: MyTheme.style.heading.h4.copyWith(
+                    color: MyTheme.color.palette.dark.darkest,
                   ),
+                ),
+                Text(
+                  "No data found.",
+                  style: MyTheme.style.body.s.copyWith(
+                    color: MyTheme.color.palette.light.darkest,
+                  ),
+                  textAlign: .center,
+                ),
+                Space.h(32),
+              ],
+            )
+          : ListView(
+              padding: .symmetric(vertical: AppSetting.setHeight(12)),
+              shrinkWrap: true,
+              children: _buildList(context),
             ),
-          ],
-        ),
-      ),
     );
   }
 }
