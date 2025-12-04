@@ -59,6 +59,7 @@ class UIKitTag extends StatelessWidget {
       button: true,
       focusable: onTap != null,
       child: Material(
+        type: .transparency,
         child: Ink(
           height: AppSetting.setHeight(24),
           decoration: BoxDecoration(

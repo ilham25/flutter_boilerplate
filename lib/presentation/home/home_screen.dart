@@ -6,6 +6,7 @@ import 'package:flutter_boilerplate/core/widgets/badge/badge.dart';
 import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
+import 'package:flutter_boilerplate/core/widgets/content/card.dart';
 import 'package:flutter_boilerplate/core/widgets/content/tag.dart';
 import 'package:flutter_boilerplate/core/widgets/control/action_sheet.dart';
 import 'package:flutter_boilerplate/core/widgets/control/content_switcher.dart';
@@ -475,7 +476,99 @@ class _HomeBodyState extends State<HomeBody> {
                     ),
                   ),
                 ),
-                Container(child: Center(child: Text("Section 3"))),
+                Container(
+                  child: ListView(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppSetting.setWidth(MyTheme.defaultPadding),
+                      vertical: AppSetting.setHeight(MyTheme.defaultPadding),
+                    ),
+                    children: [
+                      Row(
+                        children: [
+                          UIKitCard(
+                            image: "https://placehold.co/600x400/png",
+                            title: "Title",
+                            subtitle: "Subtitle",
+                            description:
+                                "Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do",
+                            action: UIKitButton.secondary(
+                              title: "Action",
+                              onTap: () {},
+                            ),
+                            tag: UIKitTag(
+                              text: "Scenery",
+                              leftIcon: Assets.icons.image,
+                              focused: true,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Space.h(8),
+                      Row(
+                        children: [
+                          UIKitCard(
+                            title: "Title",
+                            subtitle: "Subtitle",
+                            description:
+                                "Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do",
+                            action: UIKitButton.secondary(
+                              title: "Action",
+                              onTap: () {},
+                            ),
+                            icon: Assets.icons.inbox,
+                          ),
+                        ],
+                      ),
+                      Space.h(8),
+                      UIKitCard.horizontal(
+                        image: "https://placehold.co/600x400/png",
+                        title: "Title",
+                        subtitle: "Subtitle",
+                        action: UIKitButton.secondary(
+                          title: "Action",
+                          onTap: () {},
+                        ),
+                      ),
+                      Space.h(8),
+                      UIKitCard.horizontal(
+                        image: "https://placehold.co/600x400/png",
+                        title: "Title",
+                        subtitle: "Subtitle",
+                        onTap: () {
+                          //
+                        },
+                      ),
+                      Space.h(8),
+                      UIKitCard.horizontal(
+                        title: "Title",
+                        subtitle: "Subtitle",
+                        action: UIKitButton.secondary(
+                          title: "Action",
+                          onTap: () {},
+                        ),
+                        icon: Assets.icons.camera,
+                      ),
+                      Space.h(8),
+                      UIKitCard.horizontal(
+                        title: "Title",
+                        subtitle: "Subtitle",
+                        onTap: () {
+                          //
+                        },
+                        icon: Assets.icons.camera,
+                      ),
+                      Space.h(8),
+                      UIKitCard.horizontal(
+                        title: "Title",
+                        subtitle: "Subtitle",
+                        onTap: () {
+                          //
+                        },
+                        // icon: Assets.icons.camera,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
