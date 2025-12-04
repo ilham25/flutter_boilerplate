@@ -14,8 +14,8 @@ class UIKitDropdown<T> extends StatelessWidget {
   final String Function(T value) itemLabel;
   final List<T> items;
   final List<Widget>? dropdownItems;
-  final AssetGenImage? leadingIcon;
-  final Color? leadingIconColor;
+  final AssetGenImage? leftIcon;
+  final Color? leftIconColor;
   final bool enabled;
   final VoidCallback? onClear;
   final String? emptyText;
@@ -29,7 +29,7 @@ class UIKitDropdown<T> extends StatelessWidget {
     this.value,
     this.hintText = "",
     this.errorText = "",
-    this.leadingIcon,
+    this.leftIcon,
     required this.onChanged,
     required this.itemLabel,
     required this.items,
@@ -40,7 +40,7 @@ class UIKitDropdown<T> extends StatelessWidget {
     this.description = "",
     this.readOnly = false,
     this.color,
-    this.leadingIconColor,
+    this.leftIconColor,
   });
 
   String getDisplayLabel() {
@@ -52,7 +52,7 @@ class UIKitDropdown<T> extends StatelessWidget {
       return "$value";
     }
 
-    return itemLabel(value!);
+    return itemLabel(value as T);
   }
 
   bool get isDisabled => !enabled;
@@ -61,8 +61,8 @@ class UIKitDropdown<T> extends StatelessWidget {
 
   double get height => 48;
 
-  Color get _leadingIconColor =>
-      leadingIconColor ?? MyTheme.color.palette.dark.lightest;
+  Color get _leftIconColor =>
+      leftIconColor ?? MyTheme.color.palette.dark.lightest;
 
   @override
   Widget build(BuildContext context) {
@@ -124,13 +124,13 @@ class UIKitDropdown<T> extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: .center,
                   children: [
-                    if (leadingIcon != null)
+                    if (leftIcon != null)
                       Padding(
                         padding: EdgeInsets.only(right: AppSetting.setWidth(8)),
-                        child: leadingIcon?.image(
+                        child: leftIcon?.image(
                           height: AppSetting.setHeight(16),
                           width: AppSetting.setWidth(16),
-                          color: _leadingIconColor,
+                          color: _leftIconColor,
                         ),
                       ),
                     Flexible(
@@ -252,32 +252,30 @@ class _DropdownSheet<T> extends StatelessWidget {
     return UIKitBottomSheet(
       child:
           (items.isEmpty
-              ? Container(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.list_alt,
-                        size: AppSetting.setWidth(80),
+              ? Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.list_alt,
+                      size: AppSetting.setWidth(80),
+                      color: MyTheme.color.palette.light.darkest,
+                    ),
+                    Space.h(16),
+                    Text(
+                      emptyText ?? 'No Data',
+                      style: MyTheme.style.heading.h4.copyWith(
+                        color: MyTheme.color.palette.dark.darkest,
+                      ),
+                    ),
+                    Text(
+                      "No data found.",
+                      style: MyTheme.style.body.s.copyWith(
                         color: MyTheme.color.palette.light.darkest,
                       ),
-                      Space.h(16),
-                      Text(
-                        emptyText ?? 'No Data',
-                        style: MyTheme.style.heading.h4.copyWith(
-                          color: MyTheme.color.palette.dark.darkest,
-                        ),
-                      ),
-                      Text(
-                        "No data found.",
-                        style: MyTheme.style.body.s.copyWith(
-                          color: MyTheme.color.palette.light.darkest,
-                        ),
-                        textAlign: .center,
-                      ),
-                      Space.h(32),
-                    ],
-                  ),
+                      textAlign: .center,
+                    ),
+                    Space.h(32),
+                  ],
                 )
               : null) ??
           ListView.separated(

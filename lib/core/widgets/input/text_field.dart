@@ -14,11 +14,11 @@ class UIKitTextField extends StatefulWidget {
   final bool obscureText;
   final bool readOnly;
 
-  final AssetGenImage? leadingIcon;
-  final AssetGenImage? trailingIcon;
+  final AssetGenImage? leftIcon;
+  final AssetGenImage? rightIcon;
 
-  final Color? leadingIconColor;
-  final Color? trailingIconColor;
+  final Color? leftIconColor;
+  final Color? rightIconColor;
 
   final int? minLines;
   final int? maxLines;
@@ -31,10 +31,10 @@ class UIKitTextField extends StatefulWidget {
     this.errorText,
     this.controller,
     this.enabled = true,
-    this.leadingIcon,
-    this.trailingIcon,
-    this.leadingIconColor,
-    this.trailingIconColor,
+    this.leftIcon,
+    this.rightIcon,
+    this.leftIconColor,
+    this.rightIconColor,
     this.obscureText = false,
     this.obscuringText = "*",
     this.minLines,
@@ -50,10 +50,10 @@ class UIKitTextField extends StatefulWidget {
     bool enabled = true,
     int? minLines,
     int maxLines = 4,
-    AssetGenImage? leadingIcon,
-    AssetGenImage? trailingIcon,
-    Color? leadingIconColor,
-    Color? trailingIconColor,
+    AssetGenImage? leftIcon,
+    AssetGenImage? rightIcon,
+    Color? leftIconColor,
+    Color? rightIconColor,
     bool readOnly = false,
     TextInputType? keyboardType,
   }) {
@@ -64,10 +64,10 @@ class UIKitTextField extends StatefulWidget {
       enabled: enabled,
       minLines: minLines,
       maxLines: maxLines,
-      leadingIcon: leadingIcon,
-      trailingIcon: trailingIcon,
-      leadingIconColor: leadingIconColor,
-      trailingIconColor: trailingIconColor,
+      leftIcon: leftIcon,
+      rightIcon: rightIcon,
+      leftIconColor: leftIconColor,
+      rightIconColor: rightIconColor,
       readOnly: readOnly,
       keyboardType: keyboardType,
     );
@@ -99,10 +99,10 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
   }
 
   TextStyle get _textStyle => MyTheme.style.body.m;
-  Color get _leadingIconColor =>
-      widget.leadingIconColor ?? MyTheme.color.palette.dark.lightest;
-  Color get _trailingIconColor =>
-      widget.trailingIconColor ?? MyTheme.color.palette.dark.lightest;
+  Color get _leftIconColor =>
+      widget.leftIconColor ?? MyTheme.color.palette.dark.lightest;
+  Color get _rightIconColor =>
+      widget.rightIconColor ?? MyTheme.color.palette.dark.lightest;
 
   // Calculate padding based on height
   EdgeInsets get _padding {
@@ -122,14 +122,14 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
     );
   }
 
-  Widget? get _trailingIcon {
+  Widget? get _rightIcon {
     AssetGenImage? icon;
     if (widget.obscureText) {
       icon = isShowPassword
           ? Assets.icons.eyeVisible
           : Assets.icons.eyeInvisible;
     } else {
-      icon = widget.trailingIcon;
+      icon = widget.rightIcon;
     }
 
     if (icon == null) {
@@ -154,7 +154,7 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
               icon.image(
                 height: AppSetting.setHeight(16),
                 width: AppSetting.setWidth(16),
-                color: _trailingIconColor,
+                color: _rightIconColor,
               ),
             ],
           ),
@@ -215,7 +215,7 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
             errorText: widget.errorText,
             enabled: widget.enabled,
             errorStyle: _textStyle.copyWith(fontSize: 0),
-            prefixIcon: widget.leadingIcon == null
+            prefixIcon: widget.leftIcon == null
                 ? null
                 : SizedBox(
                     width: AppSetting.setWidth(36),
@@ -224,10 +224,10 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
                       child: Row(
                         mainAxisAlignment: .start,
                         children: [
-                          widget.leadingIcon!.image(
+                          widget.leftIcon!.image(
                             height: AppSetting.setHeight(16),
                             width: AppSetting.setHeight(16),
-                            color: _leadingIconColor,
+                            color: _leftIconColor,
                           ),
                         ],
                       ),
@@ -239,7 +239,7 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
               minHeight: AppSetting.setHeight(16),
               minWidth: AppSetting.setWidth(36),
             ),
-            suffixIcon: _trailingIcon,
+            suffixIcon: _rightIcon,
             suffixIconConstraints: BoxConstraints(
               maxHeight: AppSetting.setHeight(16),
               maxWidth: AppSetting.setWidth(36),

@@ -6,6 +6,7 @@ import 'package:flutter_boilerplate/core/widgets/badge/badge.dart';
 import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
+import 'package:flutter_boilerplate/core/widgets/content/tag.dart';
 import 'package:flutter_boilerplate/core/widgets/control/action_sheet.dart';
 import 'package:flutter_boilerplate/core/widgets/control/content_switcher.dart';
 import 'package:flutter_boilerplate/core/widgets/input/dropdown.dart';
@@ -392,12 +393,12 @@ class _HomeBodyState extends State<HomeBody> {
                           ),
                           Space.h(8),
                           UIKitTextField(
-                            leadingIcon: Assets.icons.camera,
+                            leftIcon: Assets.icons.camera,
                             placeholder: "Placeholder",
                           ),
                           Space.h(8),
                           UIKitTextField(
-                            leadingIcon: Assets.icons.camera,
+                            leftIcon: Assets.icons.camera,
                             placeholder: "Readonly",
                             readOnly: true,
                           ),
@@ -408,7 +409,7 @@ class _HomeBodyState extends State<HomeBody> {
                             items: ["Option 1", "Option 2", "Option 3"],
                             hintText: "Placeholder",
                             value: "Option 1",
-                            leadingIcon: Assets.icons.camera,
+                            leftIcon: Assets.icons.camera,
                           ),
                           Space.h(8),
 
@@ -419,17 +420,34 @@ class _HomeBodyState extends State<HomeBody> {
                           Space.h(8),
                           UIKitTextField(
                             errorText: "Ini error",
-                            trailingIcon: Assets.icons.add,
+                            rightIcon: Assets.icons.add,
                           ),
                           Space.h(8),
-                          UIKitTextField.textArea(
-                            trailingIcon: Assets.icons.edit,
-                          ),
+                          UIKitTextField.textArea(rightIcon: Assets.icons.edit),
                           Space.h(8),
                           UIKitTextField(enabled: false, placeholder: "Text"),
 
                           Space.h(8),
                           UIKitSearchBar(placeholder: "Placeholder"),
+                          Space.h(8),
+                          Row(
+                            children: [
+                              UIKitTag(text: "Tag"),
+                              Space.w(8),
+                              UIKitTag(
+                                text: "Tag",
+                                onTap: () {
+                                  //
+                                },
+                              ),
+                              Space.w(8),
+                              UIKitTag(
+                                text: "Tag",
+                                focused: true,
+                                rightIcon: Assets.icons.add,
+                              ),
+                            ],
+                          ),
                           Space.h(8),
                         ],
                       ),
