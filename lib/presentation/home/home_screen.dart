@@ -8,13 +8,14 @@ import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/core/widgets/control/action_sheet.dart';
 import 'package:flutter_boilerplate/core/widgets/control/content_switcher.dart';
-import 'package:flutter_boilerplate/core/widgets/control/dropdown.dart';
+import 'package:flutter_boilerplate/core/widgets/input/dropdown.dart';
 import 'package:flutter_boilerplate/core/widgets/control/filter.dart';
 import 'package:flutter_boilerplate/core/widgets/control/tab.dart';
 import 'package:flutter_boilerplate/core/widgets/dialog/dialog.dart';
 import 'package:flutter_boilerplate/core/widgets/input/checkbox.dart';
 import 'package:flutter_boilerplate/core/widgets/input/number_input.dart';
 import 'package:flutter_boilerplate/core/widgets/input/radio_button.dart';
+import 'package:flutter_boilerplate/core/widgets/input/search_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/input/slider.dart';
 import 'package:flutter_boilerplate/core/widgets/input/star_rating.dart';
 import 'package:flutter_boilerplate/core/widgets/input/text_field.dart';
@@ -402,6 +403,8 @@ class _HomeBodyState extends State<HomeBody> {
                           Space.h(8),
                           UIKitTextField(enabled: false, placeholder: "Text"),
 
+                          Space.h(8),
+                          UIKitSearchBar(placeholder: "Placeholder"),
                           Space.h(8),
                         ],
                       ),

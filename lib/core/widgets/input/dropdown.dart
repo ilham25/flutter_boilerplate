@@ -5,6 +5,7 @@ import 'package:flutter_boilerplate/core/widgets/bottom_sheet/bottom_sheet.dart'
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
+// TODO: add multi select variant
 class UIKitDropdown<T> extends StatelessWidget {
   final T? value;
   final ValueChanged<T>? onChanged;
