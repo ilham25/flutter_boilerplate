@@ -7,6 +7,7 @@ import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/core/widgets/content/card.dart';
+import 'package:flutter_boilerplate/core/widgets/content/list_title.dart';
 import 'package:flutter_boilerplate/core/widgets/content/tag.dart';
 import 'package:flutter_boilerplate/core/widgets/control/action_sheet.dart';
 import 'package:flutter_boilerplate/core/widgets/control/content_switcher.dart';
@@ -518,6 +519,18 @@ class _HomeBodyState extends State<HomeBody> {
                             icon: Assets.icons.inbox,
                           ),
                         ],
+                      ),
+                      Space.h(8),
+                      UIKitListTitle(
+                        title: "Title",
+                        action: UIKitButton.tertiary(
+                          title: "Edit",
+                          onTap: () {},
+                        ),
+                      ),
+                      UIKitListTitle(
+                        title: "Title",
+                        rightIcon: Assets.icons.search,
                       ),
                       Space.h(8),
                       UIKitCard.horizontal(
