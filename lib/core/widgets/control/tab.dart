@@ -3,11 +3,11 @@ import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/core/widgets/indicator/short_line_indicator.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
-class UIKitTabBar extends StatelessWidget {
+class UIKitTab extends StatelessWidget {
   final List<Widget> tabs;
   final TabController? controller;
 
-  const UIKitTabBar({super.key, required this.tabs, this.controller});
+  const UIKitTab({super.key, required this.tabs, this.controller});
 
   double get _radius => 16;
   double get _indicatorRadius => 12;

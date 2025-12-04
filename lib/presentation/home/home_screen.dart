@@ -20,14 +20,23 @@ import 'package:flutter_boilerplate/core/widgets/input/slider.dart';
 import 'package:flutter_boilerplate/core/widgets/input/star_rating.dart';
 import 'package:flutter_boilerplate/core/widgets/input/text_field.dart';
 import 'package:flutter_boilerplate/core/widgets/input/toggle.dart';
+import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar.dart';
+import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar_item.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
 @RoutePage()
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +53,22 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: const HomeBody(),
+      bottomNavigationBar: UIKitTabBar(
+        currentIndex: selectedIndex,
+        onTap: (index) {
+          debugPrint("index: $index");
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        items: [
+          UIKitTabBarItem(icon: Assets.icons.chat, title: "Chats"),
+          UIKitTabBarItem(icon: Assets.icons.profile, title: "Friends"),
+          UIKitTabBarItem(icon: Assets.icons.search, title: "Feeds"),
+          UIKitTabBarItem(icon: Assets.icons.explore, title: "Status"),
+          UIKitTabBarItem(icon: Assets.icons.settings, title: "Settings"),
+        ],
+      ),
     );
   }
 }
@@ -420,7 +445,7 @@ class _HomeBodyState extends State<HomeBody> {
                           padding: EdgeInsets.symmetric(
                             horizontal: AppSetting.setWidth(16),
                           ),
-                          child: UIKitTabBar(
+                          child: UIKitTab(
                             tabs: [
                               UIKitTabItem(title: "Title 1"),
                               UIKitTabItem(title: "Title 2"),
