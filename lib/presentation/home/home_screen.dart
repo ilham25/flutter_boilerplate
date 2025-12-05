@@ -7,6 +7,7 @@ import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/core/widgets/content/card.dart';
+import 'package:flutter_boilerplate/core/widgets/content/list_item.dart';
 import 'package:flutter_boilerplate/core/widgets/content/list_title.dart';
 import 'package:flutter_boilerplate/core/widgets/content/tag.dart';
 import 'package:flutter_boilerplate/core/widgets/control/action_sheet.dart';
@@ -249,33 +250,39 @@ class _HomeBodyState extends State<HomeBody> {
                           Space.h(8),
                           Row(
                             children: [
-                              UIKitCheckbox(onTap: () {}, selected: true),
+                              UIKitCheckbox(onChanged: (value) {}, value: true),
                               Space.w(8),
-                              UIKitCheckbox(onTap: () {}, selected: false),
-                            ],
-                          ),
-                          Space.h(8),
-                          Row(
-                            children: [
-                              UIKitCheckbox.medium(
-                                onTap: () {},
-                                selected: true,
-                              ),
-                              Space.w(8),
-                              UIKitCheckbox.medium(
-                                onTap: () {},
-                                selected: false,
+                              UIKitCheckbox(
+                                onChanged: (value) {},
+                                value: false,
                               ),
                             ],
                           ),
                           Space.h(8),
                           Row(
                             children: [
-                              UIKitCheckbox.large(onTap: () {}, selected: true),
+                              UIKitCheckbox.medium(
+                                onChanged: (value) {},
+                                value: true,
+                              ),
+                              Space.w(8),
+                              UIKitCheckbox.medium(
+                                onChanged: (value) {},
+                                value: false,
+                              ),
+                            ],
+                          ),
+                          Space.h(8),
+                          Row(
+                            children: [
+                              UIKitCheckbox.large(
+                                onChanged: (value) {},
+                                value: true,
+                              ),
                               Space.w(8),
                               UIKitCheckbox.large(
-                                onTap: () {},
-                                selected: false,
+                                onChanged: (value) {},
+                                value: false,
                               ),
                             ],
                           ),
@@ -579,6 +586,44 @@ class _HomeBodyState extends State<HomeBody> {
                         },
                         // icon: Assets.icons.camera,
                       ),
+                      Space.h(8),
+                      UIKitListItem(
+                        title: "Title",
+                        description:
+                            "Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do",
+                        leftIcon: Assets.icons.camera,
+                        onTap: () {
+                          //
+                        },
+                      ),
+                      Space.h(8),
+                      UIKitListItem.toggle(
+                        title: "Title",
+                        description:
+                            "Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do",
+                        leftIcon: Assets.icons.camera,
+                        onChanged: (value) {},
+                        value: true,
+                      ),
+                      Space.h(8),
+                      UIKitListItem.checkbox(
+                        title: "Title",
+                        description:
+                            "Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do",
+                        onChanged: (value) {},
+                        value: true,
+                      ),
+                      Space.h(8),
+                      UIKitListItem.count(
+                        title: "Title",
+                        description:
+                            "Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do",
+                        onTap: () {
+                          //
+                        },
+                        count: 13,
+                      ),
+                      Space.h(8),
                     ],
                   ),
                 ),

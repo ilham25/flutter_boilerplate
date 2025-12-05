@@ -4,9 +4,9 @@ import 'package:flutter_boilerplate/theme/theme.dart';
 
 class UIKitToggle extends StatelessWidget {
   final bool value;
-  final ValueChanged<bool> onChanged;
+  final ValueChanged<bool>? onChanged;
 
-  const UIKitToggle({super.key, required this.value, required this.onChanged});
+  const UIKitToggle({super.key, required this.value, this.onChanged});
 
   @override
   Widget build(BuildContext context) {

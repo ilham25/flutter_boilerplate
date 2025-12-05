@@ -4,8 +4,8 @@ import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
 class _Checkbox extends StatelessWidget {
-  final bool selected;
-  final VoidCallback onTap;
+  final bool value;
+  final ValueChanged<bool>? onChanged;
 
   final double iconSize;
   final double size;
@@ -13,8 +13,8 @@ class _Checkbox extends StatelessWidget {
 
   const _Checkbox({
     super.key,
-    required this.selected,
-    required this.onTap,
+    this.value = false,
+    this.onChanged,
     required this.iconSize,
     required this.size,
     required this.radius,
@@ -29,22 +29,26 @@ class _Checkbox extends StatelessWidget {
         width: AppSetting.setHeight(size),
         decoration: BoxDecoration(
           borderRadius: .circular(radius),
-          color: selected ? MyTheme.color.primary : Colors.white,
+          color: value ? MyTheme.color.primary : Colors.white,
           border: Border.all(
-            color: selected
+            color: value
                 ? MyTheme.color.primary
                 : MyTheme.color.palette.light.darkest,
             width: 1.5,
           ),
         ),
         child: InkWell(
-          onTap: onTap,
+          onTap: onChanged != null
+              ? () {
+                  onChanged!(!value);
+                }
+              : null,
           borderRadius: .circular(radius),
           child: Center(
             child: Assets.icons.check.image(
               height: AppSetting.setHeight(iconSize),
               width: AppSetting.setHeight(iconSize),
-              color: selected ? MyTheme.color.white : Colors.transparent,
+              color: value ? MyTheme.color.white : Colors.transparent,
             ),
           ),
         ),
@@ -56,20 +60,20 @@ class _Checkbox extends StatelessWidget {
 class UIKitCheckbox extends _Checkbox {
   const UIKitCheckbox({
     super.key,
-    required super.onTap,
-    required super.selected,
+    super.onChanged,
+    super.value,
     super.iconSize = 10,
     super.size = 16,
     super.radius = 4,
   });
 
   factory UIKitCheckbox.medium({
-    required VoidCallback onTap,
-    required bool selected,
+    ValueChanged<bool>? onChanged,
+    bool value = false,
   }) {
     return UIKitCheckbox(
-      onTap: onTap,
-      selected: selected,
+      onChanged: onChanged,
+      value: value,
       iconSize: 12,
       size: 24,
       radius: 6,
@@ -77,12 +81,12 @@ class UIKitCheckbox extends _Checkbox {
   }
 
   factory UIKitCheckbox.large({
-    required VoidCallback onTap,
-    required bool selected,
+    ValueChanged<bool>? onChanged,
+    bool value = false,
   }) {
     return UIKitCheckbox(
-      onTap: onTap,
-      selected: selected,
+      onChanged: onChanged,
+      value: value,
       iconSize: 16,
       size: 32,
       radius: 8,

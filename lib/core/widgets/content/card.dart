@@ -16,7 +16,7 @@ class UIKitCard extends StatelessWidget {
   final UIKitTag? tag;
   final UIKitButton? action;
   final AssetGenImage? icon;
-  final Widget? avatar;
+  final Widget? left;
   final VoidCallback? onTap;
 
   const UIKitCard({
@@ -29,11 +29,11 @@ class UIKitCard extends StatelessWidget {
     this.tag,
     this.action,
     this.icon,
-    this.avatar,
+    this.left,
     this.onTap,
   }) : assert(
-         image == null || icon == null || avatar == null,
-         'You can not use either image, icon or avatar at the same time',
+         image == null || icon == null || left == null,
+         'You can not use either image, icon or left widget at the same time',
        ),
        assert(
          onTap == null || action == null,
@@ -46,7 +46,7 @@ class UIKitCard extends StatelessWidget {
     String? image,
     UIKitButton? action,
     AssetGenImage? icon,
-    Widget? avatar,
+    Widget? left,
     VoidCallback? onTap,
   }) => UIKitCard(
     variant: .horizontal,
@@ -55,7 +55,7 @@ class UIKitCard extends StatelessWidget {
     image: image,
     action: action,
     icon: icon,
-    avatar: avatar,
+    left: left,
     onTap: onTap,
   );
 
@@ -70,7 +70,7 @@ class UIKitCard extends StatelessWidget {
         tag: tag,
         action: action,
         icon: icon,
-        avatar: avatar,
+        left: left,
       );
     }
 
@@ -80,7 +80,7 @@ class UIKitCard extends StatelessWidget {
       image: image,
       action: action,
       icon: icon,
-      avatar: avatar,
+      left: left,
       onTap: onTap,
     );
   }
@@ -94,7 +94,7 @@ class _VerticalCard extends StatelessWidget {
   final UIKitTag? tag;
   final UIKitButton? action;
   final AssetGenImage? icon;
-  final Widget? avatar;
+  final Widget? left;
 
   const _VerticalCard({
     required this.title,
@@ -104,7 +104,7 @@ class _VerticalCard extends StatelessWidget {
     this.tag,
     this.action,
     this.icon,
-    this.avatar,
+    this.left,
   });
 
   @override
@@ -135,7 +135,7 @@ class _VerticalCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: .start,
                   children: [
-                    if (icon != null || avatar != null) ...[
+                    if (icon != null || left != null) ...[
                       if (icon != null)
                         Container(
                           height: AppSetting.setHeight(40),
@@ -152,7 +152,7 @@ class _VerticalCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                      if (avatar != null) avatar!,
+                      if (left != null) left!,
                       Space.h(32),
                     ],
                     Text(
@@ -201,7 +201,7 @@ class _HorizontalCard extends StatelessWidget {
   final String? image;
   final UIKitButton? action;
   final AssetGenImage? icon;
-  final Widget? avatar;
+  final Widget? left;
   final VoidCallback? onTap;
 
   const _HorizontalCard({
@@ -210,7 +210,7 @@ class _HorizontalCard extends StatelessWidget {
     this.image,
     this.action,
     this.icon,
-    this.avatar,
+    this.left,
     this.onTap,
   });
 
@@ -237,7 +237,7 @@ class _HorizontalCard extends StatelessWidget {
                   width: AppSetting.setWidth(80),
                   child: ImageCaching(imageUrl: image!),
                 ),
-              if (icon != null || avatar != null) ...[
+              if (icon != null || left != null) ...[
                 if (icon != null)
                   Container(
                     height: AppSetting.setHeight(40),
@@ -255,7 +255,7 @@ class _HorizontalCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (avatar != null) avatar!,
+                if (left != null) left!,
               ],
               Flexible(
                 flex: 1,
