@@ -6,6 +6,7 @@ import 'package:flutter_boilerplate/core/widgets/badge/badge.dart';
 import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
+import 'package:flutter_boilerplate/core/widgets/content/accordion.dart';
 import 'package:flutter_boilerplate/core/widgets/content/card.dart';
 import 'package:flutter_boilerplate/core/widgets/content/list_item.dart';
 import 'package:flutter_boilerplate/core/widgets/content/list_title.dart';
@@ -622,6 +623,47 @@ class _HomeBodyState extends State<HomeBody> {
                           //
                         },
                         count: 13,
+                      ),
+                      Space.h(8),
+                      UIKitAccordion(
+                        title: "Title",
+                        textContent: "Content. Lorem ipsum dolor sit amet",
+                      ),
+                      Space.h(8),
+                      UIKitAccordion(
+                        title: "Title dua hehe",
+                        content: Column(
+                          children: [
+                            UIKitCard.horizontal(
+                              image: "https://placehold.co/600x400/png",
+                              title: "Title",
+                              subtitle: "Subtitle",
+                              action: UIKitButton.secondary(
+                                title: "Action",
+                                onTap: () {},
+                              ),
+                            ),
+                            Space.h(8),
+                            UIKitCard.horizontal(
+                              image: "https://placehold.co/600x400/png",
+                              title: "Title",
+                              subtitle: "Subtitle",
+                              onTap: () {
+                                //
+                              },
+                            ),
+                            Space.h(8),
+                            UIKitCard.horizontal(
+                              title: "Title",
+                              subtitle: "Subtitle",
+                              action: UIKitButton.secondary(
+                                title: "Action",
+                                onTap: () {},
+                              ),
+                              icon: Assets.icons.camera,
+                            ),
+                          ],
+                        ),
                       ),
                       Space.h(8),
                     ],
