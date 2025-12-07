@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/core/widgets/app_bar/app_bar.dart';
+import 'package:flutter_boilerplate/core/widgets/avatar/avatar.dart';
 import 'package:flutter_boilerplate/core/widgets/badge/badge.dart';
 import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
@@ -742,6 +743,12 @@ class _HomeBodyState extends State<HomeBody> {
                       ),
                       Space.h(16),
                       UIKitMessageInput(placeholder: "Type a message..."),
+                      Space.h(16),
+                      Center(child: UIKitAvatar()),
+                      Space.h(16),
+                      Center(child: UIKitAvatar.medium()),
+                      Space.h(16),
+                      Center(child: UIKitAvatar.large()),
                       Space.h(16),
                     ],
                   ),
