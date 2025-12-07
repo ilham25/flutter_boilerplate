@@ -26,6 +26,9 @@ class UIKitListItem extends StatelessWidget {
 
   final UIKitListItemVariant? variant;
 
+  final TextStyle? titleTextStyle;
+  final TextStyle? descriptionTextStyle;
+
   const UIKitListItem({
     super.key,
     required this.title,
@@ -41,6 +44,8 @@ class UIKitListItem extends StatelessWidget {
     this.variant,
     this.value = false,
     this.count = 0,
+    this.titleTextStyle,
+    this.descriptionTextStyle,
   });
 
   factory UIKitListItem.toggle({
@@ -54,6 +59,8 @@ class UIKitListItem extends StatelessWidget {
     AssetGenImage? rightIcon,
     Color? leftIconColor,
     Color? rightIconColor,
+    TextStyle? titleTextStyle,
+    TextStyle? descriptionTextStyle,
   }) => UIKitListItem(
     variant: .toggle,
     title: title,
@@ -66,6 +73,8 @@ class UIKitListItem extends StatelessWidget {
     right: right,
     value: value,
     onChanged: onChanged,
+    titleTextStyle: titleTextStyle,
+    descriptionTextStyle: descriptionTextStyle,
   );
 
   factory UIKitListItem.checkbox({
@@ -79,6 +88,8 @@ class UIKitListItem extends StatelessWidget {
     AssetGenImage? rightIcon,
     Color? leftIconColor,
     Color? rightIconColor,
+    TextStyle? titleTextStyle,
+    TextStyle? descriptionTextStyle,
   }) => UIKitListItem(
     variant: .checkbox,
     title: title,
@@ -91,6 +102,8 @@ class UIKitListItem extends StatelessWidget {
     right: right,
     value: value,
     onChanged: onChanged,
+    titleTextStyle: titleTextStyle,
+    descriptionTextStyle: descriptionTextStyle,
   );
 
   factory UIKitListItem.count({
@@ -104,6 +117,8 @@ class UIKitListItem extends StatelessWidget {
     AssetGenImage? rightIcon,
     Color? leftIconColor,
     Color? rightIconColor,
+    TextStyle? titleTextStyle,
+    TextStyle? descriptionTextStyle,
   }) => UIKitListItem(
     variant: .count,
     title: title,
@@ -116,6 +131,8 @@ class UIKitListItem extends StatelessWidget {
     right: right,
     count: count,
     onTap: onTap,
+    titleTextStyle: titleTextStyle,
+    descriptionTextStyle: descriptionTextStyle,
   );
 
   Color get _leftIconColor => leftIconColor ?? MyTheme.color.primary;
@@ -124,6 +141,11 @@ class UIKitListItem extends StatelessWidget {
 
   bool get _isShowRightWidget =>
       right != null || rightIcon != null || onTap != null || onChanged != null;
+
+  TextStyle get _titleTextStyle => titleTextStyle ?? MyTheme.style.body.m;
+
+  TextStyle get _descriptionTextStyle =>
+      descriptionTextStyle ?? MyTheme.style.body.s;
 
   Widget _buildLeft() {
     if (left != null) return left!;
@@ -149,6 +171,7 @@ class UIKitListItem extends StatelessWidget {
     }
 
     if (variant == .count) {
+      if (count == 0) return SizedBox.shrink();
       return UIKitBadge.count(count: count);
     }
 
@@ -204,14 +227,14 @@ class UIKitListItem extends StatelessWidget {
                           children: [
                             Text(
                               title,
-                              style: MyTheme.style.body.m,
+                              style: _titleTextStyle,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
                             Space.h(4),
                             Text(
                               description,
-                              style: MyTheme.style.body.s.copyWith(
+                              style: _descriptionTextStyle.copyWith(
                                 color: MyTheme.color.palette.dark.light,
                               ),
                               maxLines: 3,

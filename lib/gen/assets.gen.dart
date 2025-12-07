@@ -215,12 +215,16 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/chat_template_preview.png
+  AssetGenImage get chatTemplatePreview =>
+      const AssetGenImage('assets/images/chat_template_preview.png');
+
   /// File path: assets/images/logo_full.png
   AssetGenImage get logoFull =>
       const AssetGenImage('assets/images/logo_full.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logoFull];
+  List<AssetGenImage> get values => [chatTemplatePreview, logoFull];
 }
 
 class Assets {

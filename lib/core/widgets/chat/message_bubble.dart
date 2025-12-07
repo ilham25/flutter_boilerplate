@@ -19,9 +19,15 @@ class UIKitMessageBubble extends StatelessWidget {
   });
 
   factory UIKitMessageBubble.received({
+    String name = "",
     required String message,
     bool tip = false,
-  }) => UIKitMessageBubble(message: message, tip: tip, variant: .received);
+  }) => UIKitMessageBubble(
+    name: name,
+    message: message,
+    tip: tip,
+    variant: .received,
+  );
 
   Color get _backgroundColor {
     switch (variant) {
@@ -62,6 +68,15 @@ class UIKitMessageBubble extends StatelessWidget {
     }
   }
 
+  Color get _nameColor {
+    switch (variant) {
+      case .sent:
+        return MyTheme.color.palette.highlight.light;
+      case .received:
+        return MyTheme.color.palette.dark.light;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -80,9 +95,7 @@ class UIKitMessageBubble extends StatelessWidget {
           if (name.isNotEmpty) ...[
             Text(
               name,
-              style: MyTheme.style.heading.h5.copyWith(
-                color: MyTheme.color.palette.highlight.light,
-              ),
+              style: MyTheme.style.heading.h5.copyWith(color: _nameColor),
               maxLines: 1,
               overflow: .ellipsis,
             ),

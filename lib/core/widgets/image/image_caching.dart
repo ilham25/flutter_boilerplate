@@ -16,8 +16,20 @@ class ImageCaching extends StatelessWidget {
     this.isPreviewable = false,
   });
 
+  bool get _isLocalImage => !imageUrl.startsWith('http');
+
   @override
   Widget build(BuildContext context) {
+    if (_isLocalImage) {
+      return Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius ?? 0),
+        ),
+        child: Image.asset(imageUrl, fit: BoxFit.cover),
+      );
+    }
     return CachedNetworkImage(
       imageUrl: imageUrl,
       imageBuilder: (context, imageProvider) => GestureDetector(

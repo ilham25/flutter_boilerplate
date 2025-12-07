@@ -11,6 +11,10 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SplashRoute.page, initial: true),
     AutoRoute(page: HomeRoute.page),
 
+    // Templates
+    AutoRoute(page: ChatListRoute.page),
+    AutoRoute(page: ChatDetailRoute.page),
+
     // Common
     CustomRoute(
       page: SearchRoute.page,
