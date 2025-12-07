@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
@@ -159,7 +160,9 @@ class UIKitToast {
               icon: Assets.icons.close,
               onTap: onClose,
               size: 12,
-              color: MyTheme.color.palette.dark.light,
+              iconColor: MyTheme.color.palette.dark.light,
+              color: Colors.transparent,
+              iconSize: 12,
             ),
           ],
         ],

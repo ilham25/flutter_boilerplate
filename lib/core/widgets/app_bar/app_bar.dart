@@ -30,7 +30,7 @@ class UIKitAppBar extends StatelessWidget implements PreferredSizeWidget {
       final isCanPop = context.router.canPop();
       if (!isCanPop) return Space.w(MyTheme.defaultPadding);
 
-      return UIKitIconButton(
+      return UIKitIconButton.secondary(
         icon: Assets.icons.arrowLeft,
         onTap:
             onLeadingTap ??

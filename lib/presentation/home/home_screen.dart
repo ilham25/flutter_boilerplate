@@ -7,6 +7,7 @@ import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/core/widgets/chat/message_bubble.dart';
+import 'package:flutter_boilerplate/core/widgets/chat/message_input.dart';
 import 'package:flutter_boilerplate/core/widgets/content/accordion.dart';
 import 'package:flutter_boilerplate/core/widgets/content/card.dart';
 import 'package:flutter_boilerplate/core/widgets/content/divider.dart';
@@ -55,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: UIKitAppBar(
         title: "Projects",
         actions: [
-          UIKitIconButton(
+          UIKitIconButton.secondary(
             icon: Assets.icons.search,
             onTap: () {
               context.router.push(const SearchRoute());
@@ -739,6 +740,8 @@ class _HomeBodyState extends State<HomeBody> {
                           ),
                         ],
                       ),
+                      Space.h(16),
+                      UIKitMessageInput(placeholder: "Type a message..."),
                       Space.h(16),
                     ],
                   ),

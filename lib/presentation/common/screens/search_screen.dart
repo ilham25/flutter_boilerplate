@@ -73,7 +73,10 @@ class SearchBody extends StatelessWidget {
                 ),
               ),
               actions: [
-                UIKitIconButton(icon: Assets.icons.heartOutlined, onTap: () {}),
+                UIKitIconButton.secondary(
+                  icon: Assets.icons.heartOutlined,
+                  onTap: () {},
+                ),
               ],
             ),
             Space.h(8),

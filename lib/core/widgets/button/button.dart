@@ -58,9 +58,9 @@ class UIKitButton extends StatelessWidget {
     return UIKitButton(
       title: title,
       onTap: onTap,
-      borderColor: getGhostBorderColor(variant: variant),
-      color: getGhostBackgroundColor(variant: variant),
-      textColor: getGhostTextColor(variant: variant),
+      borderColor: getBorderColor(variant: variant),
+      color: getBackgroundColor(variant: variant),
+      textColor: getTextColor(variant: variant),
       leftIcon: leftIcon,
       rightIcon: rightIcon,
       padding: padding,
@@ -82,9 +82,9 @@ class UIKitButton extends StatelessWidget {
     return UIKitButton(
       title: title,
       onTap: onTap,
-      borderColor: getGhostBorderColor(variant: variant),
-      color: getGhostBackgroundColor(variant: variant),
-      textColor: getGhostTextColor(variant: variant),
+      borderColor: getBorderColor(variant: variant),
+      color: getBackgroundColor(variant: variant),
+      textColor: getTextColor(variant: variant),
       leftIcon: leftIcon,
       rightIcon: rightIcon,
       padding: padding,
@@ -106,15 +106,15 @@ class UIKitButton extends StatelessWidget {
   }
 
   Color? get _color {
-    return color ?? getGhostBackgroundColor(variant: variant);
+    return color ?? getBackgroundColor(variant: variant);
   }
 
   Color get _textColor {
-    return textColor ?? getGhostTextColor(variant: variant);
+    return textColor ?? getTextColor(variant: variant);
   }
 
   Color get _borderColor {
-    return borderColor ?? getGhostBorderColor(variant: variant);
+    return borderColor ?? getBorderColor(variant: variant);
   }
 
   Widget _buildContent() {
@@ -204,7 +204,7 @@ class UIKitButton extends StatelessWidget {
   }
 }
 
-Color getGhostBorderColor({required ButtonVariant variant}) {
+Color getBorderColor({required ButtonVariant variant}) {
   switch (variant) {
     case .primary:
       return MyTheme.color.primary;
@@ -215,7 +215,7 @@ Color getGhostBorderColor({required ButtonVariant variant}) {
   }
 }
 
-Color? getGhostBackgroundColor({required ButtonVariant variant}) {
+Color? getBackgroundColor({required ButtonVariant variant}) {
   switch (variant) {
     case .primary:
       return MyTheme.color.primary;
@@ -226,7 +226,7 @@ Color? getGhostBackgroundColor({required ButtonVariant variant}) {
   }
 }
 
-Color getGhostIconColor({required ButtonVariant variant}) {
+Color getIconColor({required ButtonVariant variant}) {
   switch (variant) {
     case .primary:
       return MyTheme.color.white;
@@ -237,8 +237,8 @@ Color getGhostIconColor({required ButtonVariant variant}) {
   }
 }
 
-Color getGhostTextColor({required ButtonVariant variant}) =>
-    getGhostIconColor(variant: variant);
+Color getTextColor({required ButtonVariant variant}) =>
+    getIconColor(variant: variant);
 
 double getButtonHeight() {
   double btnSize = 0;
