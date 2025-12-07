@@ -95,6 +95,19 @@ class _HomeBodyState extends State<HomeBody> {
             },
           ),
         ),
+        Space.h(16),
+        SizedBox(
+          height: AppSetting.setHeight(160),
+          child: UIKitBanner(
+            title: "Feedback",
+            description: "Feedback Screen Template Example",
+            image: Assets.images.feedbackTemplatePreview.path,
+            action: "Show Template",
+            onAction: () {
+              context.router.push(const FeedbackRoute());
+            },
+          ),
+        ),
       ],
     );
   }

@@ -58,47 +58,51 @@ class UIKitTag extends StatelessWidget {
     return Semantics(
       button: true,
       focusable: onTap != null,
-      child: Material(
-        type: .transparency,
-        child: Ink(
-          height: AppSetting.setHeight(24),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: _backgroundColor,
-          ),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(12),
-            onTap: onTap,
-            child: Padding(
-              padding: EdgeInsetsGeometry.symmetric(
-                horizontal: AppSetting.setWidth(8),
-              ),
-              child: Row(
-                crossAxisAlignment: .center,
-                children: [
-                  if (leftIcon != null) ...[
-                    leftIcon!.image(
-                      height: AppSetting.setHeight(12),
-                      width: AppSetting.setWidth(12),
-                      color: _leftIconColor,
+      child: IntrinsicWidth(
+        child: Material(
+          type: .transparency,
+          child: Ink(
+            height: AppSetting.setHeight(24),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: _backgroundColor,
+            ),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(12),
+              onTap: onTap,
+              child: Padding(
+                padding: EdgeInsetsGeometry.symmetric(
+                  horizontal: AppSetting.setWidth(8),
+                ),
+                child: Row(
+                  crossAxisAlignment: .center,
+                  children: [
+                    if (leftIcon != null) ...[
+                      leftIcon!.image(
+                        height: AppSetting.setHeight(12),
+                        width: AppSetting.setWidth(12),
+                        color: _leftIconColor,
+                      ),
+                      Space.w(4),
+                    ],
+                    Text(
+                      text.toUpperCase(),
+                      style: MyTheme.style.caption.m.copyWith(
+                        color: _textColor,
+                      ),
+                      maxLines: 1,
+                      overflow: .ellipsis,
                     ),
-                    Space.w(4),
+                    if (rightIcon != null) ...[
+                      Space.w(4),
+                      rightIcon!.image(
+                        height: AppSetting.setHeight(12),
+                        width: AppSetting.setWidth(12),
+                        color: _rightIconColor,
+                      ),
+                    ],
                   ],
-                  Text(
-                    text.toUpperCase(),
-                    style: MyTheme.style.caption.m.copyWith(color: _textColor),
-                    maxLines: 1,
-                    overflow: .ellipsis,
-                  ),
-                  if (rightIcon != null) ...[
-                    Space.w(4),
-                    rightIcon!.image(
-                      height: AppSetting.setHeight(12),
-                      width: AppSetting.setWidth(12),
-                      color: _rightIconColor,
-                    ),
-                  ],
-                ],
+                ),
               ),
             ),
           ),
