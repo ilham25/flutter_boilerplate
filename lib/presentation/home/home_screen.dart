@@ -28,6 +28,7 @@ import 'package:flutter_boilerplate/core/widgets/input/text_field.dart';
 import 'package:flutter_boilerplate/core/widgets/input/toggle.dart';
 import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar_item.dart';
+import 'package:flutter_boilerplate/core/widgets/progress/stepper.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
@@ -667,6 +668,16 @@ class _HomeBodyState extends State<HomeBody> {
                             ),
                           ],
                         ),
+                      ),
+                      Space.h(8),
+                      Row(
+                        children: [
+                          UIKitStepper(title: "Step", number: 1),
+                          Space.w(16),
+                          UIKitStepper(title: "Step", number: 2, active: true),
+                          Space.w(16),
+                          UIKitStepper(title: "Step", number: 3, done: true),
+                        ],
                       ),
                       Space.h(8),
                     ],
