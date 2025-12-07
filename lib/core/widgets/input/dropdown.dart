@@ -8,18 +8,23 @@ import 'package:flutter_boilerplate/theme/theme.dart';
 // TODO: add multi select variant
 class UIKitDropdown<T> extends StatelessWidget {
   final T? value;
+
   final ValueChanged<T>? onChanged;
+  final VoidCallback? onClear;
+
+  final String title;
+  final String description;
   final String hintText;
   final String errorText;
+  final String? emptyText;
+
   final String Function(T value) itemLabel;
   final List<T> items;
   final List<Widget>? dropdownItems;
+
   final AssetGenImage? leftIcon;
   final Color? leftIconColor;
   final bool enabled;
-  final VoidCallback? onClear;
-  final String? emptyText;
-  final String description;
   final bool readOnly;
 
   final Color? color;
@@ -41,6 +46,7 @@ class UIKitDropdown<T> extends StatelessWidget {
     this.readOnly = false,
     this.color,
     this.leftIconColor,
+    this.title = "",
   });
 
   String getDisplayLabel() {
@@ -76,6 +82,10 @@ class UIKitDropdown<T> extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (title.isNotEmpty) ...[
+            Text(title, style: MyTheme.style.heading.h5),
+            Space.h(8),
+          ],
           Ink(
             decoration: BoxDecoration(
               color: isDisabled ? MyTheme.color.disabled : MyTheme.color.white,

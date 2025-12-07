@@ -17,6 +17,9 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: ChatDetailRoute.page),
     // -- Feedback
     AutoRoute(page: FeedbackRoute.page),
+    // -- Login
+    AutoRoute(page: LoginRoute.page),
+    AutoRoute(page: SignUpRoute.page),
 
     // Common
     CustomRoute(
