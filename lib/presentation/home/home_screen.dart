@@ -29,6 +29,7 @@ import 'package:flutter_boilerplate/core/widgets/input/toggle.dart';
 import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar_item.dart';
 import 'package:flutter_boilerplate/core/widgets/progress/loader.dart';
+import 'package:flutter_boilerplate/core/widgets/progress/pagination_dots.dart';
 import 'package:flutter_boilerplate/core/widgets/progress/progress_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/progress/stepper.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
@@ -709,6 +710,8 @@ class _HomeBodyState extends State<HomeBody> {
                           ),
                         ],
                       ),
+                      Space.h(16),
+                      UIKitPaginationDots(count: 5, currentIndex: 2),
                       Space.h(16),
                     ],
                   ),
