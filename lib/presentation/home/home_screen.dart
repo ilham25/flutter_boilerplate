@@ -28,6 +28,7 @@ import 'package:flutter_boilerplate/core/widgets/input/text_field.dart';
 import 'package:flutter_boilerplate/core/widgets/input/toggle.dart';
 import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar_item.dart';
+import 'package:flutter_boilerplate/core/widgets/progress/progress_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/progress/stepper.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
@@ -679,7 +680,23 @@ class _HomeBodyState extends State<HomeBody> {
                           UIKitStepper(title: "Step", number: 3, done: true),
                         ],
                       ),
-                      Space.h(8),
+                      Space.h(16),
+                      UIKitProgressBar(value: .0),
+                      Space.h(16),
+                      UIKitProgressBar(value: .25),
+                      Space.h(16),
+                      UIKitProgressBar(value: .5),
+                      Space.h(16),
+                      UIKitProgressBar(value: .75),
+                      Space.h(16),
+                      UIKitProgressBar.stepped(value: .43, steps: 5),
+                      Space.h(16),
+                      TweenAnimationBuilder(
+                        tween: Tween<double>(begin: 0, end: 1),
+                        duration: Duration(seconds: 10),
+                        builder: (context, value, child) =>
+                            UIKitProgressBar.stepped(value: value, steps: 5),
+                      ),
                     ],
                   ),
                 ),
