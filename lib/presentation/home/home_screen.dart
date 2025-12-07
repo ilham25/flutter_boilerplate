@@ -6,6 +6,7 @@ import 'package:flutter_boilerplate/core/widgets/badge/badge.dart';
 import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
+import 'package:flutter_boilerplate/core/widgets/chat/message_bubble.dart';
 import 'package:flutter_boilerplate/core/widgets/content/accordion.dart';
 import 'package:flutter_boilerplate/core/widgets/content/card.dart';
 import 'package:flutter_boilerplate/core/widgets/content/divider.dart';
@@ -711,7 +712,33 @@ class _HomeBodyState extends State<HomeBody> {
                         ],
                       ),
                       Space.h(16),
-                      UIKitPaginationDots(count: 5, currentIndex: 2),
+                      UIKitPaginationDots(dots: 5, currentIndex: 2),
+                      Space.h(16),
+                      Column(
+                        crossAxisAlignment: .start,
+                        children: [
+                          UIKitMessageBubble(
+                            name: "Iruha",
+                            message: "Message. Lorem ipsum dolor.",
+                            tip: true,
+                          ),
+                          Space.h(12),
+                          UIKitMessageBubble(
+                            name: "Iruha",
+                            message: "Message. Lorem ipsum dolor.",
+                          ),
+                          Space.h(16),
+
+                          UIKitMessageBubble.received(
+                            message: "Message. Lorem ipsum dolor.",
+                            tip: true,
+                          ),
+                          Space.h(12),
+                          UIKitMessageBubble.received(
+                            message: "Message. Lorem ipsum dolor.",
+                          ),
+                        ],
+                      ),
                       Space.h(16),
                     ],
                   ),

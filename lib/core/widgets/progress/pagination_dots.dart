@@ -3,12 +3,12 @@ import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
 class UIKitPaginationDots extends StatelessWidget {
-  final int count;
+  final int dots;
   final int currentIndex;
 
   const UIKitPaginationDots({
     super.key,
-    required this.count,
+    required this.dots,
     this.currentIndex = 0,
   });
 
@@ -19,7 +19,7 @@ class UIKitPaginationDots extends StatelessWidget {
       alignment: .center,
       spacing: AppSetting.setWidth(8),
       children: List.generate(
-        count,
+        dots,
         (index) => _Dot(active: index == currentIndex),
       ),
     );
