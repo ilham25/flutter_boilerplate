@@ -4,9 +4,6 @@ import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/core/widgets/app_bar/app_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/banner/banner.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
-import 'package:flutter_boilerplate/core/widgets/content/card.dart';
-import 'package:flutter_boilerplate/core/widgets/content/list_title.dart';
-import 'package:flutter_boilerplate/core/widgets/image/image_caching.dart';
 import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/navigation/tab_bar_item.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
@@ -118,6 +115,19 @@ class _HomeBodyState extends State<HomeBody> {
             action: "Show Template",
             onAction: () {
               context.router.push(const LoginRoute());
+            },
+          ),
+        ),
+        Space.h(16),
+        SizedBox(
+          height: AppSetting.setHeight(160),
+          child: UIKitBanner(
+            title: "Settings",
+            description: "Settings Screen Template Example",
+            image: Assets.images.settingsTemplatePreview.path,
+            action: "Show Template",
+            onAction: () {
+              context.router.push(const SettingsRoute());
             },
           ),
         ),

@@ -231,12 +231,17 @@ class $AssetsImagesGen {
   AssetGenImage get logoFull =>
       const AssetGenImage('assets/images/logo_full.png');
 
+  /// File path: assets/images/settings_template_preview.png
+  AssetGenImage get settingsTemplatePreview =>
+      const AssetGenImage('assets/images/settings_template_preview.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     chatTemplatePreview,
     feedbackTemplatePreview,
     loginTemplatePreview,
     logoFull,
+    settingsTemplatePreview,
   ];
 }
 

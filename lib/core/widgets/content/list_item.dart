@@ -29,10 +29,12 @@ class UIKitListItem extends StatelessWidget {
   final TextStyle? titleTextStyle;
   final TextStyle? descriptionTextStyle;
 
+  final EdgeInsets? padding;
+
   const UIKitListItem({
     super.key,
     required this.title,
-    required this.description,
+    this.description = "",
     this.onChanged,
     this.left,
     this.leftIcon,
@@ -46,6 +48,7 @@ class UIKitListItem extends StatelessWidget {
     this.count = 0,
     this.titleTextStyle,
     this.descriptionTextStyle,
+    this.padding,
   });
 
   factory UIKitListItem.toggle({
@@ -143,9 +146,15 @@ class UIKitListItem extends StatelessWidget {
       right != null || rightIcon != null || onTap != null || onChanged != null;
 
   TextStyle get _titleTextStyle => titleTextStyle ?? MyTheme.style.body.m;
-
   TextStyle get _descriptionTextStyle =>
       descriptionTextStyle ?? MyTheme.style.body.s;
+
+  EdgeInsets get _padding =>
+      padding ??
+      EdgeInsets.symmetric(
+        horizontal: AppSetting.setWidth(16),
+        vertical: AppSetting.setHeight(16),
+      );
 
   Widget _buildLeft() {
     if (left != null) return left!;
@@ -204,10 +213,7 @@ class UIKitListItem extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppSetting.setWidth(16),
-              vertical: AppSetting.setHeight(16),
-            ),
+            padding: _padding,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -231,15 +237,17 @@ class UIKitListItem extends StatelessWidget {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            Space.h(4),
-                            Text(
-                              description,
-                              style: _descriptionTextStyle.copyWith(
-                                color: MyTheme.color.palette.dark.light,
+                            if (description.isNotEmpty) ...[
+                              Space.h(4),
+                              Text(
+                                description,
+                                style: _descriptionTextStyle.copyWith(
+                                  color: MyTheme.color.palette.dark.light,
+                                ),
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                            ],
                           ],
                         ),
                       ),

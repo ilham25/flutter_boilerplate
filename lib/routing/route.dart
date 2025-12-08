@@ -22,6 +22,9 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SignUpRoute.page),
     AutoRoute(page: ConfirmationCodeRoute.page),
 
+    // -- Settings
+    AutoRoute(page: SettingsRoute.page),
+
     // Common
     CustomRoute(
       page: SearchRoute.page,

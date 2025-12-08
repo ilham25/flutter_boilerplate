@@ -31,8 +31,6 @@ class ChatListBody extends StatefulWidget {
 }
 
 class _ChatListBodyState extends State<ChatListBody> {
-  int currentIndex = 0;
-
   final List<ChatListModel> chatLists = [
     ChatListModel(
       name: "Haley James",
@@ -129,11 +127,9 @@ class _ChatListBodyState extends State<ChatListBody> {
         ),
       ),
       bottomNavigationBar: UIKitTabBar(
-        currentIndex: currentIndex,
+        currentIndex: 0,
         onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
+          //
         },
         items: [
           UIKitTabBarItem(icon: Assets.icons.chat, title: "Chats"),
