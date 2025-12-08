@@ -22,7 +22,7 @@ class UIKitIconButton extends StatelessWidget {
     this.color,
     this.size = 40,
     required this.icon,
-    this.radius = 8,
+    this.radius = 40,
     this.iconColor,
     this.iconSize,
   });
@@ -31,7 +31,7 @@ class UIKitIconButton extends StatelessWidget {
     VoidCallback? onTap,
     required AssetGenImage icon,
     double size = 40,
-    double radius = 8,
+    double radius = 40,
   }) => UIKitIconButton(
     onTap: onTap,
     size: size,
@@ -45,7 +45,7 @@ class UIKitIconButton extends StatelessWidget {
     VoidCallback? onTap,
     required AssetGenImage icon,
     double size = 40,
-    double radius = 8,
+    double radius = 40,
   }) => UIKitIconButton(
     onTap: onTap,
     size: size,

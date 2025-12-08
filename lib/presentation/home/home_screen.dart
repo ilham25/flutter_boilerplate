@@ -46,11 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         items: [
-          UIKitTabBarItem(icon: Assets.icons.chat, title: "Chats"),
-          UIKitTabBarItem(icon: Assets.icons.profile, title: "Friends"),
-          UIKitTabBarItem(icon: Assets.icons.search, title: "Feeds"),
-          UIKitTabBarItem(icon: Assets.icons.explore, title: "Status"),
-          UIKitTabBarItem(icon: Assets.icons.settings, title: "Settings"),
+          UIKitTabBarItem(icon: Assets.icons.explore, title: "Templates"),
+          UIKitTabBarItem(icon: Assets.icons.categories, title: "Widgets"),
+          UIKitTabBarItem(icon: Assets.icons.settings, title: "Styles"),
         ],
       ),
     );
