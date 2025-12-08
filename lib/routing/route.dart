@@ -20,6 +20,7 @@ class AppRouter extends RootStackRouter {
     // -- Login
     AutoRoute(page: LoginRoute.page),
     AutoRoute(page: SignUpRoute.page),
+    AutoRoute(page: ConfirmationCodeRoute.page),
 
     // Common
     CustomRoute(
