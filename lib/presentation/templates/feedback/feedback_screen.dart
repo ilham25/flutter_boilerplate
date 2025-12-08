@@ -72,24 +72,29 @@ class FeedbackBody extends StatelessWidget {
                             UIKitTag(
                               text: "Easy to use",
                               leftIcon: Assets.icons.placeholder,
+                              onTap: () {},
                             ),
                             UIKitTag(
                               text: "Complete",
                               leftIcon: Assets.icons.placeholder,
+                              onTap: () {},
                             ),
                             UIKitTag(
                               text: "Helpful",
                               leftIcon: Assets.icons.placeholder,
+                              onTap: () {},
                               focused: true,
                             ),
                             UIKitTag(
                               text: "Convenient",
                               leftIcon: Assets.icons.placeholder,
+                              onTap: () {},
                               focused: true,
                             ),
                             UIKitTag(
                               text: "Looks Good",
                               leftIcon: Assets.icons.placeholder,
+                              onTap: () {},
                             ),
                           ],
                         ),
@@ -115,18 +120,22 @@ class FeedbackBody extends StatelessWidget {
                             UIKitTag(
                               text: "could have more components",
                               leftIcon: Assets.icons.placeholder,
+                              onTap: () {},
                             ),
                             UIKitTag(
                               text: "complex",
                               leftIcon: Assets.icons.placeholder,
+                              onTap: () {},
                             ),
                             UIKitTag(
                               text: "not interactive",
                               leftIcon: Assets.icons.placeholder,
+                              onTap: () {},
                             ),
                             UIKitTag(
                               text: "only english",
                               leftIcon: Assets.icons.placeholder,
+                              onTap: () {},
                               focused: true,
                             ),
                           ],
