@@ -1,3 +1,4 @@
+import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/core/widgets/loading/loading_singlebox.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
@@ -16,7 +17,7 @@ class ImageCaching extends StatelessWidget {
     this.isPreviewable = false,
   });
 
-  bool get _isLocalImage => !imageUrl.startsWith('http');
+  bool get _isLocalImage => imageUrl.isNotEmpty && !imageUrl.startsWith('http');
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +51,21 @@ class ImageCaching extends StatelessWidget {
       ),
       placeholder: (context, url) =>
           LoadingSingleBox(height: double.infinity, borderRadius: borderRadius),
-      errorWidget: (context, url, error) => Assets.icons.image.image(
+      errorWidget: (context, url, error) => Container(
+        clipBehavior: .antiAlias,
         width: double.infinity,
         height: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius ?? 0),
+          color: MyTheme.color.palette.highlight.lightest,
+        ),
+        child: Center(
+          child: Assets.icons.image.image(
+            width: AppSetting.setWidth(32),
+            height: AppSetting.setHeight(32),
+            color: MyTheme.color.palette.highlight.light,
+          ),
+        ),
       ),
     );
   }
