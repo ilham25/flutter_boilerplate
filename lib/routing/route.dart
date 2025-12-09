@@ -28,14 +28,15 @@ class AppRouter extends RootStackRouter {
     // -- Empty State
     AutoRoute(page: EmptyStateRoute.page),
 
-    // Common
-    CustomRoute(
-      page: SearchRoute.page,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-      duration: Duration(milliseconds: 250),
-      reverseDuration: Duration(milliseconds: 250),
-      opaque: false,
+    // -- Search Filter
+    AutoRoute(
+      page: SearchFilterRoute.page,
+      children: [AutoRoute(page: SearchRoute.page)],
     ),
+    AutoRoute(page: FilterRoute.page),
+
+    // Common
+    AutoRoute(page: SearchRoute.page),
   ];
   @override
   List<AutoRouteGuard> get guards => [];

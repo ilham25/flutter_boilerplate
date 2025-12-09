@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           UIKitIconButton.secondary(
             icon: Assets.icons.search,
             onTap: () {
-              context.router.push(const SearchRoute());
+              // context.router.push(const SearchRoute());
             },
           ),
         ],
@@ -139,6 +139,19 @@ class _HomeBodyState extends State<HomeBody> {
             action: "Show Template",
             onAction: () {
               context.router.push(const EmptyStateRoute());
+            },
+          ),
+        ),
+        Space.h(16),
+        SizedBox(
+          height: AppSetting.setHeight(160),
+          child: UIKitBanner(
+            title: "Search & Filter",
+            description: "Search & Filter Screen Template Example",
+            image: Assets.images.searchFilterTemplatePreview.path,
+            action: "Show Template",
+            onAction: () {
+              context.router.push(const SearchFilterRoute());
             },
           ),
         ),

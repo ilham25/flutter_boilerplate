@@ -19,6 +19,10 @@ class UIKitCard extends StatelessWidget {
   final Widget? left;
   final VoidCallback? onTap;
 
+  final TextStyle? titleStyle;
+  final TextStyle? subtitleStyle;
+  final TextStyle? descriptionStyle;
+
   const UIKitCard({
     super.key,
     this.variant = .vertical,
@@ -31,6 +35,9 @@ class UIKitCard extends StatelessWidget {
     this.icon,
     this.left,
     this.onTap,
+    this.titleStyle,
+    this.subtitleStyle,
+    this.descriptionStyle,
   }) : assert(
          image == null || icon == null || left == null,
          'You can not use either image, icon or left widget at the same time',
@@ -48,6 +55,9 @@ class UIKitCard extends StatelessWidget {
     AssetGenImage? icon,
     Widget? left,
     VoidCallback? onTap,
+    TextStyle? titleStyle,
+    TextStyle? subtitleStyle,
+    TextStyle? descriptionStyle,
   }) => UIKitCard(
     variant: .horizontal,
     title: title,
@@ -57,6 +67,9 @@ class UIKitCard extends StatelessWidget {
     icon: icon,
     left: left,
     onTap: onTap,
+    titleStyle: titleStyle,
+    subtitleStyle: subtitleStyle,
+    descriptionStyle: descriptionStyle,
   );
 
   @override
@@ -71,6 +84,9 @@ class UIKitCard extends StatelessWidget {
         action: action,
         icon: icon,
         left: left,
+        titleStyle: titleStyle,
+        subtitleStyle: subtitleStyle,
+        descriptionStyle: descriptionStyle,
       );
     }
 
@@ -82,6 +98,8 @@ class UIKitCard extends StatelessWidget {
       icon: icon,
       left: left,
       onTap: onTap,
+      titleStyle: titleStyle,
+      subtitleStyle: subtitleStyle,
     );
   }
 }
@@ -96,6 +114,10 @@ class _VerticalCard extends StatelessWidget {
   final AssetGenImage? icon;
   final Widget? left;
 
+  final TextStyle? titleStyle;
+  final TextStyle? subtitleStyle;
+  final TextStyle? descriptionStyle;
+
   const _VerticalCard({
     required this.title,
     required this.subtitle,
@@ -105,7 +127,16 @@ class _VerticalCard extends StatelessWidget {
     this.action,
     this.icon,
     this.left,
+    this.titleStyle,
+    this.subtitleStyle,
+    this.descriptionStyle,
   });
+
+  TextStyle get _titleStyle => titleStyle ?? MyTheme.style.heading.h4;
+  TextStyle get _subtitleStyle =>
+      subtitleStyle ??
+      MyTheme.style.body.s.copyWith(color: MyTheme.color.palette.dark.light);
+  TextStyle get _descriptionStyle => descriptionStyle ?? MyTheme.style.body.s;
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +164,7 @@ class _VerticalCard extends StatelessWidget {
                   vertical: AppSetting.setHeight(MyTheme.defaultPadding),
                 ),
                 child: Column(
-                  crossAxisAlignment: .start,
+                  crossAxisAlignment: .stretch,
                   children: [
                     if (icon != null || left != null) ...[
                       if (icon != null)
@@ -157,26 +188,26 @@ class _VerticalCard extends StatelessWidget {
                     ],
                     Text(
                       title,
-                      style: MyTheme.style.heading.h4,
+                      style: _titleStyle,
                       maxLines: 1,
                       overflow: .ellipsis,
                     ),
                     Space.h(4),
                     Text(
                       subtitle,
-                      style: MyTheme.style.body.s.copyWith(
-                        color: MyTheme.color.palette.dark.light,
-                      ),
+                      style: _subtitleStyle,
                       maxLines: 1,
                       overflow: .ellipsis,
                     ),
-                    Space.h(16),
-                    Text(
-                      description,
-                      style: MyTheme.style.body.s,
-                      maxLines: 4,
-                      overflow: .ellipsis,
-                    ),
+                    if (description.isNotEmpty) ...[
+                      Space.h(16),
+                      Text(
+                        description,
+                        style: _descriptionStyle,
+                        maxLines: 4,
+                        overflow: .ellipsis,
+                      ),
+                    ],
                     if (action != null) ...[Space.h(16), action!],
                   ],
                 ),
@@ -204,6 +235,9 @@ class _HorizontalCard extends StatelessWidget {
   final Widget? left;
   final VoidCallback? onTap;
 
+  final TextStyle? titleStyle;
+  final TextStyle? subtitleStyle;
+
   const _HorizontalCard({
     required this.title,
     required this.subtitle,
@@ -212,7 +246,14 @@ class _HorizontalCard extends StatelessWidget {
     this.icon,
     this.left,
     this.onTap,
+    this.titleStyle,
+    this.subtitleStyle,
   });
+
+  TextStyle get _titleStyle => titleStyle ?? MyTheme.style.heading.h4;
+  TextStyle get _subtitleStyle =>
+      subtitleStyle ??
+      MyTheme.style.body.s.copyWith(color: MyTheme.color.palette.dark.light);
 
   @override
   Widget build(BuildContext context) {
@@ -276,16 +317,14 @@ class _HorizontalCard extends StatelessWidget {
                           children: [
                             Text(
                               title,
-                              style: MyTheme.style.heading.h4,
+                              style: _titleStyle,
                               maxLines: 1,
                               overflow: .ellipsis,
                             ),
                             Space.h(4),
                             Text(
                               subtitle,
-                              style: MyTheme.style.body.s.copyWith(
-                                color: MyTheme.color.palette.dark.light,
-                              ),
+                              style: _subtitleStyle,
                               maxLines: 1,
                               overflow: .ellipsis,
                             ),

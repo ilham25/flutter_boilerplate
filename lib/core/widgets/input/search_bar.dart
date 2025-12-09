@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
+import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
 class UIKitSearchBar extends StatefulWidget {
   final TextEditingController? controller;
+  final FocusNode? focusNode;
 
   final String? placeholder;
   final String? errorText;
@@ -12,8 +14,13 @@ class UIKitSearchBar extends StatefulWidget {
   final bool enabled;
   final bool obscureText;
   final bool readOnly;
+  final bool autofocus;
 
   final TextInputType? keyboardType;
+
+  final VoidCallback? onTap;
+  final VoidCallback? onClear;
+  final ValueChanged<String>? onSubmitted;
 
   const UIKitSearchBar({
     super.key,
@@ -24,6 +31,11 @@ class UIKitSearchBar extends StatefulWidget {
     this.obscureText = false,
     this.keyboardType,
     this.readOnly = false,
+    this.onTap,
+    this.focusNode,
+    this.autofocus = false,
+    this.onClear,
+    this.onSubmitted,
   });
 
   @override
@@ -33,12 +45,20 @@ class UIKitSearchBar extends StatefulWidget {
 class _UIKitSearchBarState extends State<UIKitSearchBar> {
   late TextEditingController _controller;
   late FocusNode _focusNode;
+  String text = "";
 
   @override
   void initState() {
     super.initState();
     _controller = widget.controller ?? TextEditingController();
-    _focusNode = FocusNode();
+    _focusNode = widget.focusNode ?? FocusNode();
+
+    text = _controller.text;
+    _controller.addListener(() {
+      setState(() {
+        text = _controller.text;
+      });
+    });
   }
 
   @override
@@ -70,6 +90,29 @@ class _UIKitSearchBarState extends State<UIKitSearchBar> {
     );
   }
 
+  Widget? get _rightIcon {
+    if (widget.onClear == null || text.isEmpty) return null;
+
+    return SizedBox(
+      width: AppSetting.setWidth(44),
+      child: Container(
+        margin: EdgeInsets.only(right: _padding.right),
+        child: Row(
+          mainAxisAlignment: .end,
+          children: [
+            UIKitIconButton.secondary(
+              icon: Assets.icons.close,
+              onTap: widget.onClear,
+              iconSize: 12,
+              size: 16,
+              iconColor: MyTheme.color.palette.dark.light,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -79,6 +122,8 @@ class _UIKitSearchBarState extends State<UIKitSearchBar> {
           controller: _controller,
           focusNode: _focusNode,
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          onTap: widget.onTap,
+          autofocus: widget.autofocus,
           decoration: InputDecoration(
             filled: true,
             fillColor: MyTheme.color.palette.light.light,
@@ -142,10 +187,18 @@ class _UIKitSearchBarState extends State<UIKitSearchBar> {
               minHeight: AppSetting.setHeight(16),
               minWidth: AppSetting.setWidth(44),
             ),
+            suffixIcon: _rightIcon,
+            suffixIconConstraints: BoxConstraints(
+              maxHeight: AppSetting.setHeight(16),
+              maxWidth: AppSetting.setWidth(44),
+              minHeight: AppSetting.setHeight(16),
+              minWidth: AppSetting.setWidth(44),
+            ),
           ),
           style: _textStyle,
           keyboardType: widget.keyboardType,
           readOnly: widget.readOnly,
+          onSubmitted: widget.onSubmitted,
         ),
         if (widget.errorText != null) ...[
           Space.h(4),

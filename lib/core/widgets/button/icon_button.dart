@@ -32,12 +32,15 @@ class UIKitIconButton extends StatelessWidget {
     required AssetGenImage icon,
     double size = 40,
     double radius = 40,
+    double? iconSize,
+    Color? iconColor,
   }) => UIKitIconButton(
     onTap: onTap,
     size: size,
     icon: icon,
     radius: radius,
-    iconColor: getIconColor(variant: .secondary),
+    iconSize: iconSize,
+    iconColor: iconColor ?? getIconColor(variant: .secondary),
     color: getBackgroundColor(variant: .secondary),
   );
 
