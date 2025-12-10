@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/core/widgets/button/button.dart';
+import 'package:flutter_boilerplate/core/widgets/image/image_caching.dart';
 import 'package:flutter_boilerplate/core/widgets/progress/pagination_dots.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
@@ -17,8 +18,15 @@ class OnboardingInitScreen extends StatelessWidget {
   }
 }
 
-class OnboardingInitBody extends StatelessWidget {
+class OnboardingInitBody extends StatefulWidget {
   const OnboardingInitBody({super.key});
+
+  @override
+  State<OnboardingInitBody> createState() => _OnboardingInitBodyState();
+}
+
+class _OnboardingInitBodyState extends State<OnboardingInitBody> {
+  final PageController _controller = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +35,11 @@ class OnboardingInitBody extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: MyTheme.color.palette.highlight.lightest,
-                ),
-                child: Center(
-                  child: Assets.icons.image.image(
-                    height: AppSetting.setHeight(32),
-                    width: AppSetting.setWidth(32),
-                    color: MyTheme.color.palette.highlight.light,
-                  ),
-                ),
+              child: PageView(
+                controller: _controller,
+                children: images
+                    .map((image) => ImageCaching(imageUrl: image))
+                    .toList(),
               ),
             ),
             Container(
@@ -50,7 +52,15 @@ class OnboardingInitBody extends StatelessWidget {
                 crossAxisAlignment: .stretch,
                 children: [
                   Row(
-                    children: [UIKitPaginationDots(dots: 3, currentIndex: 0)],
+                    children: [
+                      UIKitPaginationDots(
+                        dots: images.length,
+                        controller: _controller,
+                        onDotTap: (index) {
+                          _controller.jumpToPage(index);
+                        },
+                      ),
+                    ],
                   ),
                   Space.h(24),
                   Text(
@@ -81,3 +91,9 @@ class OnboardingInitBody extends StatelessWidget {
     );
   }
 }
+
+final List<String> images = [
+  "https://picsum.photos/540/960?random=1",
+  "https://picsum.photos/540/960?random=2",
+  "https://picsum.photos/540/960?random=3",
+];
