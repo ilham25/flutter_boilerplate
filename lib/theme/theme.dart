@@ -15,7 +15,7 @@ class MyTheme {
   static ThemeData theme = AppTheme.lightTheme;
 
   // Padding
-  static const double defaultPadding = 20.0;
+  static const double defaultPadding = 16;
 
   // Colors
   static PColor color = PColor();

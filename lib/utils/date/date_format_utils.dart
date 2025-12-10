@@ -1,7 +1,6 @@
-
 import 'package:intl/intl.dart';
 
-final DateFormat formatterMonthYear = DateFormat('MMM yyyy',);
+final DateFormat formatterMonthYear = DateFormat('MMM yyyy');
 
 final DateFormat formatterClassic = DateFormat('yyyy-MM-dd');
 final DateFormat formatterBarcode = DateFormat('ddMMyyyy');
@@ -23,6 +22,7 @@ final DateFormat formatterTimeOnly = DateFormat.Hm();
 final DateFormat formatDay = DateFormat('d');
 final DateFormat formatDate = DateFormat('dd');
 final DateFormat formatDateMonth = DateFormat('dd MMM', "id");
+final DateFormat formatMonthDate = DateFormat('MMM dd', "id");
 
 final DateFormat formatDayName = DateFormat('EEEE', "id");
 final DateFormat formatDayNameSort = DateFormat('EEE', "id");
@@ -30,7 +30,6 @@ final DateFormat formatFull = DateFormat('EEEE, dd MMMM yyyy', "id");
 final DateFormat formatFullTime = DateFormat('dd MMMM yyyy HH:mm', "id");
 final DateFormat formatterTimeDisplay = DateFormat("HH:mm");
 final DateFormat formatterClassicSlash = DateFormat('dd/MM');
-
 
 String formatDateTime(DateTime dateTime) {
   // Menggunakan paket intl untuk format tertentu

@@ -13,15 +13,20 @@ class UIKitCard extends StatelessWidget {
   final String subtitle;
   final String description;
   final String? image;
+
+  final double? width;
+  final double? height;
+
   final UIKitTag? tag;
   final UIKitButton? action;
   final AssetGenImage? icon;
   final Widget? left;
-  final VoidCallback? onTap;
 
   final TextStyle? titleStyle;
   final TextStyle? subtitleStyle;
   final TextStyle? descriptionStyle;
+
+  final VoidCallback? onTap;
 
   const UIKitCard({
     super.key,
@@ -38,6 +43,8 @@ class UIKitCard extends StatelessWidget {
     this.titleStyle,
     this.subtitleStyle,
     this.descriptionStyle,
+    this.width,
+    this.height,
   }) : assert(
          image == null || icon == null || left == null,
          'You can not use either image, icon or left widget at the same time',
@@ -58,6 +65,8 @@ class UIKitCard extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? subtitleStyle,
     TextStyle? descriptionStyle,
+    double? width,
+    double? height,
   }) => UIKitCard(
     variant: .horizontal,
     title: title,
@@ -70,6 +79,8 @@ class UIKitCard extends StatelessWidget {
     titleStyle: titleStyle,
     subtitleStyle: subtitleStyle,
     descriptionStyle: descriptionStyle,
+    height: height,
+    width: width,
   );
 
   @override
@@ -87,6 +98,8 @@ class UIKitCard extends StatelessWidget {
         titleStyle: titleStyle,
         subtitleStyle: subtitleStyle,
         descriptionStyle: descriptionStyle,
+        width: width,
+        height: height,
       );
     }
 
@@ -100,6 +113,8 @@ class UIKitCard extends StatelessWidget {
       onTap: onTap,
       titleStyle: titleStyle,
       subtitleStyle: subtitleStyle,
+      width: width,
+      height: height,
     );
   }
 }
@@ -109,6 +124,10 @@ class _VerticalCard extends StatelessWidget {
   final String subtitle;
   final String description;
   final String? image;
+
+  final double? width;
+  final double? height;
+
   final UIKitTag? tag;
   final UIKitButton? action;
   final AssetGenImage? icon;
@@ -130,6 +149,8 @@ class _VerticalCard extends StatelessWidget {
     this.titleStyle,
     this.subtitleStyle,
     this.descriptionStyle,
+    this.width,
+    this.height,
   });
 
   TextStyle get _titleStyle => titleStyle ?? MyTheme.style.heading.h4;
@@ -138,11 +159,15 @@ class _VerticalCard extends StatelessWidget {
       MyTheme.style.body.s.copyWith(color: MyTheme.color.palette.dark.light);
   TextStyle get _descriptionStyle => descriptionStyle ?? MyTheme.style.body.s;
 
+  double? get _width => width ?? AppSetting.setWidth(200);
+  double? get _height => height;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: .antiAlias,
-      width: AppSetting.setWidth(200),
+      width: _width,
+      height: _height,
       decoration: BoxDecoration(
         borderRadius: .circular(16),
         color: MyTheme.color.palette.light.light,
@@ -230,6 +255,10 @@ class _HorizontalCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final String? image;
+
+  final double? width;
+  final double? height;
+
   final UIKitButton? action;
   final AssetGenImage? icon;
   final Widget? left;
@@ -248,12 +277,17 @@ class _HorizontalCard extends StatelessWidget {
     this.onTap,
     this.titleStyle,
     this.subtitleStyle,
+    this.width,
+    this.height,
   });
 
   TextStyle get _titleStyle => titleStyle ?? MyTheme.style.heading.h4;
   TextStyle get _subtitleStyle =>
       subtitleStyle ??
       MyTheme.style.body.s.copyWith(color: MyTheme.color.palette.dark.light);
+
+  double? get _width => width;
+  double? get _height => height ?? AppSetting.setHeight(72);
 
   @override
   Widget build(BuildContext context) {
@@ -262,7 +296,8 @@ class _HorizontalCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       clipBehavior: .antiAlias,
       child: Ink(
-        height: AppSetting.setHeight(72),
+        width: _width,
+        height: _height,
         decoration: BoxDecoration(
           borderRadius: .circular(16),
           color: MyTheme.color.palette.light.light,

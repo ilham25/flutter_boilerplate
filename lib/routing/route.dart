@@ -34,6 +34,9 @@ class AppRouter extends RootStackRouter {
       children: [AutoRoute(page: SearchRoute.page)],
     ),
 
+    // -- Events
+    AutoRoute(page: EventsRoute.page),
+
     // Common
     AutoRoute(page: SearchRoute.page),
     AutoRoute(page: FilterRoute.page),
