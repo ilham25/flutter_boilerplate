@@ -23,6 +23,7 @@ class UIKitListItem extends StatelessWidget {
 
   final Color? leftIconColor;
   final Color? rightIconColor;
+  final Color? backgroundColor;
 
   final UIKitListItemVariant? variant;
 
@@ -30,6 +31,7 @@ class UIKitListItem extends StatelessWidget {
   final TextStyle? descriptionTextStyle;
 
   final EdgeInsets? padding;
+  final BorderRadius borderRadius;
 
   const UIKitListItem({
     super.key,
@@ -49,6 +51,8 @@ class UIKitListItem extends StatelessWidget {
     this.titleTextStyle,
     this.descriptionTextStyle,
     this.padding,
+    this.borderRadius = BorderRadius.zero,
+    this.backgroundColor,
   });
 
   factory UIKitListItem.toggle({
@@ -209,9 +213,15 @@ class UIKitListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       type: .transparency,
+      borderRadius: borderRadius,
       child: Ink(
+        decoration: BoxDecoration(
+          borderRadius: borderRadius,
+          color: backgroundColor,
+        ),
         child: InkWell(
           onTap: onTap,
+          borderRadius: borderRadius,
           child: Padding(
             padding: _padding,
             child: Row(

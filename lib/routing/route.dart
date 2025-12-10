@@ -31,6 +31,10 @@ class AppRouter extends RootStackRouter {
     // -- Subscription Plans
     AutoRoute(page: SubscriptionPlansRoute.page),
 
+    // -- Onboarding
+    AutoRoute(page: OnboardingInitRoute.page),
+    AutoRoute(page: OnboardingPersonalizeRoute.page),
+
     // -- Search Filter
     AutoRoute(
       page: SearchFilterRoute.page,

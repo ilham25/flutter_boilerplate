@@ -161,7 +161,7 @@ class _HomeBodyState extends State<HomeBody> {
           child: UIKitBanner(
             title: "Events",
             description: "Events Screen Template Example",
-            image: Assets.images.searchFilterTemplatePreview.path,
+            image: Assets.images.eventsTemplatePreview.path,
             action: "Show Template",
             onAction: () {
               context.router.push(const EventsRoute());
@@ -178,6 +178,19 @@ class _HomeBodyState extends State<HomeBody> {
             action: "Show Template",
             onAction: () {
               context.router.push(const SubscriptionPlansRoute());
+            },
+          ),
+        ),
+        Space.h(16),
+        SizedBox(
+          height: AppSetting.setHeight(160),
+          child: UIKitBanner(
+            title: "Onboarding",
+            description: "Onboarding Screen Template Example",
+            image: Assets.images.onboardingTemplatePreview.path,
+            action: "Show Template",
+            onAction: () {
+              context.router.push(const OnboardingInitRoute());
             },
           ),
         ),

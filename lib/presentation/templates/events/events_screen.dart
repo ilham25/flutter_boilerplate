@@ -158,6 +158,9 @@ class _EventsBodyState extends State<EventsBody> {
                         subtitle: item.location,
                         image:
                             "https://picsum.photos/200/300?random=${item.id}",
+                        onTap: () {
+                          //
+                        },
                       );
                     },
                   ),

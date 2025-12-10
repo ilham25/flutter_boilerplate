@@ -239,6 +239,10 @@ class $AssetsImagesGen {
   AssetGenImage get logoFull =>
       const AssetGenImage('assets/images/logo_full.png');
 
+  /// File path: assets/images/onboarding_template_preview.png
+  AssetGenImage get onboardingTemplatePreview =>
+      const AssetGenImage('assets/images/onboarding_template_preview.png');
+
   /// File path: assets/images/search_filter_template_preview.png
   AssetGenImage get searchFilterTemplatePreview =>
       const AssetGenImage('assets/images/search_filter_template_preview.png');
@@ -260,6 +264,7 @@ class $AssetsImagesGen {
     feedbackTemplatePreview,
     loginTemplatePreview,
     logoFull,
+    onboardingTemplatePreview,
     searchFilterTemplatePreview,
     settingsTemplatePreview,
     subscriptionPlansTemplatePreview,
