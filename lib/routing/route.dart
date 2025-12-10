@@ -44,6 +44,12 @@ class AppRouter extends RootStackRouter {
     // -- Events
     AutoRoute(page: EventsRoute.page),
 
+    // -- E-Commerce
+    AutoRoute(page: EcommerceRoute.page),
+    AutoRoute(page: EcommerceProductDetailRoute.page),
+    AutoRoute(page: EcommerceBagRoute.page),
+    AutoRoute(page: EcommerceCheckoutRoute.page),
+
     // Common
     AutoRoute(page: SearchRoute.page),
     AutoRoute(page: FilterRoute.page),

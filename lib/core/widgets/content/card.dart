@@ -100,6 +100,7 @@ class UIKitCard extends StatelessWidget {
         descriptionStyle: descriptionStyle,
         width: width,
         height: height,
+        onTap: onTap,
       );
     }
 
@@ -137,6 +138,8 @@ class _VerticalCard extends StatelessWidget {
   final TextStyle? subtitleStyle;
   final TextStyle? descriptionStyle;
 
+  final VoidCallback? onTap;
+
   const _VerticalCard({
     required this.title,
     required this.subtitle,
@@ -151,6 +154,7 @@ class _VerticalCard extends StatelessWidget {
     this.descriptionStyle,
     this.width,
     this.height,
+    this.onTap,
   });
 
   TextStyle get _titleStyle => titleStyle ?? MyTheme.style.heading.h4;
@@ -164,88 +168,97 @@ class _VerticalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Material(
+      type: .transparency,
       clipBehavior: .antiAlias,
-      width: _width,
-      height: _height,
-      decoration: BoxDecoration(
-        borderRadius: .circular(16),
-        color: MyTheme.color.palette.light.light,
-      ),
-      child: Stack(
-        children: [
-          Column(
-            mainAxisSize: .min,
-            mainAxisAlignment: .start,
+      borderRadius: .circular(16),
+
+      child: Ink(
+        width: _width,
+        height: _height,
+        decoration: BoxDecoration(
+          borderRadius: .circular(16),
+          color: MyTheme.color.palette.light.light,
+        ),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: .circular(16),
+          child: Stack(
             children: [
-              if (image != null)
-                SizedBox(
-                  height: AppSetting.setHeight(120),
-                  child: ImageCaching(imageUrl: image!),
-                ),
-              Container(
-                padding: .symmetric(
-                  horizontal: AppSetting.setWidth(MyTheme.defaultPadding),
-                  vertical: AppSetting.setHeight(MyTheme.defaultPadding),
-                ),
-                child: Column(
-                  crossAxisAlignment: .stretch,
-                  children: [
-                    if (icon != null || left != null) ...[
-                      if (icon != null)
-                        Container(
-                          height: AppSetting.setHeight(40),
-                          width: AppSetting.setWidth(40),
-                          decoration: BoxDecoration(
-                            shape: .circle,
-                            color: MyTheme.color.palette.light.medium,
-                          ),
-                          child: Center(
-                            child: icon!.image(
-                              height: AppSetting.setHeight(20),
-                              width: AppSetting.setWidth(20),
-                              color: MyTheme.color.primary,
+              Column(
+                mainAxisSize: .min,
+                mainAxisAlignment: .start,
+                children: [
+                  if (image != null)
+                    SizedBox(
+                      height: AppSetting.setHeight(120),
+                      child: ImageCaching(imageUrl: image!),
+                    ),
+                  Container(
+                    padding: .symmetric(
+                      horizontal: AppSetting.setWidth(MyTheme.defaultPadding),
+                      vertical: AppSetting.setHeight(MyTheme.defaultPadding),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: .stretch,
+                      children: [
+                        if (icon != null || left != null) ...[
+                          if (icon != null)
+                            Container(
+                              height: AppSetting.setHeight(40),
+                              width: AppSetting.setWidth(40),
+                              decoration: BoxDecoration(
+                                shape: .circle,
+                                color: MyTheme.color.palette.light.medium,
+                              ),
+                              child: Center(
+                                child: icon!.image(
+                                  height: AppSetting.setHeight(20),
+                                  width: AppSetting.setWidth(20),
+                                  color: MyTheme.color.primary,
+                                ),
+                              ),
                             ),
-                          ),
+                          if (left != null) left!,
+                          Space.h(32),
+                        ],
+                        Text(
+                          title,
+                          style: _titleStyle,
+                          maxLines: 1,
+                          overflow: .ellipsis,
                         ),
-                      if (left != null) left!,
-                      Space.h(32),
-                    ],
-                    Text(
-                      title,
-                      style: _titleStyle,
-                      maxLines: 1,
-                      overflow: .ellipsis,
+                        Space.h(4),
+                        Text(
+                          subtitle,
+                          style: _subtitleStyle,
+                          maxLines: 1,
+                          overflow: .ellipsis,
+                        ),
+                        if (description.isNotEmpty) ...[
+                          Space.h(16),
+                          Text(
+                            description,
+                            style: _descriptionStyle,
+                            maxLines: 4,
+                            overflow: .ellipsis,
+                          ),
+                        ],
+                        if (action != null) ...[Space.h(16), action!],
+                      ],
                     ),
-                    Space.h(4),
-                    Text(
-                      subtitle,
-                      style: _subtitleStyle,
-                      maxLines: 1,
-                      overflow: .ellipsis,
-                    ),
-                    if (description.isNotEmpty) ...[
-                      Space.h(16),
-                      Text(
-                        description,
-                        style: _descriptionStyle,
-                        maxLines: 4,
-                        overflow: .ellipsis,
-                      ),
-                    ],
-                    if (action != null) ...[Space.h(16), action!],
-                  ],
-                ),
+                  ),
+                ],
               ),
+              if (tag != null)
+                Positioned(
+                  top: AppSetting.setHeight(10),
+                  right: AppSetting.setWidth(10),
+                  child: tag!,
+                ),
             ],
           ),
-          if (tag != null)
-            Positioned(
-              top: AppSetting.setHeight(10),
-              right: AppSetting.setWidth(10),
-              child: tag!,
-            ),
-        ],
+        ),
       ),
     );
   }

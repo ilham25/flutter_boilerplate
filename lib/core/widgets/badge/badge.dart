@@ -9,14 +9,25 @@ class UIKitBadge extends StatelessWidget {
   final double? size;
   final double? iconSize;
 
-  const UIKitBadge({super.key, this.icon, this.count, this.size, this.iconSize})
-    : assert(
-        icon == null || count == null,
-        "icon and count cannot exist at the same time",
-      );
+  final Widget? child;
 
-  factory UIKitBadge.count({required int count, double? size}) {
-    return UIKitBadge(count: count, size: size);
+  final BoxBorder? border;
+
+  const UIKitBadge({
+    super.key,
+    this.icon,
+    this.count,
+    this.size,
+    this.iconSize,
+    this.child,
+    this.border,
+  }) : assert(
+         icon == null || count == null,
+         "icon and count cannot exist at the same time",
+       );
+
+  factory UIKitBadge.count({required int count, double? size, Widget? child}) {
+    return UIKitBadge(count: count, size: size, child: child);
   }
 
   double get _iconSize => AppSetting.setHeight(iconSize ?? 8);
@@ -61,15 +72,28 @@ class UIKitBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final badge = Container(
       height: height,
       width: width,
       decoration: BoxDecoration(
         borderRadius: .circular(20),
         color: MyTheme.color.primary,
+        border: border,
       ),
 
       child: Center(child: _buildChild()),
+    );
+    if (child == null) return badge;
+
+    return Stack(
+      children: [
+        child!,
+        Positioned(
+          bottom: AppSetting.setHeight(2),
+          right: AppSetting.setWidth(2),
+          child: IgnorePointer(child: badge),
+        ),
+      ],
     );
   }
 }

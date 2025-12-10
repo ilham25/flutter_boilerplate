@@ -219,6 +219,10 @@ class $AssetsImagesGen {
   AssetGenImage get chatTemplatePreview =>
       const AssetGenImage('assets/images/chat_template_preview.png');
 
+  /// File path: assets/images/ecommerce_template_preview.png
+  AssetGenImage get ecommerceTemplatePreview =>
+      const AssetGenImage('assets/images/ecommerce_template_preview.png');
+
   /// File path: assets/images/empty_state_template_preview.png
   AssetGenImage get emptyStateTemplatePreview =>
       const AssetGenImage('assets/images/empty_state_template_preview.png');
@@ -259,6 +263,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     chatTemplatePreview,
+    ecommerceTemplatePreview,
     emptyStateTemplatePreview,
     eventsTemplatePreview,
     feedbackTemplatePreview,
