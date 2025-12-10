@@ -6,13 +6,20 @@ import 'package:flutter_boilerplate/core/widgets/input/search_bar.dart';
 import 'package:flutter_boilerplate/routing/route.gr.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
-class UIKitSearch {
-  static Future<T?> show<T>({
-    required BuildContext context,
-    required UIKitSearchDelegate delegate,
-  }) async {
-    return await context.router.push(SearchRoute(delegate: delegate));
-  }
+// class UIKitSearch {
+//   static Future<T?> show<T>({
+//     required BuildContext context,
+//     required UIKitSearchDelegate delegate,
+//   }) async {
+//     return await context.router.push(SearchRoute(delegate: delegate));
+//   }
+// }
+
+Future<T?> showUIKitSearch<T>({
+  required BuildContext context,
+  required UIKitSearchDelegate delegate,
+}) async {
+  return await context.router.push(SearchRoute(delegate: delegate));
 }
 
 abstract class UIKitSearchDelegate<T> {

@@ -33,10 +33,10 @@ class AppRouter extends RootStackRouter {
       page: SearchFilterRoute.page,
       children: [AutoRoute(page: SearchRoute.page)],
     ),
-    AutoRoute(page: FilterRoute.page),
 
     // Common
     AutoRoute(page: SearchRoute.page),
+    AutoRoute(page: FilterRoute.page),
   ];
   @override
   List<AutoRouteGuard> get guards => [];

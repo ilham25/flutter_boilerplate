@@ -11,6 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i14;
 import 'package:flutter/material.dart' as _i15;
+import 'package:flutter_boilerplate/core/widgets/filter/filter.dart' as _i6;
 import 'package:flutter_boilerplate/core/widgets/search/search.dart' as _i10;
 import 'package:flutter_boilerplate/presentation/home/home_screen.dart' as _i7;
 import 'package:flutter_boilerplate/presentation/splash/splash_screen.dart'
@@ -29,8 +30,6 @@ import 'package:flutter_boilerplate/presentation/templates/login/login_screen.da
     as _i8;
 import 'package:flutter_boilerplate/presentation/templates/login/sign_up_screen.dart'
     as _i12;
-import 'package:flutter_boilerplate/presentation/templates/search_filter/filter_screen.dart'
-    as _i6;
 import 'package:flutter_boilerplate/presentation/templates/search_filter/search_filter_screen.dart'
     as _i9;
 import 'package:flutter_boilerplate/presentation/templates/settings/settings_screen.dart'
@@ -149,18 +148,49 @@ class FeedbackRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.FilterScreen]
-class FilterRoute extends _i14.PageRouteInfo<void> {
-  const FilterRoute({List<_i14.PageRouteInfo>? children})
-    : super(FilterRoute.name, initialChildren: children);
+class FilterRoute extends _i14.PageRouteInfo<FilterRouteArgs> {
+  FilterRoute({
+    _i15.Key? key,
+    required _i6.UIKitFilterDelegate<dynamic> delegate,
+    List<_i14.PageRouteInfo>? children,
+  }) : super(
+         FilterRoute.name,
+         args: FilterRouteArgs(key: key, delegate: delegate),
+         initialChildren: children,
+       );
 
   static const String name = 'FilterRoute';
 
   static _i14.PageInfo page = _i14.PageInfo(
     name,
     builder: (data) {
-      return const _i6.FilterScreen();
+      final args = data.argsAs<FilterRouteArgs>();
+      return _i6.FilterScreen(key: args.key, delegate: args.delegate);
     },
   );
+}
+
+class FilterRouteArgs {
+  const FilterRouteArgs({this.key, required this.delegate});
+
+  final _i15.Key? key;
+
+  final _i6.UIKitFilterDelegate<dynamic> delegate;
+
+  @override
+  String toString() {
+    return 'FilterRouteArgs{key: $key, delegate: $delegate}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! FilterRouteArgs) return false;
+    return key == other.key && delegate == other.delegate;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ delegate.hashCode;
 }
 
 /// generated route for

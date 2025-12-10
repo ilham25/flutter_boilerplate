@@ -12,22 +12,22 @@ class PColor {
   PColor._internal();
 
   // Define colors with default values
-  Color primary = flavor.current.primaryColor;
-  Color primaryLight = flavor.current.primaryLightColor;
-  Color secondary = flavor.current.secondaryColor;
-  Color success = const Color(0xFF3AC0A0);
-  Color info = const Color(0xFF05BFDB);
-  Color warning = const Color(0xFFFFB37C);
-  Color danger = const Color(0xFFFF616D);
-  Color disabled = const Color(0xFFDCDEE7);
-  Color white = const Color(0xFFFFFFFF);
-  Color main = const Color(0xFF2E3261);
-  Color black = const Color(0xFF151316);
-  Color grey = const Color(0xff8288A2);
-  Color softGrey = const Color(0xff8F95B2);
-  Color orange = const Color(0xffE8A01D);
-  Color limeGreen = const Color(0xff4BAC87);
-  Color brown = const Color(0xff66460D);
+  Color get primary => flavor.current.primaryColor;
+  Color get primaryLight => flavor.current.primaryLightColor;
+  Color get secondary => flavor.current.secondaryColor;
+  Color get success => palette.success.medium;
+  Color get info => const Color(0xFF05BFDB);
+  Color get warning => palette.warning.medium;
+  Color get danger => palette.error.medium;
+  Color get disabled => const Color(0xFFDCDEE7);
+  Color get white => const Color(0xFFFFFFFF);
+  Color get main => const Color(0xFF2E3261);
+  Color get black => const Color(0xFF151316);
+  Color get grey => const Color(0xff8288A2);
+  Color get softGrey => const Color(0xff8F95B2);
+  Color get orange => const Color(0xffE8A01D);
+  Color get limeGreen => const Color(0xff4BAC87);
+  Color get brown => const Color(0xff66460D);
 
   /// Listen to theme mode so white and black based on the theme mode
   // Color get blackWhite {
@@ -37,7 +37,7 @@ class PColor {
   //       : black;
   // }
 
-  ColorPalette palette = ColorPalette();
+  ColorPalette get palette => ColorPalette();
 }
 
 class ColorPalette {
@@ -67,6 +67,34 @@ class HighlightColor {
 
   // Private constructor
   HighlightColor._internal();
+
+  /// Blue
+  ///   Color darkest = const Color(0xFF006FFD);
+  ///   Color dark = const Color(0xFF2897FF);
+  ///   Color medium = const Color(0xFF6FBAFF);
+  ///   Color light = const Color(0xFFB4DBFF);
+  ///   Color lightest = const Color(0xFFEAF2FF);
+
+  /// Pink
+  ///   Color darkest = const Color(0xFFE91E63);
+  ///   Color dark = const Color(0xFFEC407A);
+  ///   Color medium = const Color(0xFFF06292);
+  ///   Color light = const Color(0xFFF8BBD0);
+  ///   Color lightest = const Color(0xFFFCE4EC);
+
+  /// Orange
+  ///   Color darkest = const Color(0xFFFF6D00);
+  ///   Color dark = const Color(0xFFFF8A38);
+  ///   Color medium = const Color(0xFFFFA866);
+  ///   Color light = const Color(0xFFFFCCA3);
+  ///   Color lightest = const Color(0xFFFFF3E0);
+
+  /// Green
+  ///   Color darkest = const Color(0xFF00C853);
+  ///   Color dark = const Color(0xFF4CAF50);
+  ///   Color medium = const Color(0xFF81C784);
+  ///   Color light = const Color(0xFFA5D6A7);
+  ///   Color lightest = const Color(0xFFE8F5E9);
 
   Color darkest = const Color(0xFF006FFD);
   Color dark = const Color(0xFF2897FF);

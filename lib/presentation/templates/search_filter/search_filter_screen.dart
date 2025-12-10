@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/bloc/templates/search_filter_bloc.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
+import 'package:flutter_boilerplate/core/widgets/content/accordion.dart';
 import 'package:flutter_boilerplate/core/widgets/content/card.dart';
+import 'package:flutter_boilerplate/core/widgets/content/divider.dart';
 import 'package:flutter_boilerplate/core/widgets/content/list_item.dart';
+import 'package:flutter_boilerplate/core/widgets/content/tag.dart';
 import 'package:flutter_boilerplate/core/widgets/control/filter.dart';
 import 'package:flutter_boilerplate/core/widgets/control/sort.dart';
+import 'package:flutter_boilerplate/core/widgets/filter/filter.dart';
 import 'package:flutter_boilerplate/core/widgets/input/search_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/search/search.dart';
+import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 import 'package:flutter_boilerplate/utils/helper/debouncer.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -50,7 +55,7 @@ class SearchFilterBody extends StatelessWidget {
                 controller: _searchController,
                 readOnly: true,
                 onTap: () async {
-                  final result = await UIKitSearch.show<String>(
+                  final result = await showUIKitSearch<String>(
                     context: context,
                     delegate: SearchFilterDelegate(
                       bloc: context.read<SearchFilterBloc>(),
@@ -75,7 +80,20 @@ class SearchFilterBody extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: .spaceBetween,
-                children: [UIKitSort(), UIKitFilter(count: 2)],
+                children: [
+                  UIKitSort(),
+                  UIKitFilter(
+                    count: 2,
+                    onTap: () async {
+                      final result = await showUIKitFilter(
+                        context: context,
+                        delegate: FilterDelegate(),
+                      );
+
+                      if (result == null || !context.mounted) return;
+                    },
+                  ),
+                ],
               ),
             ),
             Expanded(
@@ -110,7 +128,8 @@ class SearchFilterBody extends StatelessWidget {
                                 title: item.title,
                                 subtitle:
                                     "€ ${item.price.toDouble().toStringAsFixed(2)}",
-                                image: item.image,
+                                image:
+                                    "https://picsum.photos/200/300?random=$index",
                                 titleStyle: MyTheme.style.body.s,
                                 subtitleStyle: MyTheme.style.heading.h4
                                     .copyWith(
@@ -132,30 +151,6 @@ class SearchFilterBody extends StatelessWidget {
     );
   }
 }
-
-/**
- * ListView.builder(
-                    padding: .symmetric(
-                      horizontal: AppSetting.setWidth(MyTheme.defaultPadding),
-                      vertical: AppSetting.setHeight(MyTheme.defaultPadding),
-                    ),
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      final item = items.elementAt(index);
-
-                      return UIKitCard(
-                        title: item.title,
-                        subtitle:
-                            "€ ${item.price.toDouble().toStringAsFixed(2)}",
-                        image: item.image,
-                        titleStyle: MyTheme.style.body.s,
-                        subtitleStyle: MyTheme.style.heading.h4.copyWith(
-                          color: MyTheme.color.palette.dark.darkest,
-                        ),
-                      );
-                    },
-                  )
- */
 
 class SearchFilterDelegate extends UIKitSearchDelegate<String> {
   final SearchFilterBloc bloc;
@@ -202,6 +197,68 @@ class SearchFilterDelegate extends UIKitSearchDelegate<String> {
             );
           },
         ),
+      ),
+    );
+  }
+}
+
+class FilterDelegate extends UIKitFilterDelegate {
+  final List<String> colors = [
+    "Black",
+    "White",
+    "Grey",
+    "Yellow",
+    "Blue",
+    "Purple",
+    "Green",
+    "Red",
+    "Orange",
+    "Gold",
+    "Silver",
+  ];
+  final List<String> selectedColors = ["Green"];
+
+  @override
+  Widget buildFilter(BuildContext context) {
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSetting.setWidth(MyTheme.defaultPadding),
+        vertical: AppSetting.setHeight(24),
+      ),
+      child: Column(
+        children: [
+          UIKitAccordion.count(title: "Category", count: 1),
+          UIKitDivider(),
+          UIKitAccordion.count(title: "Price Range"),
+          UIKitDivider(),
+          UIKitAccordion.count(
+            title: "Color",
+            count: 1,
+            defaultOpen: true,
+            content: Padding(
+              padding: .symmetric(vertical: AppSetting.setHeight(8)),
+              child: Wrap(
+                direction: .horizontal,
+                spacing: AppSetting.setWidth(8),
+                runSpacing: AppSetting.setHeight(8),
+                children: colors
+                    .map(
+                      (e) => UIKitTag(
+                        text: e,
+                        leftIcon: Assets.icons.placeholder,
+                        focused: selectedColors.contains(e),
+                        onTap: () {},
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
+          UIKitDivider(),
+          UIKitAccordion.count(title: "Size"),
+          UIKitDivider(),
+          UIKitAccordion.count(title: "Customer Review"),
+        ],
       ),
     );
   }
