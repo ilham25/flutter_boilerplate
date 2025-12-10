@@ -247,6 +247,11 @@ class $AssetsImagesGen {
   AssetGenImage get settingsTemplatePreview =>
       const AssetGenImage('assets/images/settings_template_preview.png');
 
+  /// File path: assets/images/subscription_plans_template_preview.png
+  AssetGenImage get subscriptionPlansTemplatePreview => const AssetGenImage(
+    'assets/images/subscription_plans_template_preview.png',
+  );
+
   /// List of all assets
   List<AssetGenImage> get values => [
     chatTemplatePreview,
@@ -257,6 +262,7 @@ class $AssetsImagesGen {
     logoFull,
     searchFilterTemplatePreview,
     settingsTemplatePreview,
+    subscriptionPlansTemplatePreview,
   ];
 }
 

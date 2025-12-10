@@ -28,6 +28,9 @@ class AppRouter extends RootStackRouter {
     // -- Empty State
     AutoRoute(page: EmptyStateRoute.page),
 
+    // -- Subscription Plans
+    AutoRoute(page: SubscriptionPlansRoute.page),
+
     // -- Search Filter
     AutoRoute(
       page: SearchFilterRoute.page,

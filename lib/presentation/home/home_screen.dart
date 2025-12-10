@@ -168,6 +168,19 @@ class _HomeBodyState extends State<HomeBody> {
             },
           ),
         ),
+        Space.h(16),
+        SizedBox(
+          height: AppSetting.setHeight(160),
+          child: UIKitBanner(
+            title: "Subscription Plans",
+            description: "Subscription Plans Screen Template Example",
+            image: Assets.images.subscriptionPlansTemplatePreview.path,
+            action: "Show Template",
+            onAction: () {
+              context.router.push(const SubscriptionPlansRoute());
+            },
+          ),
+        ),
       ],
     );
   }

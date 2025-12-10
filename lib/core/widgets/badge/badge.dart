@@ -7,8 +7,9 @@ class UIKitBadge extends StatelessWidget {
   final AssetGenImage? icon;
   final int? count;
   final double? size;
+  final double? iconSize;
 
-  const UIKitBadge({super.key, this.icon, this.count, this.size})
+  const UIKitBadge({super.key, this.icon, this.count, this.size, this.iconSize})
     : assert(
         icon == null || count == null,
         "icon and count cannot exist at the same time",
@@ -18,6 +19,8 @@ class UIKitBadge extends StatelessWidget {
     return UIKitBadge(count: count, size: size);
   }
 
+  double get _iconSize => AppSetting.setHeight(iconSize ?? 8);
+
   Widget _buildChild() {
     if (icon == null && count == null) {
       return SizedBox.shrink();
@@ -26,8 +29,8 @@ class UIKitBadge extends StatelessWidget {
     if (icon != null) {
       return Center(
         child: icon!.image(
-          height: AppSetting.setHeight(8),
-          width: AppSetting.setWidth(8),
+          height: _iconSize,
+          width: _iconSize,
           color: MyTheme.color.white,
         ),
       );

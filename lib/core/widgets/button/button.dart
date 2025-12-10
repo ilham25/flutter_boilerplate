@@ -28,7 +28,7 @@ class UIKitButton extends StatelessWidget {
   const UIKitButton({
     super.key,
     required this.title,
-    required this.onTap,
+    this.onTap,
     this.width,
     this.enable = true,
     this.isLoading = false,
