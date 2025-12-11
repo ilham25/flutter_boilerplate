@@ -184,20 +184,22 @@ class EcommerceProductDetailBody extends StatelessWidget {
             left: 0,
             right: 0,
             bottom: 0,
-            child: SafeArea(
-              top: false,
-              child: Container(
-                decoration: BoxDecoration(color: MyTheme.color.white),
-                padding: .symmetric(
-                  horizontal: AppSetting.setWidth(24),
-                  vertical: AppSetting.setHeight(24),
-                ),
-                child: UIKitButton(
-                  title: "Add to bag",
-                  leftIcon: Assets.icons.add,
-                  onTap: () {
-                    //
-                  },
+            child: Container(
+              decoration: BoxDecoration(color: MyTheme.color.white),
+              child: SafeArea(
+                top: false,
+                child: Padding(
+                  padding: .symmetric(
+                    horizontal: AppSetting.setWidth(24),
+                    vertical: AppSetting.setHeight(24),
+                  ),
+                  child: UIKitButton(
+                    title: "Add to bag",
+                    leftIcon: Assets.icons.add,
+                    onTap: () {
+                      //
+                    },
+                  ),
                 ),
               ),
             ),

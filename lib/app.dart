@@ -53,7 +53,7 @@ class _AppState extends State<App> {
                         ),
                         theme: AppTheme.lightTheme,
                         darkTheme: AppTheme.darkTheme,
-                        themeMode: mode,
+                        themeMode: .light,
                         title: flavor.current.name,
                         debugShowCheckedModeBanner: false,
                         localeResolutionCallback: (locale, supportedLocales) {
