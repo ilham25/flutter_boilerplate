@@ -6,6 +6,7 @@ import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/core/widgets/content/divider.dart';
 import 'package:flutter_boilerplate/core/widgets/ecommerce/shopping_cart_item.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
+import 'package:flutter_boilerplate/routing/route.gr.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
 @RoutePage()
@@ -100,7 +101,7 @@ class EcommerceBagBody extends StatelessWidget {
                     title: "Checkout",
                     leftIcon: Assets.icons.placeholder,
                     onTap: () {
-                      //
+                      context.router.push(const EcommerceCheckoutRoute());
                     },
                   ),
                 ],

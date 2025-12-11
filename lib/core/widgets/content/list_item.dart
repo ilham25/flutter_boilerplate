@@ -32,6 +32,7 @@ class UIKitListItem extends StatelessWidget {
 
   final EdgeInsets? padding;
   final BorderRadius borderRadius;
+  final BoxBorder? border;
 
   const UIKitListItem({
     super.key,
@@ -53,6 +54,7 @@ class UIKitListItem extends StatelessWidget {
     this.padding,
     this.borderRadius = BorderRadius.zero,
     this.backgroundColor,
+    this.border,
   });
 
   factory UIKitListItem.toggle({
@@ -218,6 +220,7 @@ class UIKitListItem extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: borderRadius,
           color: backgroundColor,
+          border: border,
         ),
         child: InkWell(
           onTap: onTap,

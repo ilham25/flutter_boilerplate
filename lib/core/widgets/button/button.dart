@@ -47,7 +47,7 @@ class UIKitButton extends StatelessWidget {
 
   factory UIKitButton.secondary({
     required String title,
-    required VoidCallback onTap,
+    VoidCallback? onTap,
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
     EdgeInsets? padding,
@@ -71,7 +71,7 @@ class UIKitButton extends StatelessWidget {
 
   factory UIKitButton.tertiary({
     required String title,
-    required VoidCallback onTap,
+    VoidCallback? onTap,
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
     EdgeInsets? padding,

@@ -118,6 +118,8 @@ class EcommerceBody extends StatelessWidget {
                           title: "Product ${index + 1}",
                           subtitle: "€ ${(index + 1) * 10}.00",
                           image: "",
+                          titleStyle: MyTheme.style.body.s,
+                          subtitleStyle: MyTheme.style.heading.h4.copyWith(),
                           onTap: () {
                             context.router.push(
                               const EcommerceProductDetailRoute(),

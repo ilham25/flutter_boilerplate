@@ -87,6 +87,12 @@ class _OnboardingPersonalizeBodyState extends State<OnboardingPersonalizeBody> {
                               ? MyTheme.color.palette.highlight.lightest
                               : Colors.transparent,
                           borderRadius: .circular(12),
+                          border: .all(
+                            color: selected
+                                ? MyTheme.color.palette.highlight.lightest
+                                : MyTheme.color.palette.light.dark,
+                            width: 0.5,
+                          ),
                           onTap: () {
                             setState(() {
                               if (selected) {
