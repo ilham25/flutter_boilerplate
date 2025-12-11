@@ -215,12 +215,65 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/chat_template_preview.png
+  AssetGenImage get chatTemplatePreview =>
+      const AssetGenImage('assets/images/chat_template_preview.png');
+
+  /// File path: assets/images/ecommerce_template_preview.png
+  AssetGenImage get ecommerceTemplatePreview =>
+      const AssetGenImage('assets/images/ecommerce_template_preview.png');
+
+  /// File path: assets/images/empty_state_template_preview.png
+  AssetGenImage get emptyStateTemplatePreview =>
+      const AssetGenImage('assets/images/empty_state_template_preview.png');
+
+  /// File path: assets/images/events_template_preview.png
+  AssetGenImage get eventsTemplatePreview =>
+      const AssetGenImage('assets/images/events_template_preview.png');
+
+  /// File path: assets/images/feedback_template_preview.png
+  AssetGenImage get feedbackTemplatePreview =>
+      const AssetGenImage('assets/images/feedback_template_preview.png');
+
+  /// File path: assets/images/login_template_preview.png
+  AssetGenImage get loginTemplatePreview =>
+      const AssetGenImage('assets/images/login_template_preview.png');
+
   /// File path: assets/images/logo_full.png
   AssetGenImage get logoFull =>
       const AssetGenImage('assets/images/logo_full.png');
 
+  /// File path: assets/images/onboarding_template_preview.png
+  AssetGenImage get onboardingTemplatePreview =>
+      const AssetGenImage('assets/images/onboarding_template_preview.png');
+
+  /// File path: assets/images/search_filter_template_preview.png
+  AssetGenImage get searchFilterTemplatePreview =>
+      const AssetGenImage('assets/images/search_filter_template_preview.png');
+
+  /// File path: assets/images/settings_template_preview.png
+  AssetGenImage get settingsTemplatePreview =>
+      const AssetGenImage('assets/images/settings_template_preview.png');
+
+  /// File path: assets/images/subscription_plans_template_preview.png
+  AssetGenImage get subscriptionPlansTemplatePreview => const AssetGenImage(
+    'assets/images/subscription_plans_template_preview.png',
+  );
+
   /// List of all assets
-  List<AssetGenImage> get values => [logoFull];
+  List<AssetGenImage> get values => [
+    chatTemplatePreview,
+    ecommerceTemplatePreview,
+    emptyStateTemplatePreview,
+    eventsTemplatePreview,
+    feedbackTemplatePreview,
+    loginTemplatePreview,
+    logoFull,
+    onboardingTemplatePreview,
+    searchFilterTemplatePreview,
+    settingsTemplatePreview,
+    subscriptionPlansTemplatePreview,
+  ];
 }
 
 class Assets {

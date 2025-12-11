@@ -7,8 +7,9 @@ import 'package:flutter_boilerplate/theme/theme.dart';
 class UIKitFilter extends StatelessWidget {
   final bool isEnabled;
   final int? count;
+  final VoidCallback? onTap;
 
-  const UIKitFilter({super.key, this.isEnabled = true, this.count});
+  const UIKitFilter({super.key, this.isEnabled = true, this.count, this.onTap});
 
   double get _radius => 12;
 
@@ -29,6 +30,7 @@ class UIKitFilter extends StatelessWidget {
           ),
         ),
         child: InkWell(
+          onTap: onTap,
           borderRadius: BorderRadius.circular(_radius),
           child: Padding(
             padding: .only(
@@ -59,9 +61,6 @@ class UIKitFilter extends StatelessWidget {
               ],
             ),
           ),
-          onTap: () {
-            //
-          },
         ),
       ),
     );

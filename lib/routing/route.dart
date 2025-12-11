@@ -11,14 +11,48 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SplashRoute.page, initial: true),
     AutoRoute(page: HomeRoute.page),
 
-    // Common
-    CustomRoute(
-      page: SearchRoute.page,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-      duration: Duration(milliseconds: 250),
-      reverseDuration: Duration(milliseconds: 250),
-      opaque: false,
+    // Templates
+    // -- Chat
+    AutoRoute(page: ChatListRoute.page),
+    AutoRoute(page: ChatDetailRoute.page),
+    // -- Feedback
+    AutoRoute(page: FeedbackRoute.page),
+    // -- Login
+    AutoRoute(page: LoginRoute.page),
+    AutoRoute(page: SignUpRoute.page),
+    AutoRoute(page: ConfirmationCodeRoute.page),
+
+    // -- Settings
+    AutoRoute(page: SettingsRoute.page),
+
+    // -- Empty State
+    AutoRoute(page: EmptyStateRoute.page),
+
+    // -- Subscription Plans
+    AutoRoute(page: SubscriptionPlansRoute.page),
+
+    // -- Onboarding
+    AutoRoute(page: OnboardingInitRoute.page),
+    AutoRoute(page: OnboardingPersonalizeRoute.page),
+
+    // -- Search Filter
+    AutoRoute(
+      page: SearchFilterRoute.page,
+      children: [AutoRoute(page: SearchRoute.page)],
     ),
+
+    // -- Events
+    AutoRoute(page: EventsRoute.page),
+
+    // -- E-Commerce
+    AutoRoute(page: EcommerceRoute.page),
+    AutoRoute(page: EcommerceProductDetailRoute.page),
+    AutoRoute(page: EcommerceBagRoute.page),
+    AutoRoute(page: EcommerceCheckoutRoute.page),
+
+    // Common
+    AutoRoute(page: SearchRoute.page),
+    AutoRoute(page: FilterRoute.page),
   ];
   @override
   List<AutoRouteGuard> get guards => [];

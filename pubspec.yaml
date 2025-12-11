@@ -73,6 +73,7 @@ dependencies:
   logger: ^2.1.0
   flutter_launcher_icons: ^0.14.4
   fluttertoast: ^9.0.0
+  pinput: ^6.0.1
 
 dev_dependencies:
   flutter_test:

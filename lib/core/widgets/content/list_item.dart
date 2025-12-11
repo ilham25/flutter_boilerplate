@@ -23,13 +23,21 @@ class UIKitListItem extends StatelessWidget {
 
   final Color? leftIconColor;
   final Color? rightIconColor;
+  final Color? backgroundColor;
 
   final UIKitListItemVariant? variant;
+
+  final TextStyle? titleTextStyle;
+  final TextStyle? descriptionTextStyle;
+
+  final EdgeInsets? padding;
+  final BorderRadius borderRadius;
+  final BoxBorder? border;
 
   const UIKitListItem({
     super.key,
     required this.title,
-    required this.description,
+    this.description = "",
     this.onChanged,
     this.left,
     this.leftIcon,
@@ -41,6 +49,12 @@ class UIKitListItem extends StatelessWidget {
     this.variant,
     this.value = false,
     this.count = 0,
+    this.titleTextStyle,
+    this.descriptionTextStyle,
+    this.padding,
+    this.borderRadius = BorderRadius.zero,
+    this.backgroundColor,
+    this.border,
   });
 
   factory UIKitListItem.toggle({
@@ -54,6 +68,8 @@ class UIKitListItem extends StatelessWidget {
     AssetGenImage? rightIcon,
     Color? leftIconColor,
     Color? rightIconColor,
+    TextStyle? titleTextStyle,
+    TextStyle? descriptionTextStyle,
   }) => UIKitListItem(
     variant: .toggle,
     title: title,
@@ -66,6 +82,8 @@ class UIKitListItem extends StatelessWidget {
     right: right,
     value: value,
     onChanged: onChanged,
+    titleTextStyle: titleTextStyle,
+    descriptionTextStyle: descriptionTextStyle,
   );
 
   factory UIKitListItem.checkbox({
@@ -79,6 +97,8 @@ class UIKitListItem extends StatelessWidget {
     AssetGenImage? rightIcon,
     Color? leftIconColor,
     Color? rightIconColor,
+    TextStyle? titleTextStyle,
+    TextStyle? descriptionTextStyle,
   }) => UIKitListItem(
     variant: .checkbox,
     title: title,
@@ -91,6 +111,8 @@ class UIKitListItem extends StatelessWidget {
     right: right,
     value: value,
     onChanged: onChanged,
+    titleTextStyle: titleTextStyle,
+    descriptionTextStyle: descriptionTextStyle,
   );
 
   factory UIKitListItem.count({
@@ -104,6 +126,8 @@ class UIKitListItem extends StatelessWidget {
     AssetGenImage? rightIcon,
     Color? leftIconColor,
     Color? rightIconColor,
+    TextStyle? titleTextStyle,
+    TextStyle? descriptionTextStyle,
   }) => UIKitListItem(
     variant: .count,
     title: title,
@@ -116,6 +140,8 @@ class UIKitListItem extends StatelessWidget {
     right: right,
     count: count,
     onTap: onTap,
+    titleTextStyle: titleTextStyle,
+    descriptionTextStyle: descriptionTextStyle,
   );
 
   Color get _leftIconColor => leftIconColor ?? MyTheme.color.primary;
@@ -124,6 +150,17 @@ class UIKitListItem extends StatelessWidget {
 
   bool get _isShowRightWidget =>
       right != null || rightIcon != null || onTap != null || onChanged != null;
+
+  TextStyle get _titleTextStyle => titleTextStyle ?? MyTheme.style.body.m;
+  TextStyle get _descriptionTextStyle =>
+      descriptionTextStyle ?? MyTheme.style.body.s;
+
+  EdgeInsets get _padding =>
+      padding ??
+      EdgeInsets.symmetric(
+        horizontal: AppSetting.setWidth(16),
+        vertical: AppSetting.setHeight(16),
+      );
 
   Widget _buildLeft() {
     if (left != null) return left!;
@@ -149,6 +186,7 @@ class UIKitListItem extends StatelessWidget {
     }
 
     if (variant == .count) {
+      if (count == 0) return SizedBox.shrink();
       return UIKitBadge.count(count: count);
     }
 
@@ -177,14 +215,18 @@ class UIKitListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       type: .transparency,
+      borderRadius: borderRadius,
       child: Ink(
+        decoration: BoxDecoration(
+          borderRadius: borderRadius,
+          color: backgroundColor,
+          border: border,
+        ),
         child: InkWell(
           onTap: onTap,
+          borderRadius: borderRadius,
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppSetting.setWidth(16),
-              vertical: AppSetting.setHeight(16),
-            ),
+            padding: _padding,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -204,19 +246,21 @@ class UIKitListItem extends StatelessWidget {
                           children: [
                             Text(
                               title,
-                              style: MyTheme.style.body.m,
+                              style: _titleTextStyle,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            Space.h(4),
-                            Text(
-                              description,
-                              style: MyTheme.style.body.s.copyWith(
-                                color: MyTheme.color.palette.dark.light,
+                            if (description.isNotEmpty) ...[
+                              Space.h(4),
+                              Text(
+                                description,
+                                style: _descriptionTextStyle.copyWith(
+                                  color: MyTheme.color.palette.dark.light,
+                                ),
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                            ],
                           ],
                         ),
                       ),

@@ -28,7 +28,7 @@ class UIKitButton extends StatelessWidget {
   const UIKitButton({
     super.key,
     required this.title,
-    required this.onTap,
+    this.onTap,
     this.width,
     this.enable = true,
     this.isLoading = false,
@@ -47,7 +47,7 @@ class UIKitButton extends StatelessWidget {
 
   factory UIKitButton.secondary({
     required String title,
-    required VoidCallback onTap,
+    VoidCallback? onTap,
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
     EdgeInsets? padding,
@@ -71,7 +71,7 @@ class UIKitButton extends StatelessWidget {
 
   factory UIKitButton.tertiary({
     required String title,
-    required VoidCallback onTap,
+    VoidCallback? onTap,
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
     EdgeInsets? padding,

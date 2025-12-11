@@ -5,6 +5,7 @@ import 'package:flutter_boilerplate/theme/theme.dart';
 
 class UIKitTextField extends StatefulWidget {
   final TextEditingController? controller;
+  final String title;
 
   final String? placeholder;
   final String? errorText;
@@ -21,7 +22,7 @@ class UIKitTextField extends StatefulWidget {
   final Color? rightIconColor;
 
   final int? minLines;
-  final int? maxLines;
+  final int maxLines;
 
   final TextInputType? keyboardType;
 
@@ -38,9 +39,10 @@ class UIKitTextField extends StatefulWidget {
     this.obscureText = false,
     this.obscuringText = "*",
     this.minLines,
-    this.maxLines,
+    this.maxLines = 1,
     this.keyboardType,
     this.readOnly = false,
+    this.title = "",
   });
 
   factory UIKitTextField.textArea({
@@ -170,6 +172,10 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
     return Column(
       crossAxisAlignment: .start,
       children: [
+        if (widget.title.isNotEmpty) ...[
+          Text(widget.title, style: MyTheme.style.heading.h5),
+          Space.h(8),
+        ],
         TextField(
           controller: _controller,
           focusNode: _focusNode,
@@ -250,7 +256,7 @@ class _UIKitTextFieldState extends State<UIKitTextField> {
           style: _textStyle,
           obscureText: _isPasswordField,
           obscuringCharacter: widget.obscuringText,
-          maxLines: _isPasswordField ? 1 : widget.maxLines,
+          maxLines: widget.maxLines,
           minLines: widget.minLines,
           keyboardType: widget.keyboardType,
           readOnly: widget.readOnly,

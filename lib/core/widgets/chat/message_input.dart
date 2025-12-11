@@ -6,16 +6,22 @@ import 'package:flutter_boilerplate/theme/theme.dart';
 
 class UIKitMessageInput extends StatefulWidget {
   final TextEditingController? controller;
+  final FocusNode? focusNode;
+
   final String? placeholder;
   final VoidCallback? onShowMore;
   final VoidCallback? onSend;
 
+  final bool autofocus;
+
   const UIKitMessageInput({
     super.key,
     this.controller,
-    this.placeholder,
+    this.placeholder = "Type a message...",
     this.onShowMore,
     this.onSend,
+    this.focusNode,
+    this.autofocus = false,
   });
 
   @override
@@ -25,12 +31,20 @@ class UIKitMessageInput extends StatefulWidget {
 class _UIKitMessageInputState extends State<UIKitMessageInput> {
   late TextEditingController _controller;
   late FocusNode _focusNode;
+  String text = "";
 
   @override
   void initState() {
     super.initState();
     _controller = widget.controller ?? TextEditingController();
-    _focusNode = FocusNode();
+    _focusNode = widget.focusNode ?? FocusNode();
+
+    text = _controller.text;
+    _controller.addListener(() {
+      setState(() {
+        text = _controller.text;
+      });
+    });
   }
 
   @override
@@ -75,6 +89,7 @@ class _UIKitMessageInputState extends State<UIKitMessageInput> {
                   child: TextField(
                     controller: _controller,
                     focusNode: _focusNode,
+                    autofocus: widget.autofocus,
                     onTapOutside: (_) =>
                         FocusManager.instance.primaryFocus?.unfocus(),
                     decoration: InputDecoration(
@@ -90,16 +105,21 @@ class _UIKitMessageInputState extends State<UIKitMessageInput> {
                       hintText: widget.placeholder,
                     ),
                     style: _textStyle,
+                    onSubmitted: (value) {
+                      widget.onSend?.call();
+                    },
                   ),
                 ),
-                if (_controller.text.isNotEmpty) Space.w(6),
-                UIKitIconButton(
-                  size: 32,
-                  icon: Assets.icons.send,
-                  onTap: widget.onSend,
-                  radius: 32,
-                  iconSize: 12,
-                ),
+                if (text.isNotEmpty) ...[
+                  Space.w(6),
+                  UIKitIconButton(
+                    size: 32,
+                    icon: Assets.icons.send,
+                    onTap: widget.onSend,
+                    radius: 32,
+                    iconSize: 12,
+                  ),
+                ],
               ],
             ),
           ),

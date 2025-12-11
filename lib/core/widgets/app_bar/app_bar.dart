@@ -13,6 +13,8 @@ class UIKitAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> actions;
   final PreferredSizeWidget? bottom;
 
+  final Color? backgroundColor;
+
   const UIKitAppBar({
     super.key,
     this.leading,
@@ -21,9 +23,12 @@ class UIKitAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.automaticallyImplyLeading = true,
     this.actions = const [],
     this.bottom,
+    this.backgroundColor,
   });
 
   double get height => 56;
+
+  Color get _backgroundColor => backgroundColor ?? MyTheme.color.white;
 
   Widget? _buildLeading(BuildContext context) {
     if (automaticallyImplyLeading && leading == null) {
@@ -46,7 +51,7 @@ class UIKitAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: MyTheme.color.white),
+      decoration: BoxDecoration(color: _backgroundColor),
       child: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -79,12 +84,11 @@ class UIKitAppBar extends StatelessWidget implements PreferredSizeWidget {
                   if (actions.isNotEmpty) ...[
                     Positioned(
                       right: 0,
-
                       child: Wrap(
                         direction: Axis.horizontal,
                         alignment: WrapAlignment.center,
                         crossAxisAlignment: WrapCrossAlignment.center,
-                        spacing: AppSetting.setWidth(8),
+                        spacing: AppSetting.setWidth(0),
                         children: actions,
                       ),
                     ),
