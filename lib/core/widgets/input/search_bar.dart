@@ -101,11 +101,13 @@ class _UIKitSearchBarState extends State<UIKitSearchBar> {
           mainAxisAlignment: .end,
           children: [
             UIKitIconButton.secondary(
-              icon: Assets.icons.close,
+              Assets.icons.close,
               onTap: widget.onClear,
               iconSize: 12,
               size: 16,
-              iconColor: MyTheme.color.palette.dark.light,
+              decoration: UIKitIconButtonDecoration(
+                iconColor: MyTheme.color.palette.dark.light,
+              ),
             ),
           ],
         ),

@@ -129,10 +129,12 @@ class SettingsBody extends StatelessWidget {
                           right: 0,
                           bottom: 0,
                           child: UIKitIconButton(
-                            icon: Assets.icons.edit,
+                            Assets.icons.edit,
                             size: 24,
                             iconSize: 10,
-                            radius: 24,
+                            decoration: UIKitIconButtonDecoration(
+                              borderRadius: .circular(24),
+                            ),
                             onTap: () {
                               UIKitToast.info(
                                 title: "Edit Profile",

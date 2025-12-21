@@ -7,7 +7,7 @@ class UIKitCodeInput extends StatelessWidget {
   final TextEditingController? controller;
   final int length;
 
-  UIKitCodeInput({super.key, this.controller, this.length = 4});
+  const UIKitCodeInput({super.key, this.controller, this.length = 4});
 
   PinTheme get defaultPinTheme => PinTheme(
     height: AppSetting.setHeight(48),

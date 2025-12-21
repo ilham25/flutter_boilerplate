@@ -123,23 +123,29 @@ class LoginBody extends StatelessWidget {
                       mainAxisAlignment: .center,
                       children: [
                         UIKitIconButton(
-                          icon: Assets.icons.google,
-                          color: MyTheme.color.palette.error.dark,
-                          radius: 60,
+                          Assets.icons.google,
+                          decoration: UIKitIconButtonDecoration(
+                            color: MyTheme.color.palette.error.dark,
+                            borderRadius: .circular(60),
+                          ),
                           iconSize: 12,
                         ),
                         Space.w(12),
                         UIKitIconButton(
-                          icon: Assets.icons.apple,
-                          color: MyTheme.color.palette.dark.darkest,
-                          radius: 60,
+                          Assets.icons.apple,
+                          decoration: UIKitIconButtonDecoration(
+                            color: MyTheme.color.palette.dark.darkest,
+                            borderRadius: .circular(60),
+                          ),
                           iconSize: 12,
                         ),
                         Space.w(12),
                         UIKitIconButton(
-                          icon: Assets.icons.facebook,
-                          color: MyTheme.color.palette.highlight.darkest,
-                          radius: 60,
+                          Assets.icons.facebook,
+                          decoration: UIKitIconButtonDecoration(
+                            color: MyTheme.color.palette.highlight.darkest,
+                            borderRadius: .circular(60),
+                          ),
                           iconSize: 12,
                         ),
                       ],

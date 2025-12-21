@@ -46,8 +46,10 @@ class _EventsBodyState extends State<EventsBody> {
     return Scaffold(
       appBar: UIKitAppBar(
         leading: UIKitIconButton.secondary(
-          icon: Assets.icons.search,
-          iconColor: MyTheme.color.palette.dark.darkest,
+          Assets.icons.search,
+          decoration: UIKitIconButtonDecoration(
+            iconColor: MyTheme.color.palette.dark.darkest,
+          ),
           onTap: () {
             //
           },

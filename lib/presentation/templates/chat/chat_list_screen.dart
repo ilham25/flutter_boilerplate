@@ -81,9 +81,7 @@ class _ChatListBodyState extends State<ChatListBody> {
             vertical: AppSetting.setHeight(12),
           ),
         ),
-        actions: [
-          UIKitIconButton.secondary(icon: Assets.icons.create, onTap: () {}),
-        ],
+        actions: [UIKitIconButton.secondary(Assets.icons.create, onTap: () {})],
       ),
       body: SafeArea(
         child: Column(

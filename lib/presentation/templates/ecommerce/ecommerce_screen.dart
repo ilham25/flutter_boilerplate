@@ -35,16 +35,20 @@ class EcommerceBody extends StatelessWidget {
     return Scaffold(
       appBar: UIKitAppBar(
         leading: UIKitIconButton.secondary(
-          icon: Assets.icons.search,
-          iconColor: MyTheme.color.palette.dark.darkest,
+          Assets.icons.search,
+          decoration: UIKitIconButtonDecoration(
+            iconColor: MyTheme.color.palette.dark.darkest,
+          ),
           onTap: () {
             //
           },
         ),
         actions: [
           UIKitIconButton.secondary(
-            icon: Assets.icons.heartOutlined,
-            iconColor: MyTheme.color.palette.dark.darkest,
+            Assets.icons.heartOutlined,
+            decoration: UIKitIconButtonDecoration(
+              iconColor: MyTheme.color.palette.dark.darkest,
+            ),
             onTap: () {
               //
             },
@@ -53,8 +57,10 @@ class EcommerceBody extends StatelessWidget {
             count: 9,
             size: 18,
             child: UIKitIconButton.secondary(
-              icon: Assets.icons.shoppingBagOutlined,
-              iconColor: MyTheme.color.palette.dark.darkest,
+              Assets.icons.shoppingBagOutlined,
+              decoration: UIKitIconButtonDecoration(
+                iconColor: MyTheme.color.palette.dark.darkest,
+              ),
               onTap: () {
                 context.router.push(const EcommerceBagRoute());
               },

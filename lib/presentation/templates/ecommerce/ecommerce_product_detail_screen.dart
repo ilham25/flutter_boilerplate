@@ -66,10 +66,12 @@ class EcommerceProductDetailBody extends StatelessWidget {
                             ),
                             Space.w(8),
                             UIKitIconButton.secondary(
-                              icon: Assets.icons.heartOutlined,
+                              Assets.icons.heartOutlined,
                               size: 20,
                               iconSize: 20,
-                              iconColor: MyTheme.color.palette.dark.darkest,
+                              decoration: UIKitIconButtonDecoration(
+                                iconColor: MyTheme.color.palette.dark.darkest,
+                              ),
                             ),
                           ],
                         ),
@@ -172,8 +174,10 @@ class EcommerceProductDetailBody extends StatelessWidget {
             child: UIKitAppBar(
               backgroundColor: Colors.transparent,
               leading: UIKitIconButton.secondary(
-                icon: Assets.icons.close,
-                iconColor: MyTheme.color.palette.dark.darkest,
+                Assets.icons.close,
+                decoration: UIKitIconButtonDecoration(
+                  iconColor: MyTheme.color.palette.dark.darkest,
+                ),
                 onTap: () {
                   context.router.maybePop();
                 },

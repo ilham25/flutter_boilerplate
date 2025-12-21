@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/core/widgets/button/icon_button.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
@@ -157,12 +156,14 @@ class UIKitToast {
           if (onClose != null) ...[
             Space.w(16),
             UIKitIconButton(
-              icon: Assets.icons.close,
+              Assets.icons.close,
               onTap: onClose,
               size: 12,
-              iconColor: MyTheme.color.palette.dark.light,
-              color: Colors.transparent,
               iconSize: 12,
+              decoration: UIKitIconButtonDecoration(
+                iconColor: MyTheme.color.palette.dark.light,
+                color: Colors.transparent,
+              ),
             ),
           ],
         ],

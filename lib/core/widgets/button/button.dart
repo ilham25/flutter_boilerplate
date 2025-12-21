@@ -13,14 +13,7 @@ class UIKitButton extends StatelessWidget {
   final bool isLoading;
   final String loadingText;
 
-  final Color? color;
-  final Color? textColor;
-  final Color? borderColor;
-
-  final TextStyle? textStyle;
-  final double? radius;
-
-  final EdgeInsets? padding;
+  final UIKitButtonDecoration? decoration;
 
   final AssetGenImage? leftIcon;
   final AssetGenImage? rightIcon;
@@ -33,17 +26,12 @@ class UIKitButton extends StatelessWidget {
     this.enable = true,
     this.isLoading = false,
     this.loadingText = 'Loading...',
-    this.color,
-    this.textColor,
     this.leftIcon,
     this.rightIcon,
-    this.borderColor,
-    this.textStyle,
-    this.radius,
-    this.padding,
-  });
+    this.decoration,
+  }) : variant = .primary;
 
-  final ButtonVariant variant = .primary;
+  final ButtonVariant variant;
 
   factory UIKitButton.secondary({
     required String title,
@@ -58,12 +46,14 @@ class UIKitButton extends StatelessWidget {
     return UIKitButton(
       title: title,
       onTap: onTap,
-      borderColor: getBorderColor(variant: variant),
-      color: getBackgroundColor(variant: variant),
-      textColor: getTextColor(variant: variant),
+      decoration: UIKitButtonDecoration(
+        borderColor: getBorderColor(variant: variant),
+        textColor: getTextColor(variant: variant),
+        color: getBackgroundColor(variant: variant),
+        padding: padding,
+      ),
       leftIcon: leftIcon,
       rightIcon: rightIcon,
-      padding: padding,
       isLoading: isLoading,
       loadingText: loadingText,
     );
@@ -82,39 +72,41 @@ class UIKitButton extends StatelessWidget {
     return UIKitButton(
       title: title,
       onTap: onTap,
-      borderColor: getBorderColor(variant: variant),
-      color: getBackgroundColor(variant: variant),
-      textColor: getTextColor(variant: variant),
+      decoration: UIKitButtonDecoration(
+        borderColor: getBorderColor(variant: variant),
+        color: getBackgroundColor(variant: variant),
+        textColor: getTextColor(variant: variant),
+        padding: padding,
+      ),
       leftIcon: leftIcon,
       rightIcon: rightIcon,
-      padding: padding,
       isLoading: isLoading,
       loadingText: loadingText,
     );
   }
 
   TextStyle get _textStyle {
-    return textStyle ?? getButtonTextStyle();
+    return decoration?.textStyle ?? getButtonTextStyle();
   }
 
-  double get _radius {
-    return radius ?? getButtonRadius();
+  BorderRadius get _borderRadius {
+    return decoration?.borderRadius ?? getButtonRadius();
   }
 
   EdgeInsets get _padding {
-    return padding ?? getPadding();
+    return decoration?.padding ?? getPadding();
   }
 
   Color? get _color {
-    return color ?? getBackgroundColor(variant: variant);
+    return decoration?.color ?? getBackgroundColor(variant: variant);
   }
 
   Color get _textColor {
-    return textColor ?? getTextColor(variant: variant);
+    return decoration?.textColor ?? getTextColor(variant: variant);
   }
 
   Color get _borderColor {
-    return borderColor ?? getBorderColor(variant: variant);
+    return decoration?.borderColor ?? getBorderColor(variant: variant);
   }
 
   Widget _buildContent() {
@@ -188,7 +180,7 @@ class UIKitButton extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           color: isEnabled ? _color : MyTheme.color.disabled,
-          borderRadius: BorderRadius.circular(_radius),
+          borderRadius: _borderRadius,
           border: Border.all(
             color: isEnabled ? _borderColor : MyTheme.color.disabled,
             width: 1,
@@ -196,7 +188,7 @@ class UIKitButton extends StatelessWidget {
         ),
         child: InkWell(
           onTap: isEnabled ? onTap : null,
-          borderRadius: BorderRadius.circular(_radius),
+          borderRadius: _borderRadius,
           child: Padding(padding: _padding, child: _buildContent()),
         ),
       ),
@@ -252,10 +244,10 @@ TextStyle getButtonTextStyle() {
   return btnTextStyle;
 }
 
-double getButtonRadius() {
+BorderRadius getButtonRadius() {
   double btnRadius = 12;
 
-  return btnRadius;
+  return BorderRadius.circular(btnRadius);
 }
 
 EdgeInsets getPadding() {
@@ -269,3 +261,23 @@ EdgeInsets getPadding() {
 }
 
 enum ButtonVariant { primary, secondary, tertiary }
+
+class UIKitButtonDecoration {
+  final Color? color;
+  final Color? textColor;
+  final Color? borderColor;
+
+  final TextStyle? textStyle;
+  final BorderRadius? borderRadius;
+
+  final EdgeInsets? padding;
+
+  const UIKitButtonDecoration({
+    this.color,
+    this.textColor,
+    this.borderColor,
+    this.textStyle,
+    this.borderRadius,
+    this.padding,
+  });
+}

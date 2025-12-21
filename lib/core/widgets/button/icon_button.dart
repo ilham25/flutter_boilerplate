@@ -7,63 +7,68 @@ class UIKitIconButton extends StatelessWidget {
   final AssetGenImage icon;
   final VoidCallback? onTap;
 
-  final Color? color;
-  final Color? iconColor;
-
   final double size;
-  final double radius;
   final double? iconSize;
+
+  final UIKitIconButtonDecoration? decoration;
 
   final ButtonVariant variant = .primary;
 
-  const UIKitIconButton({
+  const UIKitIconButton(
+    this.icon, {
     super.key,
     this.onTap,
-    this.color,
+    this.decoration,
     this.size = 40,
-    required this.icon,
-    this.radius = 40,
-    this.iconColor,
     this.iconSize,
   });
 
-  factory UIKitIconButton.secondary({
+  factory UIKitIconButton.secondary(
+    AssetGenImage icon, {
     VoidCallback? onTap,
-    required AssetGenImage icon,
     double size = 40,
-    double radius = 40,
     double? iconSize,
-    Color? iconColor,
+    UIKitIconButtonDecoration? decoration,
   }) => UIKitIconButton(
+    icon,
     onTap: onTap,
     size: size,
-    icon: icon,
-    radius: radius,
     iconSize: iconSize,
-    iconColor: iconColor ?? getIconColor(variant: .secondary),
-    color: getBackgroundColor(variant: .secondary),
+    decoration: UIKitIconButtonDecoration(
+      iconColor: getIconColor(variant: .secondary),
+      color: getBackgroundColor(variant: .secondary),
+      borderRadius: .circular(40),
+    ).copyWith(decoration: decoration),
   );
 
-  factory UIKitIconButton.tertiary({
+  factory UIKitIconButton.tertiary(
+    AssetGenImage icon, {
     VoidCallback? onTap,
-    required AssetGenImage icon,
     double size = 40,
-    double radius = 40,
+    double? iconSize,
+    UIKitIconButtonDecoration? decoration,
   }) => UIKitIconButton(
+    icon,
     onTap: onTap,
     size: size,
-    icon: icon,
-    radius: radius,
-    iconColor: getIconColor(variant: .tertiary),
-    color: getBackgroundColor(variant: .tertiary),
+    iconSize: iconSize,
+    decoration: UIKitIconButtonDecoration(
+      iconColor: getIconColor(variant: .tertiary),
+      color: getBackgroundColor(variant: .tertiary),
+      borderRadius: .circular(40),
+    ).copyWith(decoration: decoration),
   );
 
   Color? get _color {
-    return color ?? getBackgroundColor(variant: variant);
+    return decoration?.color ?? getBackgroundColor(variant: variant);
   }
 
   Color get _iconColor {
-    return iconColor ?? getIconColor(variant: variant);
+    return decoration?.iconColor ?? getIconColor(variant: variant);
+  }
+
+  BorderRadius get _borderRadius {
+    return decoration?.borderRadius ?? .circular(40);
   }
 
   @override
@@ -74,12 +79,9 @@ class UIKitIconButton extends StatelessWidget {
       child: Ink(
         height: AppSetting.setHeight(size),
         width: AppSetting.setHeight(size),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius),
-          color: _color,
-        ),
+        decoration: BoxDecoration(borderRadius: _borderRadius, color: _color),
         child: InkWell(
-          borderRadius: BorderRadius.circular(radius),
+          borderRadius: _borderRadius,
           onTap: () {
             if (onTap == null) return;
             onTap!();
@@ -95,4 +97,23 @@ class UIKitIconButton extends StatelessWidget {
       ),
     );
   }
+}
+
+class UIKitIconButtonDecoration {
+  final Color? color;
+  final Color? iconColor;
+  final BorderRadius? borderRadius;
+
+  const UIKitIconButtonDecoration({
+    this.color,
+    this.iconColor,
+    this.borderRadius,
+  });
+
+  UIKitIconButtonDecoration copyWith({UIKitIconButtonDecoration? decoration}) =>
+      UIKitIconButtonDecoration(
+        color: decoration?.color ?? color,
+        iconColor: decoration?.iconColor ?? iconColor,
+        borderRadius: decoration?.borderRadius ?? borderRadius,
+      );
 }

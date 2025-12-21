@@ -30,9 +30,7 @@ class EmptyStateBody extends StatelessWidget {
       appBar: UIKitAppBar(
         title: "Projects",
         automaticallyImplyLeading: false,
-        actions: [
-          UIKitIconButton.secondary(icon: Assets.icons.search, onTap: () {}),
-        ],
+        actions: [UIKitIconButton.secondary(Assets.icons.search, onTap: () {})],
       ),
       body: DefaultTabController(
         length: 3,
