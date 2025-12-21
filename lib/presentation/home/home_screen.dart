@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Templates",
         actions: [
           UIKitIconButton.secondary(
-            icon: Assets.icons.search,
+            Assets.icons.search,
             onTap: () {
               // context.router.push(const SearchRoute());
             },

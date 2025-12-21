@@ -64,10 +64,10 @@ class _UIKitMessageInputState extends State<UIKitMessageInput> {
       crossAxisAlignment: .center,
       children: [
         UIKitIconButton.secondary(
+          Assets.icons.add,
           size: 32,
-          icon: Assets.icons.add,
-          radius: 32,
           onTap: widget.onShowMore,
+          decoration: UIKitIconButtonDecoration(borderRadius: .circular(32)),
         ),
         Space.w(6),
         Flexible(
@@ -113,10 +113,12 @@ class _UIKitMessageInputState extends State<UIKitMessageInput> {
                 if (text.isNotEmpty) ...[
                   Space.w(6),
                   UIKitIconButton(
+                    Assets.icons.send,
                     size: 32,
-                    icon: Assets.icons.send,
                     onTap: widget.onSend,
-                    radius: 32,
+                    decoration: UIKitIconButtonDecoration(
+                      borderRadius: .circular(32),
+                    ),
                     iconSize: 12,
                   ),
                 ],
