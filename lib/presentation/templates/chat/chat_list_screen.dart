@@ -112,7 +112,9 @@ class _ChatListBodyState extends State<ChatListBody> {
                       description: item.message,
                       count: item.count,
                       left: UIKitAvatar(),
-                      titleTextStyle: MyTheme.style.heading.h5,
+                      decoration: UIKitListItemDecoration(
+                        titleTextStyle: MyTheme.style.heading.h5,
+                      ),
                       onTap: () {
                         context.router.push(ChatDetailRoute(detail: item));
                       },

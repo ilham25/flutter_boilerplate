@@ -21,18 +21,13 @@ class UIKitListItem extends StatelessWidget {
   final AssetGenImage? leftIcon;
   final AssetGenImage? rightIcon;
 
-  final Color? leftIconColor;
-  final Color? rightIconColor;
-  final Color? backgroundColor;
-
   final UIKitListItemVariant? variant;
 
-  final TextStyle? titleTextStyle;
-  final TextStyle? descriptionTextStyle;
+  final UIKitListItemDecoration? decoration;
 
   final EdgeInsets? padding;
-  final BorderRadius borderRadius;
-  final BoxBorder? border;
+
+  final CrossAxisAlignment leftAlignment;
 
   const UIKitListItem({
     super.key,
@@ -42,19 +37,14 @@ class UIKitListItem extends StatelessWidget {
     this.left,
     this.leftIcon,
     this.rightIcon,
-    this.leftIconColor,
-    this.rightIconColor,
     this.onTap,
     this.right,
     this.variant,
     this.value = false,
     this.count = 0,
-    this.titleTextStyle,
-    this.descriptionTextStyle,
+    this.decoration,
     this.padding,
-    this.borderRadius = BorderRadius.zero,
-    this.backgroundColor,
-    this.border,
+    this.leftAlignment = CrossAxisAlignment.start,
   });
 
   factory UIKitListItem.toggle({
@@ -66,10 +56,8 @@ class UIKitListItem extends StatelessWidget {
     Widget? right,
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
-    Color? leftIconColor,
-    Color? rightIconColor,
-    TextStyle? titleTextStyle,
-    TextStyle? descriptionTextStyle,
+    UIKitListItemDecoration? decoration,
+    CrossAxisAlignment leftAlignment = CrossAxisAlignment.start,
   }) => UIKitListItem(
     variant: .toggle,
     title: title,
@@ -77,13 +65,11 @@ class UIKitListItem extends StatelessWidget {
     left: left,
     leftIcon: leftIcon,
     rightIcon: rightIcon,
-    leftIconColor: leftIconColor,
-    rightIconColor: rightIconColor,
     right: right,
     value: value,
     onChanged: onChanged,
-    titleTextStyle: titleTextStyle,
-    descriptionTextStyle: descriptionTextStyle,
+    decoration: decoration,
+    leftAlignment: leftAlignment,
   );
 
   factory UIKitListItem.checkbox({
@@ -95,10 +81,9 @@ class UIKitListItem extends StatelessWidget {
     Widget? right,
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
-    Color? leftIconColor,
-    Color? rightIconColor,
-    TextStyle? titleTextStyle,
-    TextStyle? descriptionTextStyle,
+    UIKitListItemDecoration? decoration,
+    EdgeInsets? padding,
+    CrossAxisAlignment leftAlignment = CrossAxisAlignment.start,
   }) => UIKitListItem(
     variant: .checkbox,
     title: title,
@@ -106,13 +91,12 @@ class UIKitListItem extends StatelessWidget {
     left: left,
     leftIcon: leftIcon,
     rightIcon: rightIcon,
-    leftIconColor: leftIconColor,
-    rightIconColor: rightIconColor,
     right: right,
     value: value,
     onChanged: onChanged,
-    titleTextStyle: titleTextStyle,
-    descriptionTextStyle: descriptionTextStyle,
+    decoration: decoration,
+    padding: padding,
+    leftAlignment: leftAlignment,
   );
 
   factory UIKitListItem.count({
@@ -124,10 +108,9 @@ class UIKitListItem extends StatelessWidget {
     Widget? right,
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
-    Color? leftIconColor,
-    Color? rightIconColor,
-    TextStyle? titleTextStyle,
-    TextStyle? descriptionTextStyle,
+    UIKitListItemDecoration? decoration,
+    EdgeInsets? padding,
+    CrossAxisAlignment leftAlignment = CrossAxisAlignment.start,
   }) => UIKitListItem(
     variant: .count,
     title: title,
@@ -135,25 +118,26 @@ class UIKitListItem extends StatelessWidget {
     left: left,
     leftIcon: leftIcon,
     rightIcon: rightIcon,
-    leftIconColor: leftIconColor,
-    rightIconColor: rightIconColor,
     right: right,
     count: count,
     onTap: onTap,
-    titleTextStyle: titleTextStyle,
-    descriptionTextStyle: descriptionTextStyle,
+    decoration: decoration,
+    padding: padding,
+    leftAlignment: leftAlignment,
   );
 
-  Color get _leftIconColor => leftIconColor ?? MyTheme.color.primary;
+  Color get _leftIconColor =>
+      decoration?.leftIconColor ?? MyTheme.color.primary;
   Color get _rightIconColor =>
-      rightIconColor ?? MyTheme.color.palette.dark.lightest;
+      decoration?.rightIconColor ?? MyTheme.color.palette.dark.lightest;
 
   bool get _isShowRightWidget =>
       right != null || rightIcon != null || onTap != null || onChanged != null;
 
-  TextStyle get _titleTextStyle => titleTextStyle ?? MyTheme.style.body.m;
+  TextStyle get _titleTextStyle =>
+      decoration?.titleTextStyle ?? MyTheme.style.body.m;
   TextStyle get _descriptionTextStyle =>
-      descriptionTextStyle ?? MyTheme.style.body.s;
+      decoration?.descriptionTextStyle ?? MyTheme.style.body.s;
 
   EdgeInsets get _padding =>
       padding ??
@@ -215,23 +199,28 @@ class UIKitListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       type: .transparency,
-      borderRadius: borderRadius,
+      borderRadius: decoration?.borderRadius,
       child: Ink(
         decoration: BoxDecoration(
-          borderRadius: borderRadius,
-          color: backgroundColor,
-          border: border,
+          borderRadius: decoration?.borderRadius,
+          color: decoration?.backgroundColor,
+          border: decoration?.border,
         ),
         child: InkWell(
           onTap: onTap,
-          borderRadius: borderRadius,
+          borderRadius: decoration?.borderRadius,
           child: Padding(
             padding: _padding,
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: leftAlignment,
               children: [
                 if (leftIcon != null || left != null)
-                  Row(children: [_buildLeft(), Space.w(16)]),
+                  Row(
+                    children: [
+                      _buildLeft(),
+                      Space.w(decoration?.leftSpacing ?? 16),
+                    ],
+                  ),
                 Flexible(
                   flex: 1,
                   fit: FlexFit.tight,
@@ -265,7 +254,12 @@ class UIKitListItem extends StatelessWidget {
                         ),
                       ),
                       if (_isShowRightWidget)
-                        Row(children: [Space.w(16), _buildRight()]),
+                        Row(
+                          children: [
+                            Space.w(decoration?.rightSpacing ?? 16),
+                            _buildRight(),
+                          ],
+                        ),
                     ],
                   ),
                 ),
@@ -279,3 +273,42 @@ class UIKitListItem extends StatelessWidget {
 }
 
 enum UIKitListItemVariant { toggle, checkbox, count }
+
+class UIKitListItemDecoration {
+  final TextStyle? titleTextStyle;
+  final TextStyle? descriptionTextStyle;
+  final BorderRadius borderRadius;
+  final BoxBorder? border;
+  final Color? leftIconColor;
+  final Color? rightIconColor;
+  final Color? backgroundColor;
+
+  final double? leftSpacing;
+  final double? rightSpacing;
+
+  const UIKitListItemDecoration({
+    this.titleTextStyle,
+    this.descriptionTextStyle,
+    this.borderRadius = BorderRadius.zero,
+    this.border,
+    this.leftIconColor,
+    this.rightIconColor,
+    this.backgroundColor,
+    this.leftSpacing,
+    this.rightSpacing,
+  });
+
+  UIKitListItemDecoration copyWith({UIKitListItemDecoration? decoration}) =>
+      UIKitListItemDecoration(
+        titleTextStyle: decoration?.titleTextStyle ?? titleTextStyle,
+        descriptionTextStyle:
+            decoration?.descriptionTextStyle ?? descriptionTextStyle,
+        borderRadius: decoration?.borderRadius ?? borderRadius,
+        border: decoration?.border ?? border,
+        leftIconColor: decoration?.leftIconColor ?? leftIconColor,
+        rightIconColor: decoration?.rightIconColor ?? rightIconColor,
+        backgroundColor: decoration?.backgroundColor ?? backgroundColor,
+        leftSpacing: decoration?.leftSpacing ?? leftSpacing,
+        rightSpacing: decoration?.rightSpacing ?? rightSpacing,
+      );
+}

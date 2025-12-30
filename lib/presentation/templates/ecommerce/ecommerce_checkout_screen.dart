@@ -215,15 +215,17 @@ class _CreditCard extends StatelessWidget {
     return UIKitListItem(
       title: title,
       description: number,
-      backgroundColor: selected
-          ? MyTheme.color.palette.highlight.lightest
-          : Colors.transparent,
-      borderRadius: .circular(12),
-      border: .all(
-        color: selected
+      decoration: UIKitListItemDecoration(
+        backgroundColor: selected
             ? MyTheme.color.palette.highlight.lightest
-            : MyTheme.color.palette.light.dark,
-        width: 0.5,
+            : Colors.transparent,
+        borderRadius: .circular(12),
+        border: .all(
+          color: selected
+              ? MyTheme.color.palette.highlight.lightest
+              : MyTheme.color.palette.light.dark,
+          width: 0.5,
+        ),
       ),
       onTap: onTap,
       right: selected

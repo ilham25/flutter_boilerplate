@@ -207,6 +207,19 @@ class _HomeBodyState extends State<HomeBody> {
             },
           ),
         ),
+        Space.h(16),
+        SizedBox(
+          height: AppSetting.setHeight(160),
+          child: UIKitBanner(
+            title: "Finance",
+            description: "Finance Screen Template Example",
+            // image: Assets.images.ecommerceTemplatePreview.path,
+            action: "Show Template",
+            onAction: () {
+              context.router.push(const FinanceRoute());
+            },
+          ),
+        ),
       ],
     );
   }

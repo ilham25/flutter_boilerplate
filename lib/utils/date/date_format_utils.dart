@@ -27,6 +27,7 @@ final DateFormat formatMonthDate = DateFormat('MMM dd', "id");
 final DateFormat formatDayName = DateFormat('EEEE', "id");
 final DateFormat formatDayNameSort = DateFormat('EEE', "id");
 final DateFormat formatFull = DateFormat('EEEE, dd MMMM yyyy', "id");
+final DateFormat formatFullSort = DateFormat('EEE, dd MMM yyyy', "id");
 final DateFormat formatFullTime = DateFormat('dd MMMM yyyy HH:mm', "id");
 final DateFormat formatterTimeDisplay = DateFormat("HH:mm");
 final DateFormat formatterClassicSlash = DateFormat('dd/MM');

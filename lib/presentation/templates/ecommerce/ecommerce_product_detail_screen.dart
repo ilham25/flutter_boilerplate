@@ -238,7 +238,9 @@ class _ColorItem extends StatelessWidget {
               size: 16,
               iconSize: 8,
               icon: Assets.icons.check,
-              border: Border.all(color: MyTheme.color.white, width: 1),
+              decoration: UIKitBadgeDecoration(
+                border: Border.all(color: MyTheme.color.white, width: 1),
+              ),
             ),
           ),
       ],

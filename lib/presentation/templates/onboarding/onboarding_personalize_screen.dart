@@ -83,15 +83,17 @@ class _OnboardingPersonalizeBodyState extends State<OnboardingPersonalizeBody> {
                         final selected = selectedInterests.contains(item);
                         return UIKitListItem(
                           title: item,
-                          backgroundColor: selected
-                              ? MyTheme.color.palette.highlight.lightest
-                              : Colors.transparent,
-                          borderRadius: .circular(12),
-                          border: .all(
-                            color: selected
+                          decoration: UIKitListItemDecoration(
+                            backgroundColor: selected
                                 ? MyTheme.color.palette.highlight.lightest
-                                : MyTheme.color.palette.light.dark,
-                            width: 0.5,
+                                : Colors.transparent,
+                            borderRadius: .circular(12),
+                            border: .all(
+                              color: selected
+                                  ? MyTheme.color.palette.highlight.lightest
+                                  : MyTheme.color.palette.light.dark,
+                              width: 0.5,
+                            ),
                           ),
                           onTap: () {
                             setState(() {

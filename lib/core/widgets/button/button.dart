@@ -39,6 +39,7 @@ class UIKitButton extends StatelessWidget {
     AssetGenImage? leftIcon,
     AssetGenImage? rightIcon,
     EdgeInsets? padding,
+    UIKitButtonDecoration? decoration,
     bool isLoading = false,
     String loadingText = "Loading...",
   }) {
@@ -51,7 +52,7 @@ class UIKitButton extends StatelessWidget {
         textColor: getTextColor(variant: variant),
         color: getBackgroundColor(variant: variant),
         padding: padding,
-      ),
+      ).copyWith(decoration: decoration),
       leftIcon: leftIcon,
       rightIcon: rightIcon,
       isLoading: isLoading,
@@ -66,6 +67,8 @@ class UIKitButton extends StatelessWidget {
     AssetGenImage? rightIcon,
     EdgeInsets? padding,
     bool isLoading = false,
+    UIKitButtonDecoration? decoration,
+
     String loadingText = "Loading...",
   }) {
     final ButtonVariant variant = .tertiary;
@@ -77,7 +80,7 @@ class UIKitButton extends StatelessWidget {
         color: getBackgroundColor(variant: variant),
         textColor: getTextColor(variant: variant),
         padding: padding,
-      ),
+      ).copyWith(decoration: decoration),
       leftIcon: leftIcon,
       rightIcon: rightIcon,
       isLoading: isLoading,
@@ -280,4 +283,14 @@ class UIKitButtonDecoration {
     this.borderRadius,
     this.padding,
   });
+
+  UIKitButtonDecoration copyWith({UIKitButtonDecoration? decoration}) =>
+      UIKitButtonDecoration(
+        color: decoration?.color ?? color,
+        textColor: decoration?.textColor ?? textColor,
+        borderColor: decoration?.borderColor ?? borderColor,
+        textStyle: decoration?.textStyle ?? textStyle,
+        borderRadius: decoration?.borderRadius ?? borderRadius,
+        padding: decoration?.padding ?? padding,
+      );
 }

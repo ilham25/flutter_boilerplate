@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/config/app_config.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
 class UIKitLoader extends StatelessWidget {
-  final double value;
+  final double? value;
 
-  const UIKitLoader({super.key, required this.value});
+  const UIKitLoader({super.key, this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,8 @@ class UIKitLoader extends StatelessWidget {
         ),
       ),
       child: SizedBox(
-        height: 32,
-        width: 32,
+        height: AppSetting.setHeight(32),
+        width: AppSetting.setHeight(32),
         child: Center(child: CircularProgressIndicator(value: value)),
       ),
     );
