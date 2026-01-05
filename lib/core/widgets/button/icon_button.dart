@@ -71,6 +71,10 @@ class UIKitIconButton extends StatelessWidget {
     return decoration?.borderRadius ?? .circular(40);
   }
 
+  BoxBorder? get _border {
+    return decoration?.border;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -79,7 +83,11 @@ class UIKitIconButton extends StatelessWidget {
       child: Ink(
         height: AppSetting.setHeight(size),
         width: AppSetting.setHeight(size),
-        decoration: BoxDecoration(borderRadius: _borderRadius, color: _color),
+        decoration: BoxDecoration(
+          borderRadius: _borderRadius,
+          color: _color,
+          border: _border,
+        ),
         child: InkWell(
           borderRadius: _borderRadius,
           onTap: () {
@@ -103,11 +111,13 @@ class UIKitIconButtonDecoration {
   final Color? color;
   final Color? iconColor;
   final BorderRadius? borderRadius;
+  final BoxBorder? border;
 
   const UIKitIconButtonDecoration({
     this.color,
     this.iconColor,
     this.borderRadius,
+    this.border,
   });
 
   UIKitIconButtonDecoration copyWith({UIKitIconButtonDecoration? decoration}) =>
@@ -115,5 +125,10 @@ class UIKitIconButtonDecoration {
         color: decoration?.color ?? color,
         iconColor: decoration?.iconColor ?? iconColor,
         borderRadius: decoration?.borderRadius ?? borderRadius,
+        border: decoration?.border ?? border,
       );
+}
+
+class UIKitIcon extends $AssetsIconsGen {
+  UIKitIcon._() : super();
 }

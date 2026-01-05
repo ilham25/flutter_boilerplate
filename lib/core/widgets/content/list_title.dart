@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/config/app_config.dart';
-import 'package:flutter_boilerplate/core/widgets/button/button.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 
 class UIKitListTitle extends StatelessWidget {
   final String title;
-  final UIKitButton? action;
+  final Widget? action;
   final AssetGenImage? rightIcon;
+
+  final double? iconSize;
 
   const UIKitListTitle({
     super.key,
     required this.title,
     this.action,
     this.rightIcon,
+    this.iconSize,
   }) : assert(
          action == null || rightIcon == null,
          "You can not use either action or rightIcon at the same time",
@@ -40,8 +42,8 @@ class UIKitListTitle extends StatelessWidget {
             if (action != null) action!,
             if (rightIcon != null)
               rightIcon!.image(
-                height: AppSetting.setHeight(16),
-                width: AppSetting.setWidth(16),
+                height: AppSetting.setHeight(iconSize ?? 16),
+                width: AppSetting.setHeight(iconSize ?? 16),
                 color: MyTheme.color.palette.dark.lightest,
               ),
           ],

@@ -50,6 +50,10 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: EcommerceBagRoute.page),
     AutoRoute(page: EcommerceCheckoutRoute.page),
 
+    // -- Finance
+    AutoRoute(page: FinanceRoute.page),
+    AutoRoute(page: FinanceOverviewRoute.page),
+
     // Common
     AutoRoute(page: SearchRoute.page),
     AutoRoute(page: FilterRoute.page),

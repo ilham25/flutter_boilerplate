@@ -35,6 +35,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/arrow_up.png
   AssetGenImage get arrowUp => const AssetGenImage('assets/icons/arrow_up.png');
 
+  /// File path: assets/icons/calendar.png
+  AssetGenImage get calendar =>
+      const AssetGenImage('assets/icons/calendar.png');
+
   /// File path: assets/icons/camera.png
   AssetGenImage get camera => const AssetGenImage('assets/icons/camera.png');
 
@@ -99,6 +103,10 @@ class $AssetsIconsGen {
   AssetGenImage get heartOutlined =>
       const AssetGenImage('assets/icons/heart_outlined.png');
 
+  /// File path: assets/icons/horizontal_dots.png
+  AssetGenImage get horizontalDots =>
+      const AssetGenImage('assets/icons/horizontal_dots.png');
+
   /// File path: assets/icons/image.png
   AssetGenImage get image => const AssetGenImage('assets/icons/image.png');
 
@@ -114,6 +122,14 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/minus.png
   AssetGenImage get minus => const AssetGenImage('assets/icons/minus.png');
+
+  /// File path: assets/icons/notification.png
+  AssetGenImage get notification =>
+      const AssetGenImage('assets/icons/notification.png');
+
+  /// File path: assets/icons/notification_outlined.png
+  AssetGenImage get notificationOutlined =>
+      const AssetGenImage('assets/icons/notification_outlined.png');
 
   /// File path: assets/icons/placeholder.png
   AssetGenImage get placeholder =>
@@ -143,6 +159,9 @@ class $AssetsIconsGen {
   AssetGenImage get shoppingBagOutlined =>
       const AssetGenImage('assets/icons/shopping_bag_outlined.png');
 
+  /// File path: assets/icons/smile.png
+  AssetGenImage get smile => const AssetGenImage('assets/icons/smile.png');
+
   /// File path: assets/icons/sort.png
   AssetGenImage get sort => const AssetGenImage('assets/icons/sort.png');
 
@@ -160,6 +179,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/success.png
   AssetGenImage get success => const AssetGenImage('assets/icons/success.png');
 
+  /// File path: assets/icons/vertical_dots.png
+  AssetGenImage get verticalDots =>
+      const AssetGenImage('assets/icons/vertical_dots.png');
+
   /// File path: assets/icons/warning.png
   AssetGenImage get warning => const AssetGenImage('assets/icons/warning.png');
 
@@ -171,6 +194,7 @@ class $AssetsIconsGen {
     arrowLeft,
     arrowRight,
     arrowUp,
+    calendar,
     camera,
     categories,
     chat,
@@ -190,11 +214,14 @@ class $AssetsIconsGen {
     hamburgerMenu,
     heartFilled,
     heartOutlined,
+    horizontalDots,
     image,
     inbox,
     info,
     linkedIn,
     minus,
+    notification,
+    notificationOutlined,
     placeholder,
     play,
     profile,
@@ -203,11 +230,13 @@ class $AssetsIconsGen {
     settings,
     shoppingBagFilled,
     shoppingBagOutlined,
+    smile,
     sort,
     starFilled,
     starOutlined,
     store,
     success,
+    verticalDots,
     warning,
   ];
 }
