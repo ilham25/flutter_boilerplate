@@ -52,6 +52,7 @@ class AppRouter extends RootStackRouter {
 
     // -- Finance
     AutoRoute(page: FinanceRoute.page),
+    AutoRoute(page: FinanceOverviewRoute.page),
 
     // Common
     AutoRoute(page: SearchRoute.page),

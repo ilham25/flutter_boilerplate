@@ -103,6 +103,10 @@ class $AssetsIconsGen {
   AssetGenImage get heartOutlined =>
       const AssetGenImage('assets/icons/heart_outlined.png');
 
+  /// File path: assets/icons/horizontal_dots.png
+  AssetGenImage get horizontalDots =>
+      const AssetGenImage('assets/icons/horizontal_dots.png');
+
   /// File path: assets/icons/image.png
   AssetGenImage get image => const AssetGenImage('assets/icons/image.png');
 
@@ -210,6 +214,7 @@ class $AssetsIconsGen {
     hamburgerMenu,
     heartFilled,
     heartOutlined,
+    horizontalDots,
     image,
     inbox,
     info,

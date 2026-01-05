@@ -11,6 +11,7 @@ import 'package:flutter_boilerplate/core/widgets/image/image_caching.dart';
 import 'package:flutter_boilerplate/core/widgets/progress/progress_bar.dart';
 import 'package:flutter_boilerplate/core/widgets/toast/toast.dart';
 import 'package:flutter_boilerplate/gen/assets.gen.dart';
+import 'package:flutter_boilerplate/routing/route.gr.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
 import 'package:flutter_boilerplate/utils/date/date_format_utils.dart';
 
@@ -66,7 +67,7 @@ class FinanceBody extends StatelessWidget {
             Assets.icons.search,
             iconSize: 20,
             decoration: UIKitIconButtonDecoration(
-              iconColor: MyTheme.color.palette.dark.darkest,
+              // iconColor: MyTheme.color.palette.dark.darkest,
             ),
             onTap: () {},
           ),
@@ -81,7 +82,7 @@ class FinanceBody extends StatelessWidget {
               Assets.icons.notificationOutlined,
               iconSize: 24,
               decoration: UIKitIconButtonDecoration(
-                iconColor: MyTheme.color.palette.dark.darkest,
+                // iconColor: MyTheme.color.palette.dark.darkest,
               ),
             ),
           ),
@@ -107,10 +108,11 @@ class FinanceBody extends StatelessWidget {
                       child: _OverviewCard(
                         title: "Spendings",
                         onTap: () {
-                          UIKitToast.info(
-                            title: "Spendings",
-                            description: "Spendings tapped!",
-                          );
+                          // UIKitToast.info(
+                          //   title: "Spendings",
+                          //   description: "Spendings tapped!",
+                          // );
+                          context.router.push(const FinanceOverviewRoute());
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -210,6 +212,7 @@ class FinanceBody extends StatelessWidget {
                 ),
                 Space.h(8),
                 Container(
+                  clipBehavior: .antiAlias,
                   decoration: BoxDecoration(
                     color: MyTheme.color.palette.light.light,
                     borderRadius: .circular(16),
